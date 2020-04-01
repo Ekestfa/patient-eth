@@ -1,0 +1,1078 @@
+{
+    "contracts": {
+        "/home/eke/patient-eth/client/contracts/PatientContract.sol": {
+            "PatientContract": {
+                "abi": [
+                    {
+                        "inputs": [
+                            {
+                                "internalType": "address",
+                                "name": "_newPatient",
+                                "type": "address"
+                            }
+                        ],
+                        "name": "changeOwner",
+                        "outputs": [],
+                        "stateMutability": "nonpayable",
+                        "type": "function"
+                    },
+                    {
+                        "inputs": [],
+                        "name": "patient",
+                        "outputs": [
+                            {
+                                "internalType": "address",
+                                "name": "",
+                                "type": "address"
+                            }
+                        ],
+                        "stateMutability": "view",
+                        "type": "function"
+                    }
+                ],
+                "devdoc": {
+                    "methods": {
+                        "changeOwner(address)": {
+                            "params": {
+                                "_newPatient": "the address of the new owner of the contract."
+                            }
+                        }
+                    }
+                },
+                "evm": {
+                    "bytecode": {
+                        "linkReferences": {},
+                        "object": "6080604052600080546001600160a01b0319163317905534801561002257600080fd5b50610192806100326000396000f3fe608060405234801561001057600080fd5b50600436106100365760003560e01c8063a6f9dae11461003b578063bd96bd2014610063575b600080fd5b6100616004803603602081101561005157600080fd5b50356001600160a01b0316610087565b005b61006b61014d565b604080516001600160a01b039092168252519081900360200190f35b6000546001600160a01b031633146100db576040805162461bcd60e51b8152602060048201526012602482015271446f65736e277420612070617469656e742160701b604482015290519081900360640190fd5b6001600160a01b03811661012b576040805162461bcd60e51b81526020600482015260126024820152714e6577206f776e6572206973206e756c6c2160701b604482015290519081900360640190fd5b600080546001600160a01b0319166001600160a01b0392909216919091179055565b6000546001600160a01b03168156fea2646970667358221220b0dc83e62b1dc66d4107b0285e023d0d8addd2dd427834f0b6ea60d0ccb6352964736f6c63430006040033",
+                        "opcodes": "PUSH1 0x80 PUSH1 0x40 MSTORE PUSH1 0x0 DUP1 SLOAD PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB NOT AND CALLER OR SWAP1 SSTORE CALLVALUE DUP1 ISZERO PUSH2 0x22 JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST POP PUSH2 0x192 DUP1 PUSH2 0x32 PUSH1 0x0 CODECOPY PUSH1 0x0 RETURN INVALID PUSH1 0x80 PUSH1 0x40 MSTORE CALLVALUE DUP1 ISZERO PUSH2 0x10 JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST POP PUSH1 0x4 CALLDATASIZE LT PUSH2 0x36 JUMPI PUSH1 0x0 CALLDATALOAD PUSH1 0xE0 SHR DUP1 PUSH4 0xA6F9DAE1 EQ PUSH2 0x3B JUMPI DUP1 PUSH4 0xBD96BD20 EQ PUSH2 0x63 JUMPI JUMPDEST PUSH1 0x0 DUP1 REVERT JUMPDEST PUSH2 0x61 PUSH1 0x4 DUP1 CALLDATASIZE SUB PUSH1 0x20 DUP2 LT ISZERO PUSH2 0x51 JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST POP CALLDATALOAD PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB AND PUSH2 0x87 JUMP JUMPDEST STOP JUMPDEST PUSH2 0x6B PUSH2 0x14D JUMP JUMPDEST PUSH1 0x40 DUP1 MLOAD PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB SWAP1 SWAP3 AND DUP3 MSTORE MLOAD SWAP1 DUP2 SWAP1 SUB PUSH1 0x20 ADD SWAP1 RETURN JUMPDEST PUSH1 0x0 SLOAD PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB AND CALLER EQ PUSH2 0xDB JUMPI PUSH1 0x40 DUP1 MLOAD PUSH3 0x461BCD PUSH1 0xE5 SHL DUP2 MSTORE PUSH1 0x20 PUSH1 0x4 DUP3 ADD MSTORE PUSH1 0x12 PUSH1 0x24 DUP3 ADD MSTORE PUSH18 0x446F65736E277420612070617469656E7421 PUSH1 0x70 SHL PUSH1 0x44 DUP3 ADD MSTORE SWAP1 MLOAD SWAP1 DUP2 SWAP1 SUB PUSH1 0x64 ADD SWAP1 REVERT JUMPDEST PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB DUP2 AND PUSH2 0x12B JUMPI PUSH1 0x40 DUP1 MLOAD PUSH3 0x461BCD PUSH1 0xE5 SHL DUP2 MSTORE PUSH1 0x20 PUSH1 0x4 DUP3 ADD MSTORE PUSH1 0x12 PUSH1 0x24 DUP3 ADD MSTORE PUSH18 0x4E6577206F776E6572206973206E756C6C21 PUSH1 0x70 SHL PUSH1 0x44 DUP3 ADD MSTORE SWAP1 MLOAD SWAP1 DUP2 SWAP1 SUB PUSH1 0x64 ADD SWAP1 REVERT JUMPDEST PUSH1 0x0 DUP1 SLOAD PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB NOT AND PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB SWAP3 SWAP1 SWAP3 AND SWAP2 SWAP1 SWAP2 OR SWAP1 SSTORE JUMP JUMPDEST PUSH1 0x0 SLOAD PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB AND DUP2 JUMP INVALID LOG2 PUSH5 0x6970667358 0x22 SLT KECCAK256 0xB0 0xDC DUP4 0xE6 0x2B SAR 0xC6 PUSH14 0x4107B0285E023D0D8ADDD2DD4278 CALLVALUE CREATE 0xB6 0xEA PUSH1 0xD0 0xCC 0xB6 CALLDATALOAD 0x29 PUSH5 0x736F6C6343 STOP MOD DIV STOP CALLER ",
+                        "sourceMap": "27:517:0:-:0;;;56:35;;;-1:-1:-1;;;;;;56:35:0;81:10;56:35;;;27:517;2:2:-1;;;;27:1;24;17:12;2:2;27:517:0;;;;;;;"
+                    },
+                    "deployedBytecode": {
+                        "linkReferences": {},
+                        "object": "608060405234801561001057600080fd5b50600436106100365760003560e01c8063a6f9dae11461003b578063bd96bd2014610063575b600080fd5b6100616004803603602081101561005157600080fd5b50356001600160a01b0316610087565b005b61006b61014d565b604080516001600160a01b039092168252519081900360200190f35b6000546001600160a01b031633146100db576040805162461bcd60e51b8152602060048201526012602482015271446f65736e277420612070617469656e742160701b604482015290519081900360640190fd5b6001600160a01b03811661012b576040805162461bcd60e51b81526020600482015260126024820152714e6577206f776e6572206973206e756c6c2160701b604482015290519081900360640190fd5b600080546001600160a01b0319166001600160a01b0392909216919091179055565b6000546001600160a01b03168156fea2646970667358221220b0dc83e62b1dc66d4107b0285e023d0d8addd2dd427834f0b6ea60d0ccb6352964736f6c63430006040033",
+                        "opcodes": "PUSH1 0x80 PUSH1 0x40 MSTORE CALLVALUE DUP1 ISZERO PUSH2 0x10 JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST POP PUSH1 0x4 CALLDATASIZE LT PUSH2 0x36 JUMPI PUSH1 0x0 CALLDATALOAD PUSH1 0xE0 SHR DUP1 PUSH4 0xA6F9DAE1 EQ PUSH2 0x3B JUMPI DUP1 PUSH4 0xBD96BD20 EQ PUSH2 0x63 JUMPI JUMPDEST PUSH1 0x0 DUP1 REVERT JUMPDEST PUSH2 0x61 PUSH1 0x4 DUP1 CALLDATASIZE SUB PUSH1 0x20 DUP2 LT ISZERO PUSH2 0x51 JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST POP CALLDATALOAD PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB AND PUSH2 0x87 JUMP JUMPDEST STOP JUMPDEST PUSH2 0x6B PUSH2 0x14D JUMP JUMPDEST PUSH1 0x40 DUP1 MLOAD PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB SWAP1 SWAP3 AND DUP3 MSTORE MLOAD SWAP1 DUP2 SWAP1 SUB PUSH1 0x20 ADD SWAP1 RETURN JUMPDEST PUSH1 0x0 SLOAD PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB AND CALLER EQ PUSH2 0xDB JUMPI PUSH1 0x40 DUP1 MLOAD PUSH3 0x461BCD PUSH1 0xE5 SHL DUP2 MSTORE PUSH1 0x20 PUSH1 0x4 DUP3 ADD MSTORE PUSH1 0x12 PUSH1 0x24 DUP3 ADD MSTORE PUSH18 0x446F65736E277420612070617469656E7421 PUSH1 0x70 SHL PUSH1 0x44 DUP3 ADD MSTORE SWAP1 MLOAD SWAP1 DUP2 SWAP1 SUB PUSH1 0x64 ADD SWAP1 REVERT JUMPDEST PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB DUP2 AND PUSH2 0x12B JUMPI PUSH1 0x40 DUP1 MLOAD PUSH3 0x461BCD PUSH1 0xE5 SHL DUP2 MSTORE PUSH1 0x20 PUSH1 0x4 DUP3 ADD MSTORE PUSH1 0x12 PUSH1 0x24 DUP3 ADD MSTORE PUSH18 0x4E6577206F776E6572206973206E756C6C21 PUSH1 0x70 SHL PUSH1 0x44 DUP3 ADD MSTORE SWAP1 MLOAD SWAP1 DUP2 SWAP1 SUB PUSH1 0x64 ADD SWAP1 REVERT JUMPDEST PUSH1 0x0 DUP1 SLOAD PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB NOT AND PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB SWAP3 SWAP1 SWAP3 AND SWAP2 SWAP1 SWAP2 OR SWAP1 SSTORE JUMP JUMPDEST PUSH1 0x0 SLOAD PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB AND DUP2 JUMP INVALID LOG2 PUSH5 0x6970667358 0x22 SLT KECCAK256 0xB0 0xDC DUP4 0xE6 0x2B SAR 0xC6 PUSH14 0x4107B0285E023D0D8ADDD2DD4278 CALLVALUE CREATE 0xB6 0xEA PUSH1 0xD0 0xCC 0xB6 CALLDATALOAD 0x29 PUSH5 0x736F6C6343 STOP MOD DIV STOP CALLER ",
+                        "sourceMap": "27:517:0:-:0;;;;5:9:-1;2:2;;;27:1;24;17:12;2:2;27:517:0;;;;;;;;;;;;;;;;;;;;;12:1:-1;9;2:12;377:165:0;;;;;;15:2:-1;10:3;7:11;4:2;;;31:1;28;21:12;4:2;-1:-1;377:165:0;-1:-1:-1;;;;;377:165:0;;:::i;:::-;;56:35;;;:::i;:::-;;;;-1:-1:-1;;;;;56:35:0;;;;;;;;;;;;;;377:165;204:7;;-1:-1:-1;;;;;204:7:0;190:10;:21;186:55;;213:28;;;-1:-1:-1;;;213:28:0;;;;;;;;;;;;-1:-1:-1;;;213:28:0;;;;;;;;;;;;;;186:55;-1:-1:-1;;;;;453:27:0;::::1;450:60;;482:28;::::0;;-1:-1:-1;;;482:28:0;;::::1;;::::0;::::1;::::0;::::1;::::0;;;;-1:-1:-1;;;482:28:0;;;;;;;;;;;;;::::1;450:60;516:7;:21:::0;;-1:-1:-1;;;;;;516:21:0::1;-1:-1:-1::0;;;;;516:21:0;;;::::1;::::0;;;::::1;::::0;;377:165::o;56:35::-;;;-1:-1:-1;;;;;56:35:0;;:::o"
+                    },
+                    "gasEstimates": {
+                        "creation": {
+                            "codeDepositCost": "80400",
+                            "executionCost": "20964",
+                            "totalCost": "101364"
+                        },
+                        "external": {
+                            "changeOwner(address)": "21926",
+                            "patient()": "1037"
+                        }
+                    },
+                    "methodIdentifiers": {
+                        "changeOwner(address)": "a6f9dae1",
+                        "patient()": "bd96bd20"
+                    }
+                },
+                "metadata": "{\"compiler\":{\"version\":\"0.6.4+commit.1dca32f3\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_newPatient\",\"type\":\"address\"}],\"name\":\"changeOwner\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"patient\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{\"changeOwner(address)\":{\"params\":{\"_newPatient\":\"the address of the new owner of the contract.\"}}}},\"userdoc\":{\"methods\":{\"changeOwner(address)\":{\"notice\":\"change the owner of the contract\"}}}},\"settings\":{\"compilationTarget\":{\"/home/eke/patient-eth/client/contracts/PatientContract.sol\":\"PatientContract\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/eke/patient-eth/client/contracts/PatientContract.sol\":{\"keccak256\":\"0xec2a7064e773219d3a07a82a953464babf5619e85b9b957223046f515ff18a37\",\"urls\":[\"bzz-raw://137aa97238af7fd78437d00cddef1c863721ec8e7b6ee087a907ba5c2bc2aadf\",\"dweb:/ipfs/QmTyDAJ2Uxb2kRpiThdpe3d3CpkDQvXFPFQ3oKAvKDLaqJ\"]}},\"version\":1}",
+                "userdoc": {
+                    "methods": {
+                        "changeOwner(address)": {
+                            "notice": "change the owner of the contract"
+                        }
+                    }
+                }
+            }
+        },
+        "/home/eke/patient-eth/client/contracts/ReferencingPatient.sol": {
+            "ReferencingPatient": {
+                "abi": [
+                    {
+                        "inputs": [
+                            {
+                                "internalType": "address",
+                                "name": "_newPatient",
+                                "type": "address"
+                            }
+                        ],
+                        "name": "changeOwner",
+                        "outputs": [],
+                        "stateMutability": "nonpayable",
+                        "type": "function"
+                    },
+                    {
+                        "inputs": [
+                            {
+                                "internalType": "address",
+                                "name": "newRef",
+                                "type": "address"
+                            }
+                        ],
+                        "name": "changeRef",
+                        "outputs": [],
+                        "stateMutability": "nonpayable",
+                        "type": "function"
+                    },
+                    {
+                        "inputs": [],
+                        "name": "getRef",
+                        "outputs": [
+                            {
+                                "internalType": "address",
+                                "name": "",
+                                "type": "address"
+                            }
+                        ],
+                        "stateMutability": "view",
+                        "type": "function"
+                    },
+                    {
+                        "inputs": [],
+                        "name": "patient",
+                        "outputs": [
+                            {
+                                "internalType": "address",
+                                "name": "",
+                                "type": "address"
+                            }
+                        ],
+                        "stateMutability": "view",
+                        "type": "function"
+                    }
+                ],
+                "devdoc": {
+                    "methods": {
+                        "changeOwner(address)": {
+                            "params": {
+                                "_newPatient": "the address of the new owner of the contract."
+                            }
+                        }
+                    }
+                },
+                "evm": {
+                    "bytecode": {
+                        "linkReferences": {},
+                        "object": "6080604052600080546001600160a01b0319163317905534801561002257600080fd5b5061025b806100326000396000f3fe608060405234801561001057600080fd5b506004361061004c5760003560e01c80631d6d32ba14610051578063a6f9dae114610075578063bd96bd201461009d578063d3fa99e9146100a5575b600080fd5b6100596100cb565b604080516001600160a01b039092168252519081900360200190f35b61009b6004803603602081101561008b57600080fd5b50356001600160a01b03166100da565b005b6100596101a0565b61009b600480360360208110156100bb57600080fd5b50356001600160a01b03166101af565b6001546001600160a01b031690565b6000546001600160a01b0316331461012e576040805162461bcd60e51b8152602060048201526012602482015271446f65736e277420612070617469656e742160701b604482015290519081900360640190fd5b6001600160a01b03811661017e576040805162461bcd60e51b81526020600482015260126024820152714e6577206f776e6572206973206e756c6c2160701b604482015290519081900360640190fd5b600080546001600160a01b0319166001600160a01b0392909216919091179055565b6000546001600160a01b031681565b6000546001600160a01b03163314610203576040805162461bcd60e51b8152602060048201526012602482015271446f65736e277420612070617469656e742160701b604482015290519081900360640190fd5b600180546001600160a01b0319166001600160a01b039290921691909117905556fea2646970667358221220f292882ba28516a8fcd2e4cc416e15e0da133e99fbf7e82ec67141e0348892e764736f6c63430006040033",
+                        "opcodes": "PUSH1 0x80 PUSH1 0x40 MSTORE PUSH1 0x0 DUP1 SLOAD PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB NOT AND CALLER OR SWAP1 SSTORE CALLVALUE DUP1 ISZERO PUSH2 0x22 JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST POP PUSH2 0x25B DUP1 PUSH2 0x32 PUSH1 0x0 CODECOPY PUSH1 0x0 RETURN INVALID PUSH1 0x80 PUSH1 0x40 MSTORE CALLVALUE DUP1 ISZERO PUSH2 0x10 JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST POP PUSH1 0x4 CALLDATASIZE LT PUSH2 0x4C JUMPI PUSH1 0x0 CALLDATALOAD PUSH1 0xE0 SHR DUP1 PUSH4 0x1D6D32BA EQ PUSH2 0x51 JUMPI DUP1 PUSH4 0xA6F9DAE1 EQ PUSH2 0x75 JUMPI DUP1 PUSH4 0xBD96BD20 EQ PUSH2 0x9D JUMPI DUP1 PUSH4 0xD3FA99E9 EQ PUSH2 0xA5 JUMPI JUMPDEST PUSH1 0x0 DUP1 REVERT JUMPDEST PUSH2 0x59 PUSH2 0xCB JUMP JUMPDEST PUSH1 0x40 DUP1 MLOAD PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB SWAP1 SWAP3 AND DUP3 MSTORE MLOAD SWAP1 DUP2 SWAP1 SUB PUSH1 0x20 ADD SWAP1 RETURN JUMPDEST PUSH2 0x9B PUSH1 0x4 DUP1 CALLDATASIZE SUB PUSH1 0x20 DUP2 LT ISZERO PUSH2 0x8B JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST POP CALLDATALOAD PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB AND PUSH2 0xDA JUMP JUMPDEST STOP JUMPDEST PUSH2 0x59 PUSH2 0x1A0 JUMP JUMPDEST PUSH2 0x9B PUSH1 0x4 DUP1 CALLDATASIZE SUB PUSH1 0x20 DUP2 LT ISZERO PUSH2 0xBB JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST POP CALLDATALOAD PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB AND PUSH2 0x1AF JUMP JUMPDEST PUSH1 0x1 SLOAD PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB AND SWAP1 JUMP JUMPDEST PUSH1 0x0 SLOAD PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB AND CALLER EQ PUSH2 0x12E JUMPI PUSH1 0x40 DUP1 MLOAD PUSH3 0x461BCD PUSH1 0xE5 SHL DUP2 MSTORE PUSH1 0x20 PUSH1 0x4 DUP3 ADD MSTORE PUSH1 0x12 PUSH1 0x24 DUP3 ADD MSTORE PUSH18 0x446F65736E277420612070617469656E7421 PUSH1 0x70 SHL PUSH1 0x44 DUP3 ADD MSTORE SWAP1 MLOAD SWAP1 DUP2 SWAP1 SUB PUSH1 0x64 ADD SWAP1 REVERT JUMPDEST PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB DUP2 AND PUSH2 0x17E JUMPI PUSH1 0x40 DUP1 MLOAD PUSH3 0x461BCD PUSH1 0xE5 SHL DUP2 MSTORE PUSH1 0x20 PUSH1 0x4 DUP3 ADD MSTORE PUSH1 0x12 PUSH1 0x24 DUP3 ADD MSTORE PUSH18 0x4E6577206F776E6572206973206E756C6C21 PUSH1 0x70 SHL PUSH1 0x44 DUP3 ADD MSTORE SWAP1 MLOAD SWAP1 DUP2 SWAP1 SUB PUSH1 0x64 ADD SWAP1 REVERT JUMPDEST PUSH1 0x0 DUP1 SLOAD PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB NOT AND PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB SWAP3 SWAP1 SWAP3 AND SWAP2 SWAP1 SWAP2 OR SWAP1 SSTORE JUMP JUMPDEST PUSH1 0x0 SLOAD PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB AND DUP2 JUMP JUMPDEST PUSH1 0x0 SLOAD PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB AND CALLER EQ PUSH2 0x203 JUMPI PUSH1 0x40 DUP1 MLOAD PUSH3 0x461BCD PUSH1 0xE5 SHL DUP2 MSTORE PUSH1 0x20 PUSH1 0x4 DUP3 ADD MSTORE PUSH1 0x12 PUSH1 0x24 DUP3 ADD MSTORE PUSH18 0x446F65736E277420612070617469656E7421 PUSH1 0x70 SHL PUSH1 0x44 DUP3 ADD MSTORE SWAP1 MLOAD SWAP1 DUP2 SWAP1 SUB PUSH1 0x64 ADD SWAP1 REVERT JUMPDEST PUSH1 0x1 DUP1 SLOAD PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB NOT AND PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB SWAP3 SWAP1 SWAP3 AND SWAP2 SWAP1 SWAP2 OR SWAP1 SSTORE JUMP INVALID LOG2 PUSH5 0x6970667358 0x22 SLT KECCAK256 CALLCODE SWAP3 DUP9 0x2B LOG2 DUP6 AND 0xA8 0xFC 0xD2 0xE4 0xCC COINBASE PUSH15 0x15E0DA133E99FBF7E82EC67141E034 DUP9 SWAP3 0xE7 PUSH5 0x736F6C6343 STOP MOD DIV STOP CALLER ",
+                        "sourceMap": "60:394:1:-:0;;;56:35:0;;;-1:-1:-1;;;;;;56:35:0;81:10;56:35;;;60:394:1;2:2:-1;;;;27:1;24;17:12;2:2;60:394:1;;;;;;;"
+                    },
+                    "deployedBytecode": {
+                        "linkReferences": {},
+                        "object": "608060405234801561001057600080fd5b506004361061004c5760003560e01c80631d6d32ba14610051578063a6f9dae114610075578063bd96bd201461009d578063d3fa99e9146100a5575b600080fd5b6100596100cb565b604080516001600160a01b039092168252519081900360200190f35b61009b6004803603602081101561008b57600080fd5b50356001600160a01b03166100da565b005b6100596101a0565b61009b600480360360208110156100bb57600080fd5b50356001600160a01b03166101af565b6001546001600160a01b031690565b6000546001600160a01b0316331461012e576040805162461bcd60e51b8152602060048201526012602482015271446f65736e277420612070617469656e742160701b604482015290519081900360640190fd5b6001600160a01b03811661017e576040805162461bcd60e51b81526020600482015260126024820152714e6577206f776e6572206973206e756c6c2160701b604482015290519081900360640190fd5b600080546001600160a01b0319166001600160a01b0392909216919091179055565b6000546001600160a01b031681565b6000546001600160a01b03163314610203576040805162461bcd60e51b8152602060048201526012602482015271446f65736e277420612070617469656e742160701b604482015290519081900360640190fd5b600180546001600160a01b0319166001600160a01b039290921691909117905556fea2646970667358221220f292882ba28516a8fcd2e4cc416e15e0da133e99fbf7e82ec67141e0348892e764736f6c63430006040033",
+                        "opcodes": "PUSH1 0x80 PUSH1 0x40 MSTORE CALLVALUE DUP1 ISZERO PUSH2 0x10 JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST POP PUSH1 0x4 CALLDATASIZE LT PUSH2 0x4C JUMPI PUSH1 0x0 CALLDATALOAD PUSH1 0xE0 SHR DUP1 PUSH4 0x1D6D32BA EQ PUSH2 0x51 JUMPI DUP1 PUSH4 0xA6F9DAE1 EQ PUSH2 0x75 JUMPI DUP1 PUSH4 0xBD96BD20 EQ PUSH2 0x9D JUMPI DUP1 PUSH4 0xD3FA99E9 EQ PUSH2 0xA5 JUMPI JUMPDEST PUSH1 0x0 DUP1 REVERT JUMPDEST PUSH2 0x59 PUSH2 0xCB JUMP JUMPDEST PUSH1 0x40 DUP1 MLOAD PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB SWAP1 SWAP3 AND DUP3 MSTORE MLOAD SWAP1 DUP2 SWAP1 SUB PUSH1 0x20 ADD SWAP1 RETURN JUMPDEST PUSH2 0x9B PUSH1 0x4 DUP1 CALLDATASIZE SUB PUSH1 0x20 DUP2 LT ISZERO PUSH2 0x8B JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST POP CALLDATALOAD PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB AND PUSH2 0xDA JUMP JUMPDEST STOP JUMPDEST PUSH2 0x59 PUSH2 0x1A0 JUMP JUMPDEST PUSH2 0x9B PUSH1 0x4 DUP1 CALLDATASIZE SUB PUSH1 0x20 DUP2 LT ISZERO PUSH2 0xBB JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST POP CALLDATALOAD PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB AND PUSH2 0x1AF JUMP JUMPDEST PUSH1 0x1 SLOAD PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB AND SWAP1 JUMP JUMPDEST PUSH1 0x0 SLOAD PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB AND CALLER EQ PUSH2 0x12E JUMPI PUSH1 0x40 DUP1 MLOAD PUSH3 0x461BCD PUSH1 0xE5 SHL DUP2 MSTORE PUSH1 0x20 PUSH1 0x4 DUP3 ADD MSTORE PUSH1 0x12 PUSH1 0x24 DUP3 ADD MSTORE PUSH18 0x446F65736E277420612070617469656E7421 PUSH1 0x70 SHL PUSH1 0x44 DUP3 ADD MSTORE SWAP1 MLOAD SWAP1 DUP2 SWAP1 SUB PUSH1 0x64 ADD SWAP1 REVERT JUMPDEST PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB DUP2 AND PUSH2 0x17E JUMPI PUSH1 0x40 DUP1 MLOAD PUSH3 0x461BCD PUSH1 0xE5 SHL DUP2 MSTORE PUSH1 0x20 PUSH1 0x4 DUP3 ADD MSTORE PUSH1 0x12 PUSH1 0x24 DUP3 ADD MSTORE PUSH18 0x4E6577206F776E6572206973206E756C6C21 PUSH1 0x70 SHL PUSH1 0x44 DUP3 ADD MSTORE SWAP1 MLOAD SWAP1 DUP2 SWAP1 SUB PUSH1 0x64 ADD SWAP1 REVERT JUMPDEST PUSH1 0x0 DUP1 SLOAD PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB NOT AND PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB SWAP3 SWAP1 SWAP3 AND SWAP2 SWAP1 SWAP2 OR SWAP1 SSTORE JUMP JUMPDEST PUSH1 0x0 SLOAD PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB AND DUP2 JUMP JUMPDEST PUSH1 0x0 SLOAD PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB AND CALLER EQ PUSH2 0x203 JUMPI PUSH1 0x40 DUP1 MLOAD PUSH3 0x461BCD PUSH1 0xE5 SHL DUP2 MSTORE PUSH1 0x20 PUSH1 0x4 DUP3 ADD MSTORE PUSH1 0x12 PUSH1 0x24 DUP3 ADD MSTORE PUSH18 0x446F65736E277420612070617469656E7421 PUSH1 0x70 SHL PUSH1 0x44 DUP3 ADD MSTORE SWAP1 MLOAD SWAP1 DUP2 SWAP1 SUB PUSH1 0x64 ADD SWAP1 REVERT JUMPDEST PUSH1 0x1 DUP1 SLOAD PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB NOT AND PUSH1 0x1 PUSH1 0x1 PUSH1 0xA0 SHL SUB SWAP3 SWAP1 SWAP3 AND SWAP2 SWAP1 SWAP2 OR SWAP1 SSTORE JUMP INVALID LOG2 PUSH5 0x6970667358 0x22 SLT KECCAK256 CALLCODE SWAP3 DUP9 0x2B LOG2 DUP6 AND 0xA8 0xFC 0xD2 0xE4 0xCC COINBASE PUSH15 0x15E0DA133E99FBF7E82EC67141E034 DUP9 SWAP3 0xE7 PUSH5 0x736F6C6343 STOP MOD DIV STOP CALLER ",
+                        "sourceMap": "60:394:1:-:0;;;;5:9:-1;2:2;;;27:1;24;17:12;2:2;60:394:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;12:1:-1;9;2:12;140:81:1;;;:::i;:::-;;;;-1:-1:-1;;;;;140:81:1;;;;;;;;;;;;;;377:165:0;;;;;;15:2:-1;10:3;7:11;4:2;;;31:1;28;21:12;4:2;-1:-1;377:165:0;-1:-1:-1;;;;;377:165:0;;:::i;:::-;;56:35;;;:::i;362:90:1:-;;;;;;15:2:-1;10:3;7:11;4:2;;;31:1;28;21:12;4:2;-1:-1;362:90:1;-1:-1:-1;;;;;362:90:1;;:::i;140:81::-;204:10;;-1:-1:-1;;;;;204:10:1;140:81;:::o;377:165:0:-;204:7;;-1:-1:-1;;;;;204:7:0;190:10;:21;186:55;;213:28;;;-1:-1:-1;;;213:28:0;;;;;;;;;;;;-1:-1:-1;;;213:28:0;;;;;;;;;;;;;;186:55;-1:-1:-1;;;;;453:27:0;::::1;450:60;;482:28;::::0;;-1:-1:-1;;;482:28:0;;::::1;;::::0;::::1;::::0;::::1;::::0;;;;-1:-1:-1;;;482:28:0;;;;;;;;;;;;;::::1;450:60;516:7;:21:::0;;-1:-1:-1;;;;;;516:21:0::1;-1:-1:-1::0;;;;;516:21:0;;;::::1;::::0;;;::::1;::::0;;377:165::o;56:35::-;;;-1:-1:-1;;;;;56:35:0;;:::o;362:90:1:-;204:7:0;;-1:-1:-1;;;;;204:7:0;190:10;:21;186:55;;213:28;;;-1:-1:-1;;;213:28:0;;;;;;;;;;;;-1:-1:-1;;;213:28:0;;;;;;;;;;;;;;186:55;426:10:1::1;:19:::0;;-1:-1:-1;;;;;;426:19:1::1;-1:-1:-1::0;;;;;426:19:1;;;::::1;::::0;;;::::1;::::0;;362:90::o"
+                    },
+                    "gasEstimates": {
+                        "creation": {
+                            "codeDepositCost": "120600",
+                            "executionCost": "21000",
+                            "totalCost": "141600"
+                        },
+                        "external": {
+                            "changeOwner(address)": "21948",
+                            "changeRef(address)": "21957",
+                            "getRef()": "1015",
+                            "patient()": "1059"
+                        }
+                    },
+                    "methodIdentifiers": {
+                        "changeOwner(address)": "a6f9dae1",
+                        "changeRef(address)": "d3fa99e9",
+                        "getRef()": "1d6d32ba",
+                        "patient()": "bd96bd20"
+                    }
+                },
+                "metadata": "{\"compiler\":{\"version\":\"0.6.4+commit.1dca32f3\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_newPatient\",\"type\":\"address\"}],\"name\":\"changeOwner\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newRef\",\"type\":\"address\"}],\"name\":\"changeRef\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getRef\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"patient\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{\"changeOwner(address)\":{\"params\":{\"_newPatient\":\"the address of the new owner of the contract.\"}}}},\"userdoc\":{\"methods\":{\"changeOwner(address)\":{\"notice\":\"change the owner of the contract\"}}}},\"settings\":{\"compilationTarget\":{\"/home/eke/patient-eth/client/contracts/ReferencingPatient.sol\":\"ReferencingPatient\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/eke/patient-eth/client/contracts/PatientContract.sol\":{\"keccak256\":\"0xec2a7064e773219d3a07a82a953464babf5619e85b9b957223046f515ff18a37\",\"urls\":[\"bzz-raw://137aa97238af7fd78437d00cddef1c863721ec8e7b6ee087a907ba5c2bc2aadf\",\"dweb:/ipfs/QmTyDAJ2Uxb2kRpiThdpe3d3CpkDQvXFPFQ3oKAvKDLaqJ\"]},\"/home/eke/patient-eth/client/contracts/ReferencingPatient.sol\":{\"keccak256\":\"0x4a91522ff91c6c154190d3c1f81153f4f61c8b5ade15925ccbc36d26b0374c7d\",\"urls\":[\"bzz-raw://769c601ef77ddcbbdbd9ad51419e9589248f16f7b2b077942eeb3ab847c1ba58\",\"dweb:/ipfs/QmZrTa2ScP4xUZ7d4EYBHGkvGyyZQoZPDuKwye63LjfT8L\"]}},\"version\":1}",
+                "userdoc": {
+                    "methods": {
+                        "changeOwner(address)": {
+                            "notice": "change the owner of the contract"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "sources": {
+        "/home/eke/patient-eth/client/contracts/PatientContract.sol": {
+            "ast": {
+                "absolutePath": "/home/eke/patient-eth/client/contracts/PatientContract.sol",
+                "exportedSymbols": {
+                    "PatientContract": [
+                        44
+                    ]
+                },
+                "id": 45,
+                "nodeType": "SourceUnit",
+                "nodes": [
+                    {
+                        "id": 1,
+                        "literals": [
+                            "solidity",
+                            ">=",
+                            "0.5",
+                            ".16"
+                        ],
+                        "nodeType": "PragmaDirective",
+                        "src": "0:25:0"
+                    },
+                    {
+                        "abstract": false,
+                        "baseContracts": [],
+                        "contractDependencies": [],
+                        "contractKind": "contract",
+                        "documentation": null,
+                        "fullyImplemented": true,
+                        "id": 44,
+                        "linearizedBaseContracts": [
+                            44
+                        ],
+                        "name": "PatientContract",
+                        "nodeType": "ContractDefinition",
+                        "nodes": [
+                            {
+                                "constant": false,
+                                "functionSelector": "bd96bd20",
+                                "id": 5,
+                                "name": "patient",
+                                "nodeType": "VariableDeclaration",
+                                "overrides": null,
+                                "scope": 44,
+                                "src": "56:35:0",
+                                "stateVariable": true,
+                                "storageLocation": "default",
+                                "typeDescriptions": {
+                                    "typeIdentifier": "t_address",
+                                    "typeString": "address"
+                                },
+                                "typeName": {
+                                    "id": 2,
+                                    "name": "address",
+                                    "nodeType": "ElementaryTypeName",
+                                    "src": "56:7:0",
+                                    "stateMutability": "nonpayable",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    }
+                                },
+                                "value": {
+                                    "argumentTypes": null,
+                                    "expression": {
+                                        "argumentTypes": null,
+                                        "id": 3,
+                                        "name": "msg",
+                                        "nodeType": "Identifier",
+                                        "overloadedDeclarations": [],
+                                        "referencedDeclaration": -15,
+                                        "src": "81:3:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_magic_message",
+                                            "typeString": "msg"
+                                        }
+                                    },
+                                    "id": 4,
+                                    "isConstant": false,
+                                    "isLValue": false,
+                                    "isPure": false,
+                                    "lValueRequested": false,
+                                    "memberName": "sender",
+                                    "nodeType": "MemberAccess",
+                                    "referencedDeclaration": null,
+                                    "src": "81:10:0",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address_payable",
+                                        "typeString": "address payable"
+                                    }
+                                },
+                                "visibility": "public"
+                            },
+                            {
+                                "body": {
+                                    "id": 18,
+                                    "nodeType": "Block",
+                                    "src": "180:75:0",
+                                    "statements": [
+                                        {
+                                            "condition": {
+                                                "argumentTypes": null,
+                                                "commonType": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                },
+                                                "id": 11,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": false,
+                                                "lValueRequested": false,
+                                                "leftExpression": {
+                                                    "argumentTypes": null,
+                                                    "expression": {
+                                                        "argumentTypes": null,
+                                                        "id": 8,
+                                                        "name": "msg",
+                                                        "nodeType": "Identifier",
+                                                        "overloadedDeclarations": [],
+                                                        "referencedDeclaration": -15,
+                                                        "src": "190:3:0",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_magic_message",
+                                                            "typeString": "msg"
+                                                        }
+                                                    },
+                                                    "id": 9,
+                                                    "isConstant": false,
+                                                    "isLValue": false,
+                                                    "isPure": false,
+                                                    "lValueRequested": false,
+                                                    "memberName": "sender",
+                                                    "nodeType": "MemberAccess",
+                                                    "referencedDeclaration": null,
+                                                    "src": "190:10:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_address_payable",
+                                                        "typeString": "address payable"
+                                                    }
+                                                },
+                                                "nodeType": "BinaryOperation",
+                                                "operator": "!=",
+                                                "rightExpression": {
+                                                    "argumentTypes": null,
+                                                    "id": 10,
+                                                    "name": "patient",
+                                                    "nodeType": "Identifier",
+                                                    "overloadedDeclarations": [],
+                                                    "referencedDeclaration": 5,
+                                                    "src": "204:7:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_address",
+                                                        "typeString": "address"
+                                                    }
+                                                },
+                                                "src": "190:21:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                }
+                                            },
+                                            "falseBody": null,
+                                            "id": 16,
+                                            "nodeType": "IfStatement",
+                                            "src": "186:55:0",
+                                            "trueBody": {
+                                                "expression": {
+                                                    "argumentTypes": null,
+                                                    "arguments": [
+                                                        {
+                                                            "argumentTypes": null,
+                                                            "hexValue": "446f65736e277420612070617469656e7421",
+                                                            "id": 13,
+                                                            "isConstant": false,
+                                                            "isLValue": false,
+                                                            "isPure": true,
+                                                            "kind": "string",
+                                                            "lValueRequested": false,
+                                                            "nodeType": "Literal",
+                                                            "src": "220:20:0",
+                                                            "subdenomination": null,
+                                                            "typeDescriptions": {
+                                                                "typeIdentifier": "t_stringliteral_b00769dd0c5982627694eff8c1f8b5655729a7294a2c1c5461109349af132828",
+                                                                "typeString": "literal_string \"Doesn't a patient!\""
+                                                            },
+                                                            "value": "Doesn't a patient!"
+                                                        }
+                                                    ],
+                                                    "expression": {
+                                                        "argumentTypes": [
+                                                            {
+                                                                "typeIdentifier": "t_stringliteral_b00769dd0c5982627694eff8c1f8b5655729a7294a2c1c5461109349af132828",
+                                                                "typeString": "literal_string \"Doesn't a patient!\""
+                                                            }
+                                                        ],
+                                                        "id": 12,
+                                                        "name": "revert",
+                                                        "nodeType": "Identifier",
+                                                        "overloadedDeclarations": [
+                                                            -19,
+                                                            -19
+                                                        ],
+                                                        "referencedDeclaration": -19,
+                                                        "src": "213:6:0",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_function_revert_pure$_t_string_memory_ptr_$returns$__$",
+                                                            "typeString": "function (string memory) pure"
+                                                        }
+                                                    },
+                                                    "id": 14,
+                                                    "isConstant": false,
+                                                    "isLValue": false,
+                                                    "isPure": false,
+                                                    "kind": "functionCall",
+                                                    "lValueRequested": false,
+                                                    "names": [],
+                                                    "nodeType": "FunctionCall",
+                                                    "src": "213:28:0",
+                                                    "tryCall": false,
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_tuple$__$",
+                                                        "typeString": "tuple()"
+                                                    }
+                                                },
+                                                "id": 15,
+                                                "nodeType": "ExpressionStatement",
+                                                "src": "213:28:0"
+                                            }
+                                        },
+                                        {
+                                            "id": 17,
+                                            "nodeType": "PlaceholderStatement",
+                                            "src": "247:1:0"
+                                        }
+                                    ]
+                                },
+                                "documentation": {
+                                    "id": 6,
+                                    "nodeType": "StructuredDocumentation",
+                                    "src": "96:60:0",
+                                    "text": "@notice check if the caller is the owner of the contract"
+                                },
+                                "id": 19,
+                                "name": "onlyPatient",
+                                "nodeType": "ModifierDefinition",
+                                "overrides": null,
+                                "parameters": {
+                                    "id": 7,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [],
+                                    "src": "180:0:0"
+                                },
+                                "src": "159:96:0",
+                                "virtual": false,
+                                "visibility": "internal"
+                            },
+                            {
+                                "body": {
+                                    "id": 42,
+                                    "nodeType": "Block",
+                                    "src": "444:98:0",
+                                    "statements": [
+                                        {
+                                            "condition": {
+                                                "argumentTypes": null,
+                                                "commonType": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                },
+                                                "id": 32,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": false,
+                                                "lValueRequested": false,
+                                                "leftExpression": {
+                                                    "argumentTypes": null,
+                                                    "id": 27,
+                                                    "name": "_newPatient",
+                                                    "nodeType": "Identifier",
+                                                    "overloadedDeclarations": [],
+                                                    "referencedDeclaration": 22,
+                                                    "src": "453:11:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_address",
+                                                        "typeString": "address"
+                                                    }
+                                                },
+                                                "nodeType": "BinaryOperation",
+                                                "operator": "==",
+                                                "rightExpression": {
+                                                    "argumentTypes": null,
+                                                    "arguments": [
+                                                        {
+                                                            "argumentTypes": null,
+                                                            "hexValue": "307830",
+                                                            "id": 30,
+                                                            "isConstant": false,
+                                                            "isLValue": false,
+                                                            "isPure": true,
+                                                            "kind": "number",
+                                                            "lValueRequested": false,
+                                                            "nodeType": "Literal",
+                                                            "src": "476:3:0",
+                                                            "subdenomination": null,
+                                                            "typeDescriptions": {
+                                                                "typeIdentifier": "t_rational_0_by_1",
+                                                                "typeString": "int_const 0"
+                                                            },
+                                                            "value": "0x0"
+                                                        }
+                                                    ],
+                                                    "expression": {
+                                                        "argumentTypes": [
+                                                            {
+                                                                "typeIdentifier": "t_rational_0_by_1",
+                                                                "typeString": "int_const 0"
+                                                            }
+                                                        ],
+                                                        "id": 29,
+                                                        "isConstant": false,
+                                                        "isLValue": false,
+                                                        "isPure": true,
+                                                        "lValueRequested": false,
+                                                        "nodeType": "ElementaryTypeNameExpression",
+                                                        "src": "468:7:0",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_type$_t_address_$",
+                                                            "typeString": "type(address)"
+                                                        },
+                                                        "typeName": {
+                                                            "id": 28,
+                                                            "name": "address",
+                                                            "nodeType": "ElementaryTypeName",
+                                                            "src": "468:7:0",
+                                                            "typeDescriptions": {
+                                                                "typeIdentifier": null,
+                                                                "typeString": null
+                                                            }
+                                                        }
+                                                    },
+                                                    "id": 31,
+                                                    "isConstant": false,
+                                                    "isLValue": false,
+                                                    "isPure": true,
+                                                    "kind": "typeConversion",
+                                                    "lValueRequested": false,
+                                                    "names": [],
+                                                    "nodeType": "FunctionCall",
+                                                    "src": "468:12:0",
+                                                    "tryCall": false,
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_address_payable",
+                                                        "typeString": "address payable"
+                                                    }
+                                                },
+                                                "src": "453:27:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                }
+                                            },
+                                            "falseBody": null,
+                                            "id": 37,
+                                            "nodeType": "IfStatement",
+                                            "src": "450:60:0",
+                                            "trueBody": {
+                                                "expression": {
+                                                    "argumentTypes": null,
+                                                    "arguments": [
+                                                        {
+                                                            "argumentTypes": null,
+                                                            "hexValue": "4e6577206f776e6572206973206e756c6c21",
+                                                            "id": 34,
+                                                            "isConstant": false,
+                                                            "isLValue": false,
+                                                            "isPure": true,
+                                                            "kind": "string",
+                                                            "lValueRequested": false,
+                                                            "nodeType": "Literal",
+                                                            "src": "489:20:0",
+                                                            "subdenomination": null,
+                                                            "typeDescriptions": {
+                                                                "typeIdentifier": "t_stringliteral_88bfab4cdbc4dbcbde9305d1f8d5163eca114eee790c4a48b4fecfc1c1b295ca",
+                                                                "typeString": "literal_string \"New owner is null!\""
+                                                            },
+                                                            "value": "New owner is null!"
+                                                        }
+                                                    ],
+                                                    "expression": {
+                                                        "argumentTypes": [
+                                                            {
+                                                                "typeIdentifier": "t_stringliteral_88bfab4cdbc4dbcbde9305d1f8d5163eca114eee790c4a48b4fecfc1c1b295ca",
+                                                                "typeString": "literal_string \"New owner is null!\""
+                                                            }
+                                                        ],
+                                                        "id": 33,
+                                                        "name": "revert",
+                                                        "nodeType": "Identifier",
+                                                        "overloadedDeclarations": [
+                                                            -19,
+                                                            -19
+                                                        ],
+                                                        "referencedDeclaration": -19,
+                                                        "src": "482:6:0",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_function_revert_pure$_t_string_memory_ptr_$returns$__$",
+                                                            "typeString": "function (string memory) pure"
+                                                        }
+                                                    },
+                                                    "id": 35,
+                                                    "isConstant": false,
+                                                    "isLValue": false,
+                                                    "isPure": false,
+                                                    "kind": "functionCall",
+                                                    "lValueRequested": false,
+                                                    "names": [],
+                                                    "nodeType": "FunctionCall",
+                                                    "src": "482:28:0",
+                                                    "tryCall": false,
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_tuple$__$",
+                                                        "typeString": "tuple()"
+                                                    }
+                                                },
+                                                "id": 36,
+                                                "nodeType": "ExpressionStatement",
+                                                "src": "482:28:0"
+                                            }
+                                        },
+                                        {
+                                            "expression": {
+                                                "argumentTypes": null,
+                                                "id": 40,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": false,
+                                                "lValueRequested": false,
+                                                "leftHandSide": {
+                                                    "argumentTypes": null,
+                                                    "id": 38,
+                                                    "name": "patient",
+                                                    "nodeType": "Identifier",
+                                                    "overloadedDeclarations": [],
+                                                    "referencedDeclaration": 5,
+                                                    "src": "516:7:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_address",
+                                                        "typeString": "address"
+                                                    }
+                                                },
+                                                "nodeType": "Assignment",
+                                                "operator": "=",
+                                                "rightHandSide": {
+                                                    "argumentTypes": null,
+                                                    "id": 39,
+                                                    "name": "_newPatient",
+                                                    "nodeType": "Identifier",
+                                                    "overloadedDeclarations": [],
+                                                    "referencedDeclaration": 22,
+                                                    "src": "526:11:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_address",
+                                                        "typeString": "address"
+                                                    }
+                                                },
+                                                "src": "516:21:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            },
+                                            "id": 41,
+                                            "nodeType": "ExpressionStatement",
+                                            "src": "516:21:0"
+                                        }
+                                    ]
+                                },
+                                "documentation": {
+                                    "id": 20,
+                                    "nodeType": "StructuredDocumentation",
+                                    "src": "259:115:0",
+                                    "text": "@notice change the owner of the contract\n @param _newPatient the address of the new owner of the contract."
+                                },
+                                "functionSelector": "a6f9dae1",
+                                "id": 43,
+                                "implemented": true,
+                                "kind": "function",
+                                "modifiers": [
+                                    {
+                                        "arguments": null,
+                                        "id": 25,
+                                        "modifierName": {
+                                            "argumentTypes": null,
+                                            "id": 24,
+                                            "name": "onlyPatient",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 19,
+                                            "src": "430:11:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_modifier$__$",
+                                                "typeString": "modifier ()"
+                                            }
+                                        },
+                                        "nodeType": "ModifierInvocation",
+                                        "src": "430:11:0"
+                                    }
+                                ],
+                                "name": "changeOwner",
+                                "nodeType": "FunctionDefinition",
+                                "overrides": null,
+                                "parameters": {
+                                    "id": 23,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [
+                                        {
+                                            "constant": false,
+                                            "id": 22,
+                                            "name": "_newPatient",
+                                            "nodeType": "VariableDeclaration",
+                                            "overrides": null,
+                                            "scope": 43,
+                                            "src": "398:19:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "default",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_address",
+                                                "typeString": "address"
+                                            },
+                                            "typeName": {
+                                                "id": 21,
+                                                "name": "address",
+                                                "nodeType": "ElementaryTypeName",
+                                                "src": "398:7:0",
+                                                "stateMutability": "nonpayable",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            },
+                                            "value": null,
+                                            "visibility": "internal"
+                                        }
+                                    ],
+                                    "src": "397:21:0"
+                                },
+                                "returnParameters": {
+                                    "id": 26,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [],
+                                    "src": "444:0:0"
+                                },
+                                "scope": 44,
+                                "src": "377:165:0",
+                                "stateMutability": "nonpayable",
+                                "virtual": false,
+                                "visibility": "public"
+                            }
+                        ],
+                        "scope": 45,
+                        "src": "27:517:0"
+                    }
+                ],
+                "src": "0:544:0"
+            },
+            "id": 0
+        },
+        "/home/eke/patient-eth/client/contracts/ReferencingPatient.sol": {
+            "ast": {
+                "absolutePath": "/home/eke/patient-eth/client/contracts/ReferencingPatient.sol",
+                "exportedSymbols": {
+                    "ReferencingPatient": [
+                        72
+                    ]
+                },
+                "id": 73,
+                "nodeType": "SourceUnit",
+                "nodes": [
+                    {
+                        "id": 46,
+                        "literals": [
+                            "solidity",
+                            ">=",
+                            "0.5",
+                            ".16"
+                        ],
+                        "nodeType": "PragmaDirective",
+                        "src": "0:25:1"
+                    },
+                    {
+                        "absolutePath": "/home/eke/patient-eth/client/contracts/PatientContract.sol",
+                        "file": "./PatientContract.sol",
+                        "id": 47,
+                        "nodeType": "ImportDirective",
+                        "scope": 73,
+                        "sourceUnit": 45,
+                        "src": "26:31:1",
+                        "symbolAliases": [],
+                        "unitAlias": ""
+                    },
+                    {
+                        "abstract": false,
+                        "baseContracts": [
+                            {
+                                "arguments": null,
+                                "baseName": {
+                                    "contractScope": null,
+                                    "id": 48,
+                                    "name": "PatientContract",
+                                    "nodeType": "UserDefinedTypeName",
+                                    "referencedDeclaration": 44,
+                                    "src": "91:15:1",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_contract$_PatientContract_$44",
+                                        "typeString": "contract PatientContract"
+                                    }
+                                },
+                                "id": 49,
+                                "nodeType": "InheritanceSpecifier",
+                                "src": "91:15:1"
+                            }
+                        ],
+                        "contractDependencies": [
+                            44
+                        ],
+                        "contractKind": "contract",
+                        "documentation": null,
+                        "fullyImplemented": true,
+                        "id": 72,
+                        "linearizedBaseContracts": [
+                            72,
+                            44
+                        ],
+                        "name": "ReferencingPatient",
+                        "nodeType": "ContractDefinition",
+                        "nodes": [
+                            {
+                                "constant": false,
+                                "id": 51,
+                                "name": "referenced",
+                                "nodeType": "VariableDeclaration",
+                                "overrides": null,
+                                "scope": 72,
+                                "src": "113:19:1",
+                                "stateVariable": true,
+                                "storageLocation": "default",
+                                "typeDescriptions": {
+                                    "typeIdentifier": "t_address",
+                                    "typeString": "address"
+                                },
+                                "typeName": {
+                                    "id": 50,
+                                    "name": "address",
+                                    "nodeType": "ElementaryTypeName",
+                                    "src": "113:7:1",
+                                    "stateMutability": "nonpayable",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    }
+                                },
+                                "value": null,
+                                "visibility": "internal"
+                            },
+                            {
+                                "body": {
+                                    "id": 58,
+                                    "nodeType": "Block",
+                                    "src": "187:34:1",
+                                    "statements": [
+                                        {
+                                            "expression": {
+                                                "argumentTypes": null,
+                                                "id": 56,
+                                                "name": "referenced",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 51,
+                                                "src": "204:10:1",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            },
+                                            "functionReturnParameters": 55,
+                                            "id": 57,
+                                            "nodeType": "Return",
+                                            "src": "197:17:1"
+                                        }
+                                    ]
+                                },
+                                "documentation": null,
+                                "functionSelector": "1d6d32ba",
+                                "id": 59,
+                                "implemented": true,
+                                "kind": "function",
+                                "modifiers": [],
+                                "name": "getRef",
+                                "nodeType": "FunctionDefinition",
+                                "overrides": null,
+                                "parameters": {
+                                    "id": 52,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [],
+                                    "src": "155:2:1"
+                                },
+                                "returnParameters": {
+                                    "id": 55,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [
+                                        {
+                                            "constant": false,
+                                            "id": 54,
+                                            "name": "",
+                                            "nodeType": "VariableDeclaration",
+                                            "overrides": null,
+                                            "scope": 59,
+                                            "src": "179:7:1",
+                                            "stateVariable": false,
+                                            "storageLocation": "default",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_address",
+                                                "typeString": "address"
+                                            },
+                                            "typeName": {
+                                                "id": 53,
+                                                "name": "address",
+                                                "nodeType": "ElementaryTypeName",
+                                                "src": "179:7:1",
+                                                "stateMutability": "nonpayable",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            },
+                                            "value": null,
+                                            "visibility": "internal"
+                                        }
+                                    ],
+                                    "src": "178:9:1"
+                                },
+                                "scope": 72,
+                                "src": "140:81:1",
+                                "stateMutability": "view",
+                                "virtual": false,
+                                "visibility": "public"
+                            },
+                            {
+                                "body": {
+                                    "id": 70,
+                                    "nodeType": "Block",
+                                    "src": "416:36:1",
+                                    "statements": [
+                                        {
+                                            "expression": {
+                                                "argumentTypes": null,
+                                                "id": 68,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": false,
+                                                "lValueRequested": false,
+                                                "leftHandSide": {
+                                                    "argumentTypes": null,
+                                                    "id": 66,
+                                                    "name": "referenced",
+                                                    "nodeType": "Identifier",
+                                                    "overloadedDeclarations": [],
+                                                    "referencedDeclaration": 51,
+                                                    "src": "426:10:1",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_address",
+                                                        "typeString": "address"
+                                                    }
+                                                },
+                                                "nodeType": "Assignment",
+                                                "operator": "=",
+                                                "rightHandSide": {
+                                                    "argumentTypes": null,
+                                                    "id": 67,
+                                                    "name": "newRef",
+                                                    "nodeType": "Identifier",
+                                                    "overloadedDeclarations": [],
+                                                    "referencedDeclaration": 61,
+                                                    "src": "439:6:1",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_address",
+                                                        "typeString": "address"
+                                                    }
+                                                },
+                                                "src": "426:19:1",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            },
+                                            "id": 69,
+                                            "nodeType": "ExpressionStatement",
+                                            "src": "426:19:1"
+                                        }
+                                    ]
+                                },
+                                "documentation": null,
+                                "functionSelector": "d3fa99e9",
+                                "id": 71,
+                                "implemented": true,
+                                "kind": "function",
+                                "modifiers": [
+                                    {
+                                        "arguments": null,
+                                        "id": 64,
+                                        "modifierName": {
+                                            "argumentTypes": null,
+                                            "id": 63,
+                                            "name": "onlyPatient",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 19,
+                                            "src": "405:11:1",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_modifier$__$",
+                                                "typeString": "modifier ()"
+                                            }
+                                        },
+                                        "nodeType": "ModifierInvocation",
+                                        "src": "405:11:1"
+                                    }
+                                ],
+                                "name": "changeRef",
+                                "nodeType": "FunctionDefinition",
+                                "overrides": null,
+                                "parameters": {
+                                    "id": 62,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [
+                                        {
+                                            "constant": false,
+                                            "id": 61,
+                                            "name": "newRef",
+                                            "nodeType": "VariableDeclaration",
+                                            "overrides": null,
+                                            "scope": 71,
+                                            "src": "381:14:1",
+                                            "stateVariable": false,
+                                            "storageLocation": "default",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_address",
+                                                "typeString": "address"
+                                            },
+                                            "typeName": {
+                                                "id": 60,
+                                                "name": "address",
+                                                "nodeType": "ElementaryTypeName",
+                                                "src": "381:7:1",
+                                                "stateMutability": "nonpayable",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            },
+                                            "value": null,
+                                            "visibility": "internal"
+                                        }
+                                    ],
+                                    "src": "380:16:1"
+                                },
+                                "returnParameters": {
+                                    "id": 65,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [],
+                                    "src": "416:0:1"
+                                },
+                                "scope": 72,
+                                "src": "362:90:1",
+                                "stateMutability": "nonpayable",
+                                "virtual": false,
+                                "visibility": "public"
+                            }
+                        ],
+                        "scope": 73,
+                        "src": "60:394:1"
+                    }
+                ],
+                "src": "0:454:1"
+            },
+            "id": 1
+        }
+    }
+}
