@@ -1,0 +1,1699 @@
+{
+  "contractName": "UsingReferencePatient",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "ref",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "bytes16",
+          "name": "patientUname",
+          "type": "bytes16"
+        }
+      ],
+      "name": "saveName",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "GetUserName",
+      "outputs": [
+        {
+          "internalType": "bytes16",
+          "name": "",
+          "type": "bytes16"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"ref\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"constant\":true,\"inputs\":[],\"name\":\"GetUserName\",\"outputs\":[{\"internalType\":\"bytes16\",\"name\":\"\",\"type\":\"bytes16\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"bytes16\",\"name\":\"patientUname\",\"type\":\"bytes16\"}],\"name\":\"saveName\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/home/eke/patient-eth/contracts/UsingReferencePatient.sol\":\"UsingReferencePatient\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/eke/patient-eth/contracts/PatientContract.sol\":{\"keccak256\":\"0xec2a7064e773219d3a07a82a953464babf5619e85b9b957223046f515ff18a37\",\"urls\":[\"bzz-raw://137aa97238af7fd78437d00cddef1c863721ec8e7b6ee087a907ba5c2bc2aadf\",\"dweb:/ipfs/QmTyDAJ2Uxb2kRpiThdpe3d3CpkDQvXFPFQ3oKAvKDLaqJ\"]},\"/home/eke/patient-eth/contracts/ReferencedPatient.sol\":{\"keccak256\":\"0x4964452362545b52b2b90c8f4fef831aa4b6c842564d24c3c4327ada6dbed168\",\"urls\":[\"bzz-raw://f1a994d2a9a794538843c379339b3747962eff923ce42574b35f49f8dc42b882\",\"dweb:/ipfs/Qmcxee4fqEqRU6NF8SfEksumJvEBEYGnDGGoWXib3bb9P8\"]},\"/home/eke/patient-eth/contracts/ReferencingPatient.sol\":{\"keccak256\":\"0x4a91522ff91c6c154190d3c1f81153f4f61c8b5ade15925ccbc36d26b0374c7d\",\"urls\":[\"bzz-raw://769c601ef77ddcbbdbd9ad51419e9589248f16f7b2b077942eeb3ab847c1ba58\",\"dweb:/ipfs/QmZrTa2ScP4xUZ7d4EYBHGkvGyyZQoZPDuKwye63LjfT8L\"]},\"/home/eke/patient-eth/contracts/UsingReferencePatient.sol\":{\"keccak256\":\"0xc89c8498b0d1de109f0ddde2f270bddf093477e6397829efca6eacd46c3a1a85\",\"urls\":[\"bzz-raw://16876cf19b402b67bc309688cbcf59690d4723182bea5954a3ed8195d1c6afec\",\"dweb:/ipfs/QmQJah6Qfouk537ofazxQ2m36dPKQszPG4LzbbWTaez4Ne\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b506040516104223803806104228339818101604052602081101561003357600080fd5b8101908080519060200190929190505050806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055505061038e806100946000396000f3fe608060405234801561001057600080fd5b50600436106100365760003560e01c806309213ed11461003b578063f2da01e21461007c575b600080fd5b61007a6004803603602081101561005157600080fd5b8101908080356fffffffffffffffffffffffffffffffff191690602001909291905050506100c0565b005b610084610225565b60405180826fffffffffffffffffffffffffffffffff19166fffffffffffffffffffffffffffffffff1916815260200191505060405180910390f35b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16631d6d32ba6040518163ffffffff1660e01b815260040160206040518083038186803b15801561012957600080fd5b505afa15801561013d573d6000803e3d6000fd5b505050506040513d602081101561015357600080fd5b8101908080519060200190929190505050905060008190508073ffffffffffffffffffffffffffffffffffffffff16632bd2f785846040518263ffffffff1660e01b815260040180826fffffffffffffffffffffffffffffffff19166fffffffffffffffffffffffffffffffff19168152602001915050602060405180830381600087803b1580156101e457600080fd5b505af11580156101f8573d6000803e3d6000fd5b505050506040513d602081101561020e57600080fd5b810190808051906020019092919050505050505050565b6000806000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16631d6d32ba6040518163ffffffff1660e01b815260040160206040518083038186803b15801561028f57600080fd5b505afa1580156102a3573d6000803e3d6000fd5b505050506040513d60208110156102b957600080fd5b8101908080519060200190929190505050905060008190508073ffffffffffffffffffffffffffffffffffffffff1663033d8e196040518163ffffffff1660e01b815260040160206040518083038186803b15801561031757600080fd5b505afa15801561032b573d6000803e3d6000fd5b505050506040513d602081101561034157600080fd5b8101908080519060200190929190505050925050509056fea265627a7a72315820a1cde5d1f65e4867f0ffea35037a0c564e79d3d2833a0bf1e354778fab3f3fdc64736f6c63430005100032",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100365760003560e01c806309213ed11461003b578063f2da01e21461007c575b600080fd5b61007a6004803603602081101561005157600080fd5b8101908080356fffffffffffffffffffffffffffffffff191690602001909291905050506100c0565b005b610084610225565b60405180826fffffffffffffffffffffffffffffffff19166fffffffffffffffffffffffffffffffff1916815260200191505060405180910390f35b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16631d6d32ba6040518163ffffffff1660e01b815260040160206040518083038186803b15801561012957600080fd5b505afa15801561013d573d6000803e3d6000fd5b505050506040513d602081101561015357600080fd5b8101908080519060200190929190505050905060008190508073ffffffffffffffffffffffffffffffffffffffff16632bd2f785846040518263ffffffff1660e01b815260040180826fffffffffffffffffffffffffffffffff19166fffffffffffffffffffffffffffffffff19168152602001915050602060405180830381600087803b1580156101e457600080fd5b505af11580156101f8573d6000803e3d6000fd5b505050506040513d602081101561020e57600080fd5b810190808051906020019092919050505050505050565b6000806000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16631d6d32ba6040518163ffffffff1660e01b815260040160206040518083038186803b15801561028f57600080fd5b505afa1580156102a3573d6000803e3d6000fd5b505050506040513d60208110156102b957600080fd5b8101908080519060200190929190505050905060008190508073ffffffffffffffffffffffffffffffffffffffff1663033d8e196040518163ffffffff1660e01b815260040160206040518083038186803b15801561031757600080fd5b505afa15801561032b573d6000803e3d6000fd5b505050506040513d602081101561034157600080fd5b8101908080519060200190929190505050925050509056fea265627a7a72315820a1cde5d1f65e4867f0ffea35037a0c564e79d3d2833a0bf1e354778fab3f3fdc64736f6c63430005100032",
+  "sourceMap": "97:633:6:-;;;170:86;8:9:-1;5:2;;;30:1;27;20:12;5:2;170:86:6;;;;;;;;;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;170:86:6;;;;;;;;;;;;;;;;245:3;212:11;;:37;;;;;;;;;;;;;;;;;;170:86;97:633;;;;;;",
+  "deployedSourceMap": "97:633:6:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;97:633:6;;;;;;;;;;;;;;;;;;;;;;;;261:236;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;261:236:6;;;;;;;;;;;;;;;;;;;;:::i;:::-;;502:225;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;261:236;331:11;345;;;;;;;;;;;:18;;;:20;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;345:20:6;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;345:20:6;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;345:20:6;;;;;;;;;;;;;;;;331:34;;379:28;428:3;379:53;;446:10;:26;;;473:12;446:40;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;446:40:6;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;446:40:6;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;446:40:6;;;;;;;;;;;;;;;;;261:236;;;:::o;502:225::-;545:7;567:11;581;;;;;;;;;;;:18;;;:20;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;581:20:6;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;581:20:6;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;581:20:6;;;;;;;;;;;;;;;;567:34;;615:28;664:3;615:53;;689:10;:29;;;:31;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;689:31:6;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;689:31:6;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;689:31:6;;;;;;;;;;;;;;;;682:38;;;;502:225;:::o",
+  "source": "pragma solidity >=0.5.16;\n\nimport \"./ReferencedPatient.sol\";\nimport \"./ReferencingPatient.sol\";\n\ncontract UsingReferencePatient {\n    ReferencingPatient referencing;\n    constructor(address ref) public {\n        referencing = ReferencingPatient(ref);\n    }\n    function saveName(\n        bytes16 patientUname) public {\n            address ret = referencing.getRef();\n            ReferencedPatient referenced = ReferencedPatient(ret);\n            referenced.setPatientUName(patientUname);\n        }\n    function GetUserName() public view returns(bytes16){\n            address ret = referencing.getRef();\n            ReferencedPatient referenced = ReferencedPatient(ret);\n            return referenced.getPatientUserName();\n    }\n\n}",
+  "sourcePath": "/home/eke/patient-eth/contracts/UsingReferencePatient.sol",
+  "ast": {
+    "absolutePath": "/home/eke/patient-eth/contracts/UsingReferencePatient.sol",
+    "exportedSymbols": {
+      "UsingReferencePatient": [
+        1785
+      ]
+    },
+    "id": 1786,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1722,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.5",
+          ".16"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:25:6"
+      },
+      {
+        "absolutePath": "/home/eke/patient-eth/contracts/ReferencedPatient.sol",
+        "file": "./ReferencedPatient.sol",
+        "id": 1723,
+        "nodeType": "ImportDirective",
+        "scope": 1786,
+        "sourceUnit": 1693,
+        "src": "27:33:6",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/home/eke/patient-eth/contracts/ReferencingPatient.sol",
+        "file": "./ReferencingPatient.sol",
+        "id": 1724,
+        "nodeType": "ImportDirective",
+        "scope": 1786,
+        "sourceUnit": 1721,
+        "src": "61:34:6",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 1785,
+        "linearizedBaseContracts": [
+          1785
+        ],
+        "name": "UsingReferencePatient",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 1726,
+            "name": "referencing",
+            "nodeType": "VariableDeclaration",
+            "scope": 1785,
+            "src": "134:30:6",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_ReferencingPatient_$1720",
+              "typeString": "contract ReferencingPatient"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 1725,
+              "name": "ReferencingPatient",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 1720,
+              "src": "134:18:6",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_ReferencingPatient_$1720",
+                "typeString": "contract ReferencingPatient"
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 1737,
+              "nodeType": "Block",
+              "src": "202:54:6",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 1735,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 1731,
+                      "name": "referencing",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1726,
+                      "src": "212:11:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_ReferencingPatient_$1720",
+                        "typeString": "contract ReferencingPatient"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "id": 1733,
+                          "name": "ref",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1728,
+                          "src": "245:3:6",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        ],
+                        "id": 1732,
+                        "name": "ReferencingPatient",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1720,
+                        "src": "226:18:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_contract$_ReferencingPatient_$1720_$",
+                          "typeString": "type(contract ReferencingPatient)"
+                        }
+                      },
+                      "id": 1734,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "typeConversion",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "226:23:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_ReferencingPatient_$1720",
+                        "typeString": "contract ReferencingPatient"
+                      }
+                    },
+                    "src": "212:37:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ReferencingPatient_$1720",
+                      "typeString": "contract ReferencingPatient"
+                    }
+                  },
+                  "id": 1736,
+                  "nodeType": "ExpressionStatement",
+                  "src": "212:37:6"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 1738,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1729,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1728,
+                  "name": "ref",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1738,
+                  "src": "182:11:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1727,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "182:7:6",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "181:13:6"
+            },
+            "returnParameters": {
+              "id": 1730,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "202:0:6"
+            },
+            "scope": 1785,
+            "src": "170:86:6",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 1761,
+              "nodeType": "Block",
+              "src": "317:180:6",
+              "statements": [
+                {
+                  "assignments": [
+                    1744
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 1744,
+                      "name": "ret",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 1761,
+                      "src": "331:11:6",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      },
+                      "typeName": {
+                        "id": 1743,
+                        "name": "address",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "331:7:6",
+                        "stateMutability": "nonpayable",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 1748,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 1745,
+                        "name": "referencing",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1726,
+                        "src": "345:11:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_ReferencingPatient_$1720",
+                          "typeString": "contract ReferencingPatient"
+                        }
+                      },
+                      "id": 1746,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "getRef",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 1707,
+                      "src": "345:18:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_view$__$returns$_t_address_$",
+                        "typeString": "function () view external returns (address)"
+                      }
+                    },
+                    "id": 1747,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "345:20:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "331:34:6"
+                },
+                {
+                  "assignments": [
+                    1750
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 1750,
+                      "name": "referenced",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 1761,
+                      "src": "379:28:6",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_ReferencedPatient_$1692",
+                        "typeString": "contract ReferencedPatient"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 1749,
+                        "name": "ReferencedPatient",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 1692,
+                        "src": "379:17:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_ReferencedPatient_$1692",
+                          "typeString": "contract ReferencedPatient"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 1754,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 1752,
+                        "name": "ret",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1744,
+                        "src": "428:3:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "id": 1751,
+                      "name": "ReferencedPatient",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1692,
+                      "src": "410:17:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_contract$_ReferencedPatient_$1692_$",
+                        "typeString": "type(contract ReferencedPatient)"
+                      }
+                    },
+                    "id": 1753,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "typeConversion",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "410:22:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ReferencedPatient_$1692",
+                      "typeString": "contract ReferencedPatient"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "379:53:6"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 1758,
+                        "name": "patientUname",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1740,
+                        "src": "473:12:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes16",
+                          "typeString": "bytes16"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bytes16",
+                          "typeString": "bytes16"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 1755,
+                        "name": "referenced",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1750,
+                        "src": "446:10:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_ReferencedPatient_$1692",
+                          "typeString": "contract ReferencedPatient"
+                        }
+                      },
+                      "id": 1757,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "setPatientUName",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 1482,
+                      "src": "446:26:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_nonpayable$_t_bytes16_$returns$_t_bool_$",
+                        "typeString": "function (bytes16) external returns (bool)"
+                      }
+                    },
+                    "id": 1759,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "446:40:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 1760,
+                  "nodeType": "ExpressionStatement",
+                  "src": "446:40:6"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 1762,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "saveName",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1741,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1740,
+                  "name": "patientUname",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1762,
+                  "src": "288:20:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes16",
+                    "typeString": "bytes16"
+                  },
+                  "typeName": {
+                    "id": 1739,
+                    "name": "bytes16",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "288:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes16",
+                      "typeString": "bytes16"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "278:31:6"
+            },
+            "returnParameters": {
+              "id": 1742,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "317:0:6"
+            },
+            "scope": 1785,
+            "src": "261:236:6",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 1783,
+              "nodeType": "Block",
+              "src": "553:174:6",
+              "statements": [
+                {
+                  "assignments": [
+                    1768
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 1768,
+                      "name": "ret",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 1783,
+                      "src": "567:11:6",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      },
+                      "typeName": {
+                        "id": 1767,
+                        "name": "address",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "567:7:6",
+                        "stateMutability": "nonpayable",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 1772,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 1769,
+                        "name": "referencing",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1726,
+                        "src": "581:11:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_ReferencingPatient_$1720",
+                          "typeString": "contract ReferencingPatient"
+                        }
+                      },
+                      "id": 1770,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "getRef",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 1707,
+                      "src": "581:18:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_view$__$returns$_t_address_$",
+                        "typeString": "function () view external returns (address)"
+                      }
+                    },
+                    "id": 1771,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "581:20:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "567:34:6"
+                },
+                {
+                  "assignments": [
+                    1774
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 1774,
+                      "name": "referenced",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 1783,
+                      "src": "615:28:6",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_ReferencedPatient_$1692",
+                        "typeString": "contract ReferencedPatient"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 1773,
+                        "name": "ReferencedPatient",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 1692,
+                        "src": "615:17:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_ReferencedPatient_$1692",
+                          "typeString": "contract ReferencedPatient"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 1778,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 1776,
+                        "name": "ret",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1768,
+                        "src": "664:3:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "id": 1775,
+                      "name": "ReferencedPatient",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1692,
+                      "src": "646:17:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_contract$_ReferencedPatient_$1692_$",
+                        "typeString": "type(contract ReferencedPatient)"
+                      }
+                    },
+                    "id": 1777,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "typeConversion",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "646:22:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ReferencedPatient_$1692",
+                      "typeString": "contract ReferencedPatient"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "615:53:6"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 1779,
+                        "name": "referenced",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1774,
+                        "src": "689:10:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_ReferencedPatient_$1692",
+                          "typeString": "contract ReferencedPatient"
+                        }
+                      },
+                      "id": 1780,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "getPatientUserName",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 1619,
+                      "src": "689:29:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_view$__$returns$_t_bytes16_$",
+                        "typeString": "function () view external returns (bytes16)"
+                      }
+                    },
+                    "id": 1781,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "689:31:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes16",
+                      "typeString": "bytes16"
+                    }
+                  },
+                  "functionReturnParameters": 1766,
+                  "id": 1782,
+                  "nodeType": "Return",
+                  "src": "682:38:6"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 1784,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "GetUserName",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1763,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "522:2:6"
+            },
+            "returnParameters": {
+              "id": 1766,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1765,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1784,
+                  "src": "545:7:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes16",
+                    "typeString": "bytes16"
+                  },
+                  "typeName": {
+                    "id": 1764,
+                    "name": "bytes16",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "545:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes16",
+                      "typeString": "bytes16"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "544:9:6"
+            },
+            "scope": 1785,
+            "src": "502:225:6",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 1786,
+        "src": "97:633:6"
+      }
+    ],
+    "src": "0:730:6"
+  },
+  "legacyAST": {
+    "absolutePath": "/home/eke/patient-eth/contracts/UsingReferencePatient.sol",
+    "exportedSymbols": {
+      "UsingReferencePatient": [
+        1785
+      ]
+    },
+    "id": 1786,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1722,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.5",
+          ".16"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:25:6"
+      },
+      {
+        "absolutePath": "/home/eke/patient-eth/contracts/ReferencedPatient.sol",
+        "file": "./ReferencedPatient.sol",
+        "id": 1723,
+        "nodeType": "ImportDirective",
+        "scope": 1786,
+        "sourceUnit": 1693,
+        "src": "27:33:6",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/home/eke/patient-eth/contracts/ReferencingPatient.sol",
+        "file": "./ReferencingPatient.sol",
+        "id": 1724,
+        "nodeType": "ImportDirective",
+        "scope": 1786,
+        "sourceUnit": 1721,
+        "src": "61:34:6",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 1785,
+        "linearizedBaseContracts": [
+          1785
+        ],
+        "name": "UsingReferencePatient",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 1726,
+            "name": "referencing",
+            "nodeType": "VariableDeclaration",
+            "scope": 1785,
+            "src": "134:30:6",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_ReferencingPatient_$1720",
+              "typeString": "contract ReferencingPatient"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 1725,
+              "name": "ReferencingPatient",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 1720,
+              "src": "134:18:6",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_ReferencingPatient_$1720",
+                "typeString": "contract ReferencingPatient"
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 1737,
+              "nodeType": "Block",
+              "src": "202:54:6",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 1735,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 1731,
+                      "name": "referencing",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1726,
+                      "src": "212:11:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_ReferencingPatient_$1720",
+                        "typeString": "contract ReferencingPatient"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "id": 1733,
+                          "name": "ref",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1728,
+                          "src": "245:3:6",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        ],
+                        "id": 1732,
+                        "name": "ReferencingPatient",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1720,
+                        "src": "226:18:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_contract$_ReferencingPatient_$1720_$",
+                          "typeString": "type(contract ReferencingPatient)"
+                        }
+                      },
+                      "id": 1734,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "typeConversion",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "226:23:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_ReferencingPatient_$1720",
+                        "typeString": "contract ReferencingPatient"
+                      }
+                    },
+                    "src": "212:37:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ReferencingPatient_$1720",
+                      "typeString": "contract ReferencingPatient"
+                    }
+                  },
+                  "id": 1736,
+                  "nodeType": "ExpressionStatement",
+                  "src": "212:37:6"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 1738,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1729,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1728,
+                  "name": "ref",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1738,
+                  "src": "182:11:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1727,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "182:7:6",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "181:13:6"
+            },
+            "returnParameters": {
+              "id": 1730,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "202:0:6"
+            },
+            "scope": 1785,
+            "src": "170:86:6",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 1761,
+              "nodeType": "Block",
+              "src": "317:180:6",
+              "statements": [
+                {
+                  "assignments": [
+                    1744
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 1744,
+                      "name": "ret",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 1761,
+                      "src": "331:11:6",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      },
+                      "typeName": {
+                        "id": 1743,
+                        "name": "address",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "331:7:6",
+                        "stateMutability": "nonpayable",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 1748,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 1745,
+                        "name": "referencing",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1726,
+                        "src": "345:11:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_ReferencingPatient_$1720",
+                          "typeString": "contract ReferencingPatient"
+                        }
+                      },
+                      "id": 1746,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "getRef",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 1707,
+                      "src": "345:18:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_view$__$returns$_t_address_$",
+                        "typeString": "function () view external returns (address)"
+                      }
+                    },
+                    "id": 1747,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "345:20:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "331:34:6"
+                },
+                {
+                  "assignments": [
+                    1750
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 1750,
+                      "name": "referenced",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 1761,
+                      "src": "379:28:6",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_ReferencedPatient_$1692",
+                        "typeString": "contract ReferencedPatient"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 1749,
+                        "name": "ReferencedPatient",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 1692,
+                        "src": "379:17:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_ReferencedPatient_$1692",
+                          "typeString": "contract ReferencedPatient"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 1754,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 1752,
+                        "name": "ret",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1744,
+                        "src": "428:3:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "id": 1751,
+                      "name": "ReferencedPatient",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1692,
+                      "src": "410:17:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_contract$_ReferencedPatient_$1692_$",
+                        "typeString": "type(contract ReferencedPatient)"
+                      }
+                    },
+                    "id": 1753,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "typeConversion",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "410:22:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ReferencedPatient_$1692",
+                      "typeString": "contract ReferencedPatient"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "379:53:6"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 1758,
+                        "name": "patientUname",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1740,
+                        "src": "473:12:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes16",
+                          "typeString": "bytes16"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bytes16",
+                          "typeString": "bytes16"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 1755,
+                        "name": "referenced",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1750,
+                        "src": "446:10:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_ReferencedPatient_$1692",
+                          "typeString": "contract ReferencedPatient"
+                        }
+                      },
+                      "id": 1757,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "setPatientUName",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 1482,
+                      "src": "446:26:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_nonpayable$_t_bytes16_$returns$_t_bool_$",
+                        "typeString": "function (bytes16) external returns (bool)"
+                      }
+                    },
+                    "id": 1759,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "446:40:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 1760,
+                  "nodeType": "ExpressionStatement",
+                  "src": "446:40:6"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 1762,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "saveName",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1741,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1740,
+                  "name": "patientUname",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1762,
+                  "src": "288:20:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes16",
+                    "typeString": "bytes16"
+                  },
+                  "typeName": {
+                    "id": 1739,
+                    "name": "bytes16",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "288:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes16",
+                      "typeString": "bytes16"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "278:31:6"
+            },
+            "returnParameters": {
+              "id": 1742,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "317:0:6"
+            },
+            "scope": 1785,
+            "src": "261:236:6",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 1783,
+              "nodeType": "Block",
+              "src": "553:174:6",
+              "statements": [
+                {
+                  "assignments": [
+                    1768
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 1768,
+                      "name": "ret",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 1783,
+                      "src": "567:11:6",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      },
+                      "typeName": {
+                        "id": 1767,
+                        "name": "address",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "567:7:6",
+                        "stateMutability": "nonpayable",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 1772,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 1769,
+                        "name": "referencing",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1726,
+                        "src": "581:11:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_ReferencingPatient_$1720",
+                          "typeString": "contract ReferencingPatient"
+                        }
+                      },
+                      "id": 1770,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "getRef",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 1707,
+                      "src": "581:18:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_view$__$returns$_t_address_$",
+                        "typeString": "function () view external returns (address)"
+                      }
+                    },
+                    "id": 1771,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "581:20:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "567:34:6"
+                },
+                {
+                  "assignments": [
+                    1774
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 1774,
+                      "name": "referenced",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 1783,
+                      "src": "615:28:6",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_ReferencedPatient_$1692",
+                        "typeString": "contract ReferencedPatient"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 1773,
+                        "name": "ReferencedPatient",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 1692,
+                        "src": "615:17:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_ReferencedPatient_$1692",
+                          "typeString": "contract ReferencedPatient"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 1778,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 1776,
+                        "name": "ret",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1768,
+                        "src": "664:3:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "id": 1775,
+                      "name": "ReferencedPatient",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1692,
+                      "src": "646:17:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_contract$_ReferencedPatient_$1692_$",
+                        "typeString": "type(contract ReferencedPatient)"
+                      }
+                    },
+                    "id": 1777,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "typeConversion",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "646:22:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ReferencedPatient_$1692",
+                      "typeString": "contract ReferencedPatient"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "615:53:6"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 1779,
+                        "name": "referenced",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1774,
+                        "src": "689:10:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_ReferencedPatient_$1692",
+                          "typeString": "contract ReferencedPatient"
+                        }
+                      },
+                      "id": 1780,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "getPatientUserName",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 1619,
+                      "src": "689:29:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_view$__$returns$_t_bytes16_$",
+                        "typeString": "function () view external returns (bytes16)"
+                      }
+                    },
+                    "id": 1781,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "689:31:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes16",
+                      "typeString": "bytes16"
+                    }
+                  },
+                  "functionReturnParameters": 1766,
+                  "id": 1782,
+                  "nodeType": "Return",
+                  "src": "682:38:6"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 1784,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "GetUserName",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1763,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "522:2:6"
+            },
+            "returnParameters": {
+              "id": 1766,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1765,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1784,
+                  "src": "545:7:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes16",
+                    "typeString": "bytes16"
+                  },
+                  "typeName": {
+                    "id": 1764,
+                    "name": "bytes16",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "545:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes16",
+                      "typeString": "bytes16"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "544:9:6"
+            },
+            "scope": 1785,
+            "src": "502:225:6",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 1786,
+        "src": "97:633:6"
+      }
+    ],
+    "src": "0:730:6"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.0.23",
+  "updatedAt": "2020-04-01T13:40:50.574Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

@@ -1,1 +1,0 @@
-[{"anonymous":false,"inputs":[{"indexed":false,"internalType":"bytes16","name":"u","type":"bytes16"}],"name":"username","type":"event"},{"inputs":[],"name":"Test","outputs":[],"stateMutability":"nonpayable","type":"function"}]
