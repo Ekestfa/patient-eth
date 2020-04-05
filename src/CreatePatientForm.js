@@ -47,7 +47,7 @@ function CreatePatientForm (prop) {
       </div> */}
       <p>ETH Address:
         <span class="eth-address"></span>
-        <input type="text" class="form-control" id="sign-up-eth-address" value={prop.address} disabled/>
+        <input type="text" class="form-control" id="sign-up-eth-address" value={prop.value} disabled/>
       </p>
       <button type="submit" class="btn btn-primary" id="sign-up-button">Sign Up</button>
     </div>

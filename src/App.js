@@ -5,12 +5,11 @@ import jQuery from 'jquery';
 import 'bootstrap';
 import CreatePatientForm from './CreatePatientForm';
 import {default as Web3} from 'web3';
-
+ const [addre,setAddre] = useState('')
 window.$ = window.jQuery = jQuery;
 
 const web3 = new Web3(Web3.givenProvider || "http://localhost:7545" );
 const ethereum = window.ethereum;
-// const [addre,setAddre] = useState('')
 
 const ethereumButton = () => {
   if(ethereum){
@@ -27,6 +26,7 @@ const ethereumButton = () => {
         web3.eth.getAccounts(console.log);
         ethereum.on('accountsChanged',function(accounts){
           console.log(accounts[0])
+          setAddre(accounts[0])
         //setAddre(accounts[0])
         });
         }
@@ -62,7 +62,7 @@ const ethereumButton = () => {
 
 
 
-function App() {
+const App = props => {
   return (
     <div className="App">
       <header className="App-header">
@@ -98,7 +98,7 @@ function App() {
       </div>
       </div>
       </div>*/}
-    <CreatePatientForm value='0'/>
+    <CreatePatientForm value={addre}/>
     <button onClick={ethereumButton} class="enableEthereumButton">Enable Ethereum</button>
       </header>
 
