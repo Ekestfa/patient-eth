@@ -1,9 +1,66 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
+// import logo from './logo.svg';
 import './App.scss';
 import jQuery from 'jquery';
+import 'bootstrap';
+import CreatePatientForm from './CreatePatientForm';
+import {default as Web3} from 'web3';
+
 window.$ = window.jQuery = jQuery;
-// Import bootstrap
+
+const web3 = new Web3(Web3.givenProvider || "http://localhost:7545" );
+const ethereum = window.ethereum;
+// const [addre,setAddre] = useState('')
+
+const ethereumButton = () => {
+  if(ethereum){
+    web3.eth.getAccounts((err, accounts) => {
+      if (accounts.length == 0) {
+        // there is no active accounts in MetaMask
+        this.console.log('there is no active accounts in MetaMask')
+        ethereum.on('accountsChanged',function(accounts){
+          console.log(accounts[0])
+        //setAddre(accounts[0])
+        });
+      }else {
+        // It's ok
+        web3.eth.getAccounts(console.log);
+        ethereum.on('accountsChanged',function(accounts){
+          console.log(accounts[0])
+        //setAddre(accounts[0])
+        });
+        }
+      });
+    }
+  }
+
+
+
+// window.addEventListener('load', function () {
+//   if (typeof web3 !== 'undefined') {        
+      //window.web3 = new Web3(window.web3.currentProvider)
+//       if (web3.currentProvider.isMetaMask === true) {
+//           web3.eth.getAccounts((err, accounts) => {
+//               if (accounts.length == 0) {
+//                 // there is no active accounts in MetaMask
+//                 this.console.log('there is no active accounts in MetaMask')
+//                 // web3.eth.getAccounts().then(console.log);
+//                 this.console.log(accounts[0])
+//               }
+//               else {
+//                 // It's ok
+//                 web3.eth.getAccounts(console.log);
+//               }
+//           });
+//       } else {
+//           // Another web3 provider
+//       }
+//   } else {
+//       // No web 3 provider
+//   }    
+// });
+
+
 
 function App() {
   return (
@@ -21,7 +78,7 @@ function App() {
         >
           Learn React
         </a> */}
-        <nav class="navbar navbar-expand-lg navbar-primary bg-light">
+        {/* <nav class="navbar navbar-expand-lg navbar-primary bg-light">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -37,36 +94,15 @@ function App() {
         <div class="container-fluid">
         <div class="alert alert-warning mt-3" role="alert">
         <div class="row">
-        <div class="col-lg-3 mt-1 mb-1">
-          <div class="card card-profile-signup p-1">
-            <form>
-              <div class="card-body">
-                <h5 class="card-title">Create your profile</h5>
-                <div class="form-group">
-                  <label for="username">Username</label>
-                  <input type="text" class="form-control" id="sign-up-username" required="required"/>
-                </div>
-                <div class="form-group">
-                  <label for="username">Title</label>
-                  <input type="text" class="form-control" id="sign-up-title"/>
-                </div>
-                <div class="form-group">
-                  <label for="username">Short intro</label>
-                  <textarea class="form-control" id="sign-up-intro" rows="2"></textarea>
-                </div>
-                <p>ETH Address:
-                  <span class="eth-address"></span>
-                  <input type="text" class="form-control" id="sign-up-eth-address" value="0x…" disabled/>
-                </p>
-                <button type="submit" class="btn btn-primary" id="sign-up-button">Sign Up</button> 
-              </div>
-            </form>
-          </div>
-        </div>
+
       </div>
       </div>
-      </div>
+      </div>*/}
+    <CreatePatientForm value='0'/>
+    <button onClick={ethereumButton} class="enableEthereumButton">Enable Ethereum</button>
       </header>
+
+
       <footer class="footer">
         <div class="container">
           <span class="text-muted">A demo dapp.</span>

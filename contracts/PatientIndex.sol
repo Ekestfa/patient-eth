@@ -4,7 +4,7 @@ import "./PatientFactory.sol";
 contract PatientIndex {
     mapping(address => uint) private addressToIndex;
     mapping(bytes16 => uint) private patientnameToIndex;
-    mapping(address => Patient) private patientInfoToAddress;
+   //  mapping(address => Patient) private patientInfoToAddress;
     address[] private addresses;
     address[] private patientInfoAddresses;
     bytes16[] private patientUnames;

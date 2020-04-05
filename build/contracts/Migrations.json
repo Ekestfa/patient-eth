@@ -1376,11 +1376,12 @@
       "events": {},
       "links": {},
       "address": "0x116a3720F4601aa4206F8A7ee86268EFbd725Edd",
-      "transactionHash": "0x792cd4529a1922c3f143aab40f8ab7a946dbbf0490f5e95e1962077444d500e5"
+      "transactionHash": "0x87adec5e1fca85be97a3c8c1571ac0058b0c9f8e437236aace5acb4fd01d66d3"
     }
   },
   "schemaVersion": "3.0.23",
-  "updatedAt": "2020-04-03T13:14:41.590Z",
+  "updatedAt": "2020-04-05T16:22:46.725Z",
+  "networkType": "ethereum",
   "devdoc": {
     "methods": {}
   },

@@ -15,7 +15,8 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
-    "sass-loader": "^8.0.2"
+    "sass-loader": "^8.0.2",
+    "truffle-contract": "^4.0.31"
   },
   "scripts": {
     "start": "react-scripts start",
