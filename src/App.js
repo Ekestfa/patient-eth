@@ -5,11 +5,14 @@ import jQuery from 'jquery';
 import 'bootstrap';
 import CreatePatientForm from './CreatePatientForm';
 import {default as Web3} from 'web3';
- const [addre,setAddre] = useState('')
+
+function App () {
+
 window.$ = window.jQuery = jQuery;
 
 const web3 = new Web3(Web3.givenProvider || "http://localhost:7545" );
 const ethereum = window.ethereum;
+const [addre,setAddre] = useState('Press Enable Ethereum!')
 
 const ethereumButton = () => {
   if(ethereum){
@@ -17,52 +20,21 @@ const ethereumButton = () => {
       if (accounts.length == 0) {
         // there is no active accounts in MetaMask
         this.console.log('there is no active accounts in MetaMask')
-        ethereum.on('accountsChanged',function(accounts){
-          console.log(accounts[0])
-        //setAddre(accounts[0])
-        });
       }else {
         // It's ok
         web3.eth.getAccounts(console.log);
         ethereum.on('accountsChanged',function(accounts){
-          console.log(accounts[0])
-          setAddre(accounts[0])
-        //setAddre(accounts[0])
+          console.log(ethereum.selectedAddress)
         });
         }
       });
     }
+    ethereum.on('accountsChanged',function(accounts){
+      setAddre(ethereum.selectedAddress)
+    });
+    setAddre(ethereum.selectedAddress)
   }
-
-
-
-// window.addEventListener('load', function () {
-//   if (typeof web3 !== 'undefined') {        
-      //window.web3 = new Web3(window.web3.currentProvider)
-//       if (web3.currentProvider.isMetaMask === true) {
-//           web3.eth.getAccounts((err, accounts) => {
-//               if (accounts.length == 0) {
-//                 // there is no active accounts in MetaMask
-//                 this.console.log('there is no active accounts in MetaMask')
-//                 // web3.eth.getAccounts().then(console.log);
-//                 this.console.log(accounts[0])
-//               }
-//               else {
-//                 // It's ok
-//                 web3.eth.getAccounts(console.log);
-//               }
-//           });
-//       } else {
-//           // Another web3 provider
-//       }
-//   } else {
-//       // No web 3 provider
-//   }    
-// });
-
-
-
-const App = props => {
+  
   return (
     <div className="App">
       <header className="App-header">
@@ -98,14 +70,14 @@ const App = props => {
       </div>
       </div>
       </div>*/}
-    <CreatePatientForm value={addre}/>
+    <CreatePatientForm message={addre}/>
     <button onClick={ethereumButton} class="enableEthereumButton">Enable Ethereum</button>
       </header>
 
 
       <footer class="footer">
         <div class="container">
-          <span class="text-muted">A demo dapp.</span>
+          <span class="text-muted">Patient Ethereum DApp powered by Ekestfa</span>
         </div>
       </footer>
     </div>

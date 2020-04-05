@@ -2,7 +2,7 @@ import React from 'react';
 import './App.scss';
 
 
-function CreatePatientForm (prop) {
+function CreatePatientForm (props) {
     return(
         <div class="col-lg-3 mt-1 mb-1">
 <div class="card card-profile-signup p-1">
@@ -47,7 +47,7 @@ function CreatePatientForm (prop) {
       </div> */}
       <p>ETH Address:
         <span class="eth-address"></span>
-        <input type="text" class="form-control" id="sign-up-eth-address" value={prop.value} disabled/>
+        <input type="text" class="form-control" id="sign-up-eth-address" value={props.message} disabled/>
       </p>
       <button type="submit" class="btn btn-primary" id="sign-up-button">Sign Up</button>
     </div>
