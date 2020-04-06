@@ -17,6 +17,7 @@
     "react-native": "^0.62.1",
     "react-native-scripts": "^2.0.1",
     "react-scripts": "3.4.1",
+    "react-test-renderer": "16.13.1",
     "sass-loader": "^8.0.2",
     "truffle-contract": "^4.0.31"
   },
