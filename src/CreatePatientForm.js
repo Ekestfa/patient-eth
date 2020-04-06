@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.scss';
 import useForm from './useForm';
+import validate from './validateRegister';
 
 
 const CreatePatientForm = (props) => {
@@ -17,7 +18,7 @@ const CreatePatientForm = (props) => {
     message:""
   }
 
-  const {handleSubmit, handleChange, values} = useForm(submit,INITIAL_STATE);
+  const {handleSubmit, handleChange, values, errors} = useForm(submit,INITIAL_STATE,validate);
 
   function submit(){
     console.log("submitted successfully")
@@ -39,6 +40,7 @@ const CreatePatientForm = (props) => {
                required="required"
                onChange={handleChange}
         />
+        {errors.username && <p>{errors.username}</p>}
       </div>
       <div class="form-group">
         <label for="password">Password</label>
@@ -50,6 +52,7 @@ const CreatePatientForm = (props) => {
                required="required"
                onChange={handleChange}
         />
+        {errors.password && <p>{errors.password}</p>}
       </div>
       <div class="form-group">
         <label for="name">First Name</label>
