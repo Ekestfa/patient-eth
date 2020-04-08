@@ -6,6 +6,7 @@ require('babel-polyfill')
 // See <http://truffleframework.com/docs/advanced/configuration>
 // to customize your Truffle configuration!
 module.exports = {
+  contracts_build_directory: "./src/abi",
   networks: {
     development: {
       host: 'localhost',

@@ -16,7 +16,7 @@ const useForm = (callback,initialState,validate) => {
     {...values,
      [name] : value
     });
-    console.log(name+':'+value)
+    // console.log(name+':'+value)
   }
   
   

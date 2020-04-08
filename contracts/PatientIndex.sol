@@ -3,11 +3,11 @@ import "./PatientFactory.sol";
 
 contract PatientIndex {
     mapping(address => uint) private addressToIndex;
-    mapping(bytes16 => uint) private patientnameToIndex;
+    mapping(bytes32 => uint) private patientnameToIndex;
    //  mapping(address => Patient) private patientInfoToAddress;
     address[] private addresses;
     address[] private patientInfoAddresses;
-    bytes16[] private patientUnames;
+    bytes32[] private patientUnames;
     bytes[] private ipfsHashes;
 
    constructor() public{
@@ -20,11 +20,11 @@ contract PatientIndex {
         return (addressToIndex[_patientAdresses] > 0 || _patientAdresses == addresses[0]);
     }
 
-    function patientNameTaken(bytes16 pname) public view returns(bool takenIndeed) {
+    function patientNameTaken(bytes32 pname) public view returns(bool takenIndeed) {
             return (patientnameToIndex[pname] > 0 || pname == 'self');
     }
 
-    function registerPatient(bytes16 patientName, bytes memory ipfsHash) public returns(bool) {
+    function registerPatient(bytes32 patientName, bytes memory ipfsHash) public returns(bool) {
         require(!hasPatient(msg.sender),
                 "Sender not authorized.");
         require(!patientNameTaken(patientName),
@@ -49,7 +49,7 @@ contract PatientIndex {
     return addresses.length;
  }
 
- function getPatientByIndex(uint index) public view returns(address,bytes16,bytes memory){
+ function getPatientByIndex(uint index) public view returns(address,bytes32,bytes memory){
     require((index < addresses.length),
             "Index out of bound!");
     return(addresses[index], patientUnames[index], ipfsHashes[index]);
@@ -61,7 +61,7 @@ contract PatientIndex {
     return addresses[index];
  }
 
- function getPatientNameByIndex(uint index) public view returns(bytes16){
+ function getPatientNameByIndex(uint index) public view returns(bytes32){
     require((index < addresses.length),
             "Index out of bound!");
     return patientUnames[index];
@@ -73,7 +73,7 @@ contract PatientIndex {
     return ipfsHashes[index];
  }
 
- function getPatientByAddress(address patientAddress) public view returns(uint, bytes16, bytes memory){
+ function getPatientByAddress(address patientAddress) public view returns(uint, bytes32, bytes memory){
     require(hasPatient(patientAddress),
             "Patient doesn't exist!");
     return(addressToIndex[patientAddress], patientUnames[addressToIndex[patientAddress]], ipfsHashes[addressToIndex[patientAddress]]);
@@ -85,7 +85,7 @@ contract PatientIndex {
     return addressToIndex[patientAddress];
  }
 
- function getPatientNameByAddress(address patientAddress) public view returns(bytes16){
+ function getPatientNameByAddress(address patientAddress) public view returns(bytes32){
     require(hasPatient(patientAddress),
             "Patient doesn't exist!");
     return patientUnames[addressToIndex[patientAddress]];
@@ -97,24 +97,24 @@ contract PatientIndex {
     return ipfsHashes[addressToIndex[patientAddress]];
  }
 
- function getPatientByPatientName(bytes16 patientname) public view returns(uint,address,bytes memory){
+ function getPatientByPatientName(bytes32 patientname) public view returns(uint,address,bytes memory){
     require((patientnameToIndex[patientname] < addresses.length),
             "Patient index out of bound!");
     return(patientnameToIndex[patientname], addresses[patientnameToIndex[patientname]], ipfsHashes[patientnameToIndex[patientname]]);
  }
 
- function getIndexByPatientName(bytes16 patientname) public view returns(uint){
+ function getIndexByPatientName(bytes32 patientname) public view returns(uint){
     require((patientNameTaken(patientname)),
         "Can't find the patient!");
     return patientnameToIndex[patientname];
  }
 
- function getAddressByPatientName(bytes16 patientname) public view returns(address){
+ function getAddressByPatientName(bytes32 patientname) public view returns(address){
     require((patientNameTaken(patientname)),
         "Can't find the patient!");
     return addresses[patientnameToIndex[patientname]];
  }
- function getIpfsHashByPatientName(bytes16 patientname) public view returns(bytes memory){
+ function getIpfsHashByPatientName(bytes32 patientname) public view returns(bytes memory){
     require((patientNameTaken(patientname)),
             "Can't find the patient!");
     return ipfsHashes[patientnameToIndex[patientname]];
