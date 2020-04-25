@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import {Nav, Form, FormControl, Button, Navbar, Container, Row, Col} from 'react-bootstrap';
-import Consultation from '../Consultation/Consultation';
 import auth from '../../helpers/auth'
-import ActionLink from './ActionLink'
-
+import DynamicComponent from "./Dynamic";
 
 const HomePage = (props) => {
-const {handleClick} = ActionLink()
+const [comp, changeComp] = useState('blank');
 
 function logout(){
   auth.logout(()=>{
@@ -23,7 +21,7 @@ return(
     <Navbar className="navbar navbar-default" bg="dark" variant="dark" fixed="top">
         <Navbar.Brand href="#home">Home</Navbar.Brand>
             <Nav className="mr-auto">
-                <Nav.Link href="#counsultations" onClick={handleClick}>诊断书</Nav.Link>
+                <Nav.Link href="#counsultations" onClick={()=> changeComp('consultation')}>诊断书</Nav.Link>
                 <Nav.Link href="#medicines">药</Nav.Link>
                 <Nav.Link href="#tests">检查</Nav.Link>
             </Nav>
@@ -39,8 +37,8 @@ return(
   <Row>
     <Col sm={2}>sm=2</Col>
     <Col sm={10}>
-
-    <Consultation/>
+    <DynamicComponent comp={comp}/>
+    {/* <Consultation/> */}
     </Col>
   </Row>
 </Container>
