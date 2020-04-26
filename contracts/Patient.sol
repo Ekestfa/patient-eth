@@ -14,14 +14,15 @@ contract Patient{
     mapping(bytes32 => bytes32[]) pnameToConsulArray;
     mapping(address => bytes32[]) paddressToConsulArray;
     mapping(bytes32 => Consultation) consulDateIDToCons;
-    bytes32[] consIDs;
+    bytes32[] private consIDs;
+    bytes[] private consipfsHash;
 
     // Test mapping
     Test t = new Test();
     mapping(bytes32 => uint) private testDateIDToIndex;
     mapping(bytes32 => bytes32[]) pnameToTestArray;
     mapping(address => bytes32[]) paddressToTestArray;
-    bytes32[] testIDs;
+    bytes32[] private testIDs;
 
     event NewConsultationCreated(bytes32 pname, bytes32 consID);
     event NewTestCreated(bytes32 pname, bytes32 testID);
@@ -47,16 +48,16 @@ contract Patient{
      }
 
     // CONSULTATIONS
-    function consultationCreate(bytes32 _pname, bytes32 _consulDateID, bytes memory newPatientIpfs)public returns(bool){
+    function consultationCreate(bytes32 _pname, bytes32 _consulDateID, bytes memory _consipfs)public returns(bool){
         // Create new consultation with ID
-        c.createConsultation(msg.sender, _pname, _consulDateID);
+        c.createConsultation(msg.sender, _pname, _consulDateID,_consipfs);
         consIDs.push(_consulDateID);
+        consipfsHash.push(_consipfs);
         consulDateIDToIndex[_consulDateID] = consIDs.length;
         pnameToConsulArray[_pname] = consIDs;
         paddressToConsulArray[msg.sender] = consIDs;
         consulDateIDToCons[_consulDateID] = c;
         // Consultations hash append to patient ipfs storage
-        updatePatient(newPatientIpfs);
         emit NewConsultationCreated(_pname, _consulDateID);
         return true;
      }
@@ -78,6 +79,10 @@ contract Patient{
      }
     function getConsultationsCount() public view returns (uint){
         return consIDs.length;
+     }
+     
+     function getConsultationIpfsByConsultationID(bytes32 _consulDateID) public view returns(bytes memory){
+        return (consipfsHash[consulDateIDToIndex[_consulDateID]]);
      }
     // TESTS
     function testCreate(bytes32 _pname, bytes32 _testDateID, bytes memory newPatientIpfs)public returns(bool){

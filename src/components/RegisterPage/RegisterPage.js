@@ -24,17 +24,13 @@ import DoctorStorage from '../../abi/DoctorStorage.json'
 const CreatePatientForm = (props) => {
   const INITIAL_STATE = {
     username: "",
-    password: "",
-    fname:"",
-    surname:"",
-    email:"",
     ETHaddress:"",
     // IPFSaddress:""
   }
   // var [ipfsHash,setHash] = useState('');
   const [addre,setAddre] = useState('Press Enable Ethereum!')
   const [checkbox, setCheckbox] = useState(0)
-  const {handleSubmit, handleChange, values, errors} = useForm(submit,INITIAL_STATE,validate);
+  const {handleSubmit, handleChange, values, errors} = useForm(submit,INITIAL_STATE,addre,validate);
   const handleCheckboxChange = (val) => {setCheckbox(val)
     console.log(val)}
   
@@ -137,48 +133,7 @@ return(
         />
         {errors.username && <p>{errors.username}</p>}
       </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input name="password"
-               value={values.password}
-               type="password" 
-               class="form-control" 
-               id="sign-up-password" 
-               required="required"
-               onChange={handleChange}
-        />
-        {errors.password && <p>{errors.password}</p>}
-      </div>
-      <div class="form-group">
-        <label for="name">First Name</label>
-        <input type="text" 
-               name="fname"
-               value={values.fname}
-               class="form-control" 
-               id="sign-up-name"
-               onChange={handleChange}
-        />
-      </div>
-      <div class="form-group">
-        <label for="surname">Surname</label>
-        <input name="surname"
-               value={values.surname}
-               type="text" class="form-control" 
-               id="sign-up-srname"
-               onChange={handleChange}
-        />
-      </div>
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" 
-               value={values.email}
-               name="email" 
-               class="form-control" 
-               id="sign-up-email"
-               onChange={handleChange}
-               
-        />
-      </div>
+
       <ToggleButtonGroup type="radio" name="options" value={checkbox} onChange={handleCheckboxChange}>
         <ToggleButton value={1}>病人</ToggleButton>
         <ToggleButton value={2}>医生</ToggleButton>
@@ -186,7 +141,7 @@ return(
           <p>选择病人或医生</p>
         }
       </ToggleButtonGroup>
-      <p>ETH Address:
+      <div>ETH Address:
         <span class="eth-address"></span>
         <input type="text"
                name="ethaddress" 
@@ -195,7 +150,8 @@ return(
                disabled
                onChange={handleChange}
         />
-      </p>
+        {errors.addre && <p>{errors.addre}</p>}
+      </div>
       <button type="submit" class="btn btn-primary" id="sign-up-button" >Sign Up</button>
     </div>
    

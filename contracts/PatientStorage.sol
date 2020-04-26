@@ -17,7 +17,7 @@ contract PatientStorage {
      patientUnames.push('x');
      ipfsHashes.push('not-available');
    }
-
+  //PATIENT
    function registerPatient(bytes32 patientName, bytes memory ipfsHash) public returns(bool) {
      require(!hasPatient(msg.sender),
             "Sender not authorized.");
@@ -126,8 +126,8 @@ contract PatientStorage {
       return ipfsHashes[patientnameToIndex[patientname]];
     }
   // CONSULTATIONS
-   function consultationCreate(bytes32 _pname, bytes32 _consulDateID, bytes memory newPatientIpfs)public returns(bool){
-      return p.consultationCreate(_pname, _consulDateID, newPatientIpfs);
+   function consultationCreate(bytes32 _pname, bytes32 _consulDateID, bytes memory consulipfs)public returns(bool){
+      return p.consultationCreate(_pname, _consulDateID, consulipfs);
     }
 
    function getConsultationByConsultationIndex(bytes32 patientName, uint _index) public view returns(bytes32 consulID){
@@ -145,9 +145,13 @@ contract PatientStorage {
    function getConsultationsByPatientAddress(address patientAddress) public view returns(bytes32[] memory){
       return patientAddressToPatient[patientAddress].getConsultationsByPatientAddress(patientAddress);
     }
+
+   function getConsultationIpfsByConsultationID(bytes32 _consulDateID) public view returns (bytes memory) {
+      return p.getConsultationIpfsByConsultationID(_consulDateID);
+   }
   // TESTS
    function testCreate(bytes32 _pname, bytes32 _testDateID, bytes memory newPatientIpfs)public returns(bool){
-      return patientnameToPatient[_pname].testCreate(_pname,_testDateID,newPatientIpfs);
+      return p.testCreate(_pname,_testDateID,newPatientIpfs);
     }
 
    function getTestByTestIndex(bytes32 patientName, uint _index) public view returns(bytes32 testID){

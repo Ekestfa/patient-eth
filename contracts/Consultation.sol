@@ -4,6 +4,7 @@ contract Consultation {
   address private addr;
   bytes32 private patientuname;
   bytes32 private consulDateID;
+  bytes private consipfsHash;
   bytes32[] private medicines;
   mapping(bytes32 => uint) private medicinenameToIndex;
 
@@ -12,13 +13,15 @@ contract Consultation {
     addr = msg.sender;
     patientuname = 'x';
     consulDateID = 'x';
+    consipfsHash = 'x';
     medicines.push('not-available');
    }
 
-  function createConsultation(address _addr, bytes32 _patientuname, bytes32 _consulDateID) public {
+  function createConsultation(address _addr, bytes32 _patientuname, bytes32 _consulDateID, bytes memory _consipfsHash) public {
     addr = _addr;
     patientuname = _patientuname;
     consulDateID = _consulDateID;
+    consipfsHash = _consipfsHash;
   }
 
   function saveMedicineForPatientUse(bytes32 mname) public returns(bool){

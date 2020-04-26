@@ -74,8 +74,8 @@ const LoginForm = (props) => {
                     if(usnameByte32 === vv){
                       console.log("Patient login:", true)
                       // if true Link to account personal page
-                      localStorage.setItem('userlogined',values.username)
-                      console.log(localStorage.getItem('userlogined'))
+                      localStorage.setItem('p',values.username,)
+                      console.log(localStorage.getItem('p'))
                       auth.login( () =>{
                         props.history.push('/home')
                       });
@@ -91,6 +91,10 @@ const LoginForm = (props) => {
                   contractInstance.getDoctorNameByAddress(addre).then(function(dd){
                     if(usnameByte32 === dd){
                       console.log("Doctor login:",true)
+                      localStorage.setItem('d',values.username)
+                      // auth.login( () =>{
+                      //   props.history.push('/home')
+                      // });
                     }
                   })
                 }
@@ -125,10 +129,6 @@ const LoginForm = (props) => {
                 {errors.addre && <p>{errors.addre}</p>}
                 <div className="form-group">
                     <button type={submit} className="btn btn-primary">Login</button>
-                    {/* {loggingIn &&
-                        <img src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
-                    } */}
-                    
                 </div>
             </form>
             <Link to="/register" className="btn btn-link">Register</Link>

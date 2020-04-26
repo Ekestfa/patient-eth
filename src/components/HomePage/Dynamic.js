@@ -1,10 +1,14 @@
 import React from "react";
 import Consultation from '../Consultation/Consultation';
 import Blank from './Blank'
+import TestInfo from '../TestInfo/TestInfo'
+import Medicine from '../Medicine/Medicine'
 
 const components = {
   consultation: Consultation,//...
-  blank: Blank
+  blank: Blank,
+  testinfo:TestInfo,
+  medicine:Medicine
 };
 
 function DynamicComponent(props) {

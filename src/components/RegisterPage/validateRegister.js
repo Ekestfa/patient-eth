@@ -1,4 +1,4 @@
-function validateRegister(values){
+function validateRegister(values,addre){
 let errors = {}
 // username
     // the string to be more than 0 chars
@@ -13,11 +13,14 @@ if(!values.username){
 
 // password
     // the string to be more than 0 chars
-if(!values.password){
-    errors.password = "Password is required."
-}else if(values.password < 10){
-    errors.password = "Password needs to be more than 10 characters"
-}
+    if(!values.ETHaddress){
+        if(addre==='Press Enable Ethereum!'){
+            errors.addre = "Ethereum address is required."
+        } 
+    }
+// else if(values.password < 10){
+//     errors.password = "Password needs to be more than 10 characters"
+// }
     return errors;
 }
 export default validateRegister;

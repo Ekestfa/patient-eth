@@ -1,6 +1,6 @@
 pragma solidity >=0.5.16;
 
-contract Medicine{
+contract Medicine {
     address private addr;
     bytes32 private medicineName;
     bytes private medIpfsHash;
