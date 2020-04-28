@@ -10,6 +10,7 @@ import contract from 'truffle-contract';
 import {ethers} from 'ethers';
 import PatientStorage from '../../abi/PatientStorage.json';
 import DoctorStorage from '../../abi/DoctorStorage.json'
+import {patientContractCreation} from '../../helpers/contract'
 
   const web3 = new Web3(Web3.givenProvider || "http://localhost:7545" );
   const ethereum = window.ethereum;
@@ -56,8 +57,9 @@ const CreatePatientForm = (props) => {
           patientStorage.deployed().then(function(contractInstance){
             contractInstance.registerPatient(usnameByte32, Buffer.from(result[0].hash),{gas: 3000000 ,from: ethereum.selectedAddress}).then(function(success){
               if(success){
-              console.log("created patient on ethereum!");
-              
+                console.log("created patient on ethereum!");
+                console.log("CREATING CONSULTATION");
+                patientContractCreation(addre,usnameByte32);
               }else{
                 console.log("error creating patient on ethereum!");
               }

@@ -1,29 +1,32 @@
-import React,{useState, render} from 'react';
+import React,{useState} from 'react';
 import {default as Web3} from 'web3';
 import contract from 'truffle-contract';
 import {ethers} from 'ethers';
-import PatientStorage from "../../abi/PatientStorage.json"
 import ipfs from '../../ipfs';
 import { Card } from 'react-bootstrap';
+import PatientStorage from "../../abi/PatientStorage.json"
+const Patient = require('../../abi/Patient.json');
 
 const web3 = new Web3(Web3.givenProvider || "http://localhost:7545" );
 const ethereum = window.ethereum;
 
-
 const patientstorage = contract(PatientStorage);
 patientstorage.setProvider(web3.currentProvider);
-
-
-
-// var valuesBuffer = Buffer.from(patientname);
-var patientaddress=ethereum.selectedAddress;
-let accounts = web3.eth.getAccounts();
-
-
 
 const Medicine = () => {
 
 const [consul, setConsul] = useState([{}])
+
+function IPFSREADER(element){
+    let convertedIPFSaddress = ethers.utils.toUtf8String(element)
+    ipfs.cat(convertedIPFSaddress).then(function(result){
+        console.log('ipfs.cat result:', result)
+        let cons = result.toString('utf8')
+        const parsed = JSON.parse(cons);
+        console.log("cons:",parsed)
+        setConsul(parsed)
+    })
+}
 
 async function submit()
  {
@@ -41,48 +44,33 @@ async function submit()
     //     })
     // })
 
-    // console.log(med)
 
     patientstorage.deployed().then(function(contractInstance){
-        contractInstance.getConsultationsByPatientName(usnameByte32)
-        .then(function(result){
-            // console.log(result)
-            // console.log(result.length)
-            // result.forEach(element => {
-            //     console.log(element)
-            //     getConsultation(element)
-                
-            // });
-            for(var i=0; i<result.length; i++){
-                console.log(ethers.utils.toUtf8String(result[i]))
-                getConsultation(result[i]);
-            }
-            
-            // console.log(obj)
+        contractInstance.getPatientContractAddresses().then(function(result){
+            console.log(result)
         })
     })
-}
 
-function getConsultation(element){
     patientstorage.deployed().then(function(contractInstance){
-        contractInstance.getConsultationIpfsByConsultationID(element)
-        .then(function(v){
-            // console.log(v)
-            let b = ethers.utils.toUtf8String(v)
-            // console.log("consulhash:",b)
-            ipfs.cat(b).then(function(v){
-                console.log(v)
-                let cons = v.toString('utf8')
-                const parsed = JSON.parse(cons);
-                console.log("cons:",parsed)
+        contractInstance.getPatientContractAddressByPatientName(us).then(function(result){
+            console.log(result)
+        })
+    })
 
-                setConsul(parsed)
+    await patientstorage.deployed().then(function(contractInstance){
+        contractInstance.getPatientContractAddressByPatientName(usnameByte32).then(function(result){
+            const PatientContract = new web3.eth.Contract(Patient.abi,result)
+            PatientContract.methods.getConsultationsIpfsList().call({from: ethereum.selectedAddress}).then(function(result){
+                console.log("Consul IPFSes:", result)
+                for(var i=0; i<result.length; i++){
+                    console.log(ethers.utils.toUtf8String(result[i]))
+                    IPFSREADER(result[i]);
+                }
             })
-        })
+        });
     })
-    
-}
 
+}//submit
 
     return (
         <div>

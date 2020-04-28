@@ -1,61 +1,60 @@
+import {useState} from 'react';
 import {default as Web3} from 'web3';
 import PatientStorage from "../abi/PatientStorage.json"
 import contract from 'truffle-contract';
 
-const Consultation = require('../abi/Consultation.json')
+
+const Patient = require('../abi/Patient.json');
 const web3 = new Web3(Web3.givenProvider || "http://localhost:7545" );
-const ConsultationContract = new web3.eth.Contract(Consultation.abi)
+const PatientContract = new web3.eth.Contract(Patient.abi);
 
 const patientstorage = contract(PatientStorage);
 patientstorage.setProvider(web3.currentProvider);
 
 export{
-    consultationContractCreation,
     getPatientByPatientName,
-    getConsultationAddress,
-    createConsultation
+    patientContractCreation,
+    consultationCreate,
 }
 
-async function consultationContractCreation(patientAddress, patientuname, consulDateID, consipfsHash){
-    const gas = await ConsultationContract.deploy({
-        data: Consultation.bytecode,
-        arguments: [patientAddress,patientuname,consulDateID,consipfsHash]    
-    }).estimateGas()
+async function patientContractCreation(patientAddress, patientuname){
+  const gas = await PatientContract.deploy({
+    data: Patient.bytecode,
+    arguments: [patientAddress,patientuname]
+}).estimateGas()
 
-    ConsultationContract.deploy({
-        data: Consultation.bytecode,
-        arguments: [patientAddress,patientuname,consulDateID,consipfsHash]
-      }).send({
-        from: patientAddress,
-        gas: gas,
-      })
-      .on('error', (error) => {
-        console.log(error)
-      })
-      .on('transactionHash', (transactionHash) => {
-        console.log(transactionHash)
-      })
-      .on('receipt', (receipt) => {
-         // receipt will contain deployed contract address
-         console.log(receipt)
-        //  console.log(receipt.contractAddress)
-      })
-      .on('confirmation', (confirmationNumber, receipt) => {
-        console.log(receipt)
-      })
-      .on('receipt', (receipt) => {
-        // receipt will contain deployed contract address
-      }).then(function(newContractInstance){
-        // console.log(newContractInstance.options.address)
-        patientstorage.deployed().then(function(contractInstance){
-          console.log("patientstorage, consul creation")
-          console.log(newContractInstance.options.address)
-          contractInstance.consAddressSave(newContractInstance.options.address,{from:patientAddress}).then(function(result){
-            console.log("added:",result)
-          })
-        })
-      })
-  }
+  PatientContract.deploy({
+    data: Patient.bytecode,
+    arguments: [patientAddress,patientuname]
+  }).send({
+    from: patientAddress,
+    gas: gas,
+  })
+  .on('error', (error) => {
+    console.log(error)
+  })
+  .on('transactionHash', (transactionHash) => {
+    console.log(transactionHash)
+  })
+  .on('receipt', (receipt) => {
+    // receipt will contain deployed contract address
+    console.log(receipt)
+    //  console.log(receipt.contractAddress)
+  })
+  .on('confirmation', (confirmationNumber, receipt) => {
+    console.log(receipt)
+  })
+  .on('receipt', (receipt) => {
+    // receipt will contain deployed contract address
+  }).then(function(newContractInstance){
+    patientstorage.deployed().then(function(contractInstance){
+      contractInstance.savePatientContractAddress(newContractInstance.options.address,{from:patientAddress}).then(function(result){
+        console.log("Patient Storage added Patient contract:",result)
+      }) 
+    })
+  })
+}
+
 
 function getPatientByPatientName(usnameByte32){
     patientstorage.deployed().then(function(contractInstance){
@@ -66,19 +65,31 @@ function getPatientByPatientName(usnameByte32){
     })
   }
 
-function getConsultationAddress(patientAddress){
-  // const c = new web3.eth.Contract(Consultation.abi)
-  // let instance = c.at(patientAddress)
-  // instance.getConsultationAddress();
+
+function consultationCreate(patientName, patientAddress, consID, consIPFS){
+  patientstorage.deployed().then(function(contractInstance){
+    contractInstance.getPatientContractAddressByPatientName(patientName).then(function(result){
+      console.log(result)
+        const PatientContract = new web3.eth.Contract(Patient.abi,result)
+        PatientContract.methods.consultationCreate(consID,consIPFS).send({from: patientAddress, to:PatientContract}).then(function(result){
+            console.log("Creation of consultation:", result);
+            if(result){
+              return true;
+            }else return false;
+        })
+    });
+ })
 }
 
-function createConsultation(patientAddress, patientuname, consulDateID, consipfsHash){
-  consultationContractCreation(patientAddress, patientuname, consulDateID, consipfsHash).then(function(result){
-    console.log(result)
-    patientstorage.deployed().then(function(contractInstance){
-      contractInstance.consultationCreate(patientuname, consulDateID, consipfsHash)
-    })
-  })
+async function getConsultationsIpfsList(patientName, patientAddress){
+  await patientstorage.deployed().then(function(contractInstance){
+    contractInstance.getPatientContractAddressByPatientName(patientName).then(function(result){
+        const PatientContract = new web3.eth.Contract(Patient.abi,result)
+        PatientContract.methods.getConsultationsIpfsList().call({from: patientAddress}).then(function(result){
+            console.log("Consul IPFSes:", result);
+            return result;
+        })
+    });
+ })
 }
-
 

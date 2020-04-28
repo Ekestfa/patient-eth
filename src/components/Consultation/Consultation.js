@@ -6,7 +6,7 @@ import contract from 'truffle-contract';
 import {ethers} from 'ethers';
 import PatientStorage from "../../abi/PatientStorage.json"
 import ipfs from '../../ipfs';
-
+import {consultationCreate} from '../../helpers/contract'
 
 const web3 = new Web3(Web3.givenProvider || "http://localhost:7545" );
 const ethereum = window.ethereum;
@@ -15,8 +15,8 @@ const ethereum = window.ethereum;
 const patientstorage = contract(PatientStorage);
 patientstorage.setProvider(web3.currentProvider);
 
-var patientname = 'patient1';
-var patientaddress=ethereum.selectedAddress;
+
+var patientaddress = ethereum.selectedAddress;
 let accounts = web3.eth.getAccounts();
 
 const Consultation = (props) => {
@@ -28,16 +28,18 @@ const consultationInfo = {
     doctorName:'',
     addr:'',
     disease:'',
-    medicine:[{
-        medicineName:'',
-        medicineUsageTimes:'',
-        medicineUsageInfo:'',
-        medicineFinishTime:''
-    }]
+    medicine:''
+    // medicine:[{
+    //     medicineName:'',
+    //     medicineUsageTimes:'',
+    //     medicineUsageInfo:'',
+    //     medicineFinishTime:''
+    // }]
 }
 const {handleSubmit, handleChange, values} = useForm(submit,consultationInfo);
 
 async function submit() {
+    var patientname = localStorage.getItem('p');
     console.log(values)
     var usnameByte32 = ethers.utils.formatBytes32String(patientname);
     var consuldateid = ethers.utils.formatBytes32String(values.doctorName)//values.date+values.time)
@@ -54,17 +56,7 @@ async function submit() {
         console.log('usname:', usnameByte32)
         console.log('consuldate:', consuldateid)
         console.log('consultation IPFS hash:',result[0].hash)
-        patientstorage.deployed().then(function(contractInstance){
-            contractInstance.consultationCreate(usnameByte32, consuldateid, Buffer.from(result[0].hash),{gas:3000000, from: ethereum.selectedAddress})
-            .then(function(success){
-                if(success){
-                    console.log("created consultation on patient!");
-                    
-                    }else{
-                      console.log("error creating consultation on ethereum!");
-                }
-            })
-        })
+        consultationCreate(usnameByte32, ethereum.selectedAddress, consuldateid, Buffer.from(result[0].hash))
     })
 }
 
