@@ -14,7 +14,7 @@ const patientstorage = contract(PatientStorage);
 patientstorage.setProvider(web3.currentProvider);
 
 
-var patientname = localStorage.getItem('p');
+
 // var valuesBuffer = Buffer.from(patientname);
 var patientaddress=ethereum.selectedAddress;
 let accounts = web3.eth.getAccounts();
@@ -27,6 +27,7 @@ const [consul, setConsul] = useState([{}])
 
 async function submit()
  {
+    var patientname = localStorage.getItem('p');
     var usnameByte32 = ethers.utils.formatBytes32String(patientname);
     // patientstorage.deployed().then(function(contractInstance){
     //     contractInstance.getIpfsHashByPatientName(usnameByte32).then(function(resultIPFS){
@@ -52,10 +53,11 @@ async function submit()
             //     getConsultation(element)
                 
             // });
-            console.log(ethers.utils.toUtf8String(result[0]))
-            console.log(ethers.utils.toUtf8String(result[1]))
-            console.log(ethers.utils.toUtf8String(result[2]))
-            getConsultation(result[0]);
+            for(var i=0; i<result.length; i++){
+                console.log(ethers.utils.toUtf8String(result[i]))
+                getConsultation(result[i]);
+            }
+            
             // console.log(obj)
         })
     })

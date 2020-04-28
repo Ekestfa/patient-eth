@@ -32,8 +32,6 @@ contract Patient{
         addr = msg.sender;
         patientuname = 'x';
         IpfsHash = 'x';
-        consIDs.push('not-available');
-        testIDs.push('not-available');
      }
 
     function createPatient(bytes32 _patientuname,bytes memory _IpfsHash) public {
@@ -52,8 +50,8 @@ contract Patient{
         // Create new consultation with ID
         c.createConsultation(msg.sender, _pname, _consulDateID,_consipfs);
         consIDs.push(_consulDateID);
-        consipfsHash.push(_consipfs);
-        consulDateIDToIndex[_consulDateID] = consIDs.length;
+            consipfsHash.push(_consipfs);
+        consulDateIDToIndex[_consulDateID] = consIDs.length - 1;
         pnameToConsulArray[_pname] = consIDs;
         paddressToConsulArray[msg.sender] = consIDs;
         consulDateIDToCons[_consulDateID] = c;
@@ -81,7 +79,7 @@ contract Patient{
         return consIDs.length;
      }
      
-     function getConsultationIpfsByConsultationID(bytes32 _consulDateID) public view returns(bytes memory){
+    function getConsultationIpfsByConsultationID(bytes32 _consulDateID) public view returns(bytes memory){
         return (consipfsHash[consulDateIDToIndex[_consulDateID]]);
      }
     // TESTS

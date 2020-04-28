@@ -40,7 +40,7 @@ const {handleSubmit, handleChange, values} = useForm(submit,consultationInfo);
 async function submit() {
     console.log(values)
     var usnameByte32 = ethers.utils.formatBytes32String(patientname);
-    var consuldateid = ethers.utils.formatBytes32String(values.date+values.time)
+    var consuldateid = ethers.utils.formatBytes32String(values.doctorName)//values.date+values.time)
     var valuesBuffer = Buffer.from(JSON.stringify(values));
 
     web3.eth.defaultAccount = accounts[0]

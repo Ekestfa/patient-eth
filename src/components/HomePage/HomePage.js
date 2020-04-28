@@ -29,7 +29,7 @@ return(
                 <FormControl type="text" placeholder="Search" className="mr-sm-2" fixed="center" />
                 <Button variant="outline-info">Search</Button>
             </Form>
-            <label>{localStorage.getItem("userlogined")}</label>
+            <label>{localStorage.getItem("p")}</label>
             <Button variant="outline-info" onClick={logout}>退出</Button>
         </Navbar>
     </Col>
