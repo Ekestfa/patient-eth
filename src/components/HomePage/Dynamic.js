@@ -1,13 +1,13 @@
 import React from "react";
 import Consultation from '../Consultation/Consultation';
 import Blank from './Blank'
-import TestInfo from '../TestInfo/TestInfo'
+import TestPage from '../TestPage/TestPage'
 import Medicine from '../Medicine/Medicine'
 
 const components = {
   consultation: Consultation,//...
   blank: Blank,
-  testinfo:TestInfo,
+  testpage:TestPage,
   medicine:Medicine
 };
 

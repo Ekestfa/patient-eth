@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState, useEffect} from 'react';
 import {default as Web3} from 'web3';
 import contract from 'truffle-contract';
 import {ethers} from 'ethers';
@@ -13,18 +13,19 @@ const ethereum = window.ethereum;
 const patientstorage = contract(PatientStorage);
 patientstorage.setProvider(web3.currentProvider);
 
-const Medicine = () => {
+const ConsulList = () => {
+const [consul, setConsul] = useState({})
+const [count, setCount] = useState(0);
+const [addresses, setAdresses] = useState([])
 
-const [consul, setConsul] = useState([{}])
-
-function IPFSREADER(element){
+async function IPFSREADER(element){
     let convertedIPFSaddress = ethers.utils.toUtf8String(element)
-    ipfs.cat(convertedIPFSaddress).then(function(result){
-        console.log('ipfs.cat result:', result)
+    await ipfs.cat(convertedIPFSaddress).then(function(result){
         let cons = result.toString('utf8')
         const parsed = JSON.parse(cons);
-        console.log("cons:",parsed)
+        // console.log("cons:",parsed)
         setConsul(parsed)
+        // console.log("cons:",consul)
     })
 }
 
@@ -44,6 +45,16 @@ async function submit()
     //     })
     // })
 
+    patientstorage.deployed().then(function(contractInstance){
+        contractInstance.getPatientContractAddressByPatientName(usnameByte32).then(function(result){
+            const PatientContract = new web3.eth.Contract(Patient.abi,result)
+            PatientContract.methods.getConsultationsCount().call({from: ethereum.selectedAddress})
+                .then(function(result){
+                    console.log("count:", result)
+                    setCount(result);
+                })
+        })
+    })
 
     patientstorage.deployed().then(function(contractInstance){
         contractInstance.getPatientContractAddresses().then(function(result){
@@ -57,41 +68,57 @@ async function submit()
         })
     })
 
-    await patientstorage.deployed().then(function(contractInstance){
+    patientstorage.deployed().then(function(contractInstance){
         contractInstance.getPatientContractAddressByPatientName(usnameByte32).then(function(result){
             const PatientContract = new web3.eth.Contract(Patient.abi,result)
             PatientContract.methods.getConsultationsIpfsList().call({from: ethereum.selectedAddress}).then(function(result){
                 console.log("Consul IPFSes:", result)
+                setAdresses(result); // Setted all ipfs to array (need, ethers.utils.toUtf8String)
                 for(var i=0; i<result.length; i++){
-                    console.log(ethers.utils.toUtf8String(result[i]))
+                    console.log("ethersUtil:",ethers.utils.toUtf8String(result[i]))
                     IPFSREADER(result[i]);
+                    console.log("reading:",result[i])
                 }
             })
         });
     })
-
+    // console.log(consul)
 }//submit
+
+
+// useEffect(() => {
+//     addresses.forEach(element => {
+//         console.log("element:",element)
+//         IPFSREADER(element)
+//     });
+//     console.log('consul:',consul)
+// },[addresses],[consul]);
+
+useEffect(()=>{
+    console.log("cons:",consul)
+},[consul])
 
     return (
         <div>
-        <button onClick={submit}>获取数据</button>
-            <Card bg="dark">
-                <Card.Header>{consul.date} {consul.time}</Card.Header>
-                <Card.Body>
-                    <blockquote className="blockquote mb-0">
-                    <p>{' '}Doctor:{consul.doctorName} </p>
-                    <p>{' '}Address:{consul.addr}{' '}</p>
-                    <p>{' '}Disease:{consul.disease}{' '}</p>
-                    <p>{' '}medicine:{consul.medicine}{' '}</p>
-                    <footer className="blockquote-footer">
-                        Someone famous in <cite title="Source Title">Source Title</cite>
-                        
-                    </footer>
-                    </blockquote>
-                </Card.Body>
-            </Card> 
-            </div>
+        <button onClick={submit}>获取数据</button> 
+        <Card bg="dark">
+        <Card.Header>{consul.date} {consul.time}</Card.Header>
+        <Card.Body>
+            <blockquote className="blockquote mb-0">
+            <p>{' '}Doctor:{consul.doctorName} </p>
+            <p>{' '}Address:{consul.addr}{' '}</p>
+            <p>{' '}Disease:{consul.disease}{' '}</p>
+            <p>{' '}medicine:{consul.medicine}{' '}</p>
+            <footer className="blockquote-footer">
+                Someone famous in <cite title="Source Title">Source Title</cite>
+                
+            </footer>
+            </blockquote>
+        </Card.Body>
+        </Card>
+            
+        </div>
         );
 }
 
-export default Medicine;
+export default ConsulList;

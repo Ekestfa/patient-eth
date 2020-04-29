@@ -1,22 +1,22 @@
 import React, {useState} from 'react';
 import {Nav,Container,Row,Col} from 'react-bootstrap';
-import DynamicComponent from './DynamicCons'
+import DynamicComponent from './DynamicTest'
 
 
-const Consultation = (props) => {
+const TestPage = (props) => {
 
 // Change components' state
-const [comp, changeComp] = useState('Blank');
+const [comp, changeComp] = useState('blanktest');
 
     return (
     <Container>
         <Row>
         <Nav  bg="dark" variant="dark" >
             <Nav.Item>
-                <Nav.Link onClick={()=> changeComp('CreateNewConsulComponent')} href="#consultations#new">新建</Nav.Link>
+                <Nav.Link onClick={()=> changeComp('newtest')} href="#tests#new">新建</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-                <Nav.Link onClick={()=> changeComp('ConsulList')} href="#consultations#list">列出历史</Nav.Link>
+                <Nav.Link onClick={()=> changeComp('testlist')} href="#tests#list">列出历史</Nav.Link>
             </Nav.Item>
             </Nav>
             
@@ -29,4 +29,4 @@ const [comp, changeComp] = useState('Blank');
     </Container>
     );
 }
-export default Consultation;
+export default TestPage;

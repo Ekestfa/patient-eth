@@ -6,41 +6,39 @@ import contract from 'truffle-contract';
 import {ethers} from 'ethers';
 import PatientStorage from "../../abi/PatientStorage.json"
 import ipfs from '../../ipfs';
+import {testCreate} from '../../helpers/contract'
 
 
 const web3 = new Web3(Web3.givenProvider || "http://localhost:7545" );
 const ethereum = window.ethereum;
 
-
 const patientstorage = contract(PatientStorage);
 patientstorage.setProvider(web3.currentProvider);
 
-var patientname = 'patient1';
-var patientaddress=ethereum.selectedAddress;
-let accounts = web3.eth.getAccounts();
 
-const TestInfo = (props) => {
+
+const NewTest = (props) => {
 
 const TestInfo = {
     dateID:"",
     date:'',
     time:'',
     doctorName:'',
-    testName:'',
-    type:'',
-    addr:'',
+    testname:'',
+    testtype:'',
+    address:'',
     result:''
 }
 const {handleSubmit, handleChange, values} = useTestForm(submit,TestInfo);
 
 async function submit() {
+    var patientname = localStorage.getItem('p');
+
     console.log('submitted')
     console.log(values)
     var usnameByte32 = ethers.utils.formatBytes32String(patientname);
     var testdateid = ethers.utils.formatBytes32String(values.date+values.time)
     var valuesBuffer = Buffer.from(JSON.stringify(values));
-
-    web3.eth.defaultAccount = accounts[0]
 
     await ipfs.add(valuesBuffer,(error,result) => {
         if(error){
@@ -51,17 +49,7 @@ async function submit() {
         console.log('usname:', usnameByte32)
         console.log('test:', testdateid)
         console.log('test IPFS hash:',result[0].hash)
-        patientstorage.deployed().then(function(contractInstance){
-            contractInstance.testCreate(usnameByte32, testdateid, Buffer.from(result[0].hash),{gas:3000000, from: ethereum.selectedAddress})
-            .then(function(success){
-                if(success){
-                    console.log("created test on patient!");
-                    
-                    }else{
-                      console.log("error creating test on ethereum!");
-                }
-            })
-        })
+        testCreate(usnameByte32, ethereum.selectedAddress, testdateid, Buffer.from(result[0].hash))
     })
 }
 
@@ -85,15 +73,15 @@ async function submit() {
         </Form.Group>
         <Form.Group controlId="Test.Name">
             <Form.Label>检查名</Form.Label>
-            <Form.Control as="textarea" rows="2" name="testname" defaultValue={values.testName} placeholder="检查名" onChange={handleChange}/>
+            <Form.Control as="textarea" rows="2" name="testname" defaultValue={values.testname} placeholder="检查名" onChange={handleChange}/>
         </Form.Group>
         <Form.Group controlId="Test.type">
             <Form.Label>检查类型</Form.Label>
-            <Form.Control as="textarea" rows="2" name="testtype" defaultValue={values.type} placeholder="检查类型" onChange={handleChange}/>
+            <Form.Control as="textarea" rows="2" name="testtype" defaultValue={values.testtype} placeholder="检查类型" onChange={handleChange}/>
         </Form.Group>
         <Form.Group controlId="Test.address">
             <Form.Label>检查地址</Form.Label>
-            <Form.Control as="textarea" rows="2" name="address" defaultValue={values.addr} placeholder="检查地址" onChange={handleChange}/>
+            <Form.Control as="textarea" rows="2" name="address" defaultValue={values.address} placeholder="检查地址" onChange={handleChange}/>
         </Form.Group>
         <Form.Group controlId="Test.result">
             <Form.Label>检查结果</Form.Label>
@@ -108,4 +96,4 @@ async function submit() {
         
     );
 }
-export default TestInfo;
+export default NewTest;

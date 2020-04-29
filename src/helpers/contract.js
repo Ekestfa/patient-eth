@@ -15,6 +15,7 @@ export{
     getPatientByPatientName,
     patientContractCreation,
     consultationCreate,
+    testCreate
 }
 
 async function patientContractCreation(patientAddress, patientuname){
@@ -88,6 +89,21 @@ async function getConsultationsIpfsList(patientName, patientAddress){
         PatientContract.methods.getConsultationsIpfsList().call({from: patientAddress}).then(function(result){
             console.log("Consul IPFSes:", result);
             return result;
+        })
+    });
+ })
+}
+
+function testCreate(patientName, patientAddress, testID, testIPFS){
+  patientstorage.deployed().then(function(contractInstance){
+    contractInstance.getPatientContractAddressByPatientName(patientName).then(function(result){
+      console.log(result)
+        const PatientContract = new web3.eth.Contract(Patient.abi,result)
+        PatientContract.methods.testCreate(testID, testIPFS).send({from: patientAddress, to:PatientContract}).then(function(result){
+            console.log("Creation of consultation:", result);
+            if(result){
+              return true;
+            }else return false;
         })
     });
  })

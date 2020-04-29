@@ -21,9 +21,9 @@ return(
     <Navbar className="navbar navbar-default" bg="dark" variant="dark" fixed="top">
         <Navbar.Brand href="#" onClick={()=> changeComp('blank')}>Home</Navbar.Brand>
             <Nav className="mr-auto">
-                <Nav.Link href="#counsultations" onClick={()=> changeComp('consultation')}>诊断书</Nav.Link>
+                <Nav.Link href="#consultations" onClick={()=> changeComp('consultation')}>诊断书</Nav.Link>
                 <Nav.Link href="#medicines" onClick={()=> changeComp('medicine')}>药</Nav.Link>
-                <Nav.Link href="#tests" onClick={()=> changeComp('testinfo')}>检查</Nav.Link>
+                <Nav.Link href="#tests" onClick={()=> changeComp('testpage')}>检查</Nav.Link>
             </Nav>
             <Form inline>
                 <FormControl type="text" placeholder="Search" className="mr-sm-2" fixed="center" />
@@ -35,10 +35,9 @@ return(
     </Col>
   </Row>
   <Row>
-    <Col sm={2}>sm=2</Col>
-    <Col sm={10}>
-    <DynamicComponent comp={comp}/>
-    {/* <Consultation/> */}
+    {/* <Col sm={2}>sm=2</Col> */}
+    <Col lg={12}>
+      <DynamicComponent comp={comp}/>
     </Col>
   </Row>
 </Container>
