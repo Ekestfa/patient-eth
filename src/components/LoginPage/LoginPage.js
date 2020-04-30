@@ -59,6 +59,7 @@ const LoginForm = (props) => {
         async function submit() {
           //  setAuth(authe.isLoading{true})
             // var valuesBuffer = Buffer.from(JSON.stringify(values)); //values.ETHaddress + values.username + ipfsHash
+            console.log()
             var usnameByte32 = ethers.utils.formatBytes32String(values.username);
 
             web3.eth.defaultAccount = accounts[0]
@@ -74,7 +75,7 @@ const LoginForm = (props) => {
                     if(usnameByte32 === vv){
                       console.log("Patient login:", true)
                       // if true Link to account personal page
-                      localStorage.setItem('p',values.username,)
+                      localStorage.setItem('p',values.username)
                       console.log(localStorage.getItem('p'))
                       auth.login( () =>{
                         props.history.push('/home')
@@ -92,9 +93,9 @@ const LoginForm = (props) => {
                     if(usnameByte32 === dd){
                       console.log("Doctor login:",true)
                       localStorage.setItem('d',values.username)
-                      // auth.login( () =>{
-                      //   props.history.push('/home')
-                      // });
+                      auth.login( () =>{
+                        props.history.push('/doctorpage')
+                      });
                     }
                   })
                 }

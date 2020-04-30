@@ -1,5 +1,4 @@
 pragma solidity >=0.5.16;
-import "./Doctor.sol";
 
 contract DoctorStorage {
    mapping(address => uint) private addressToIndex;
@@ -7,7 +6,6 @@ contract DoctorStorage {
    address[] private addresses;
    bytes32[] private doctorUnames;
    bytes[] private ipfsHashes;
-   Doctor p = new Doctor();
 
    constructor() public {
       addresses.push(msg.sender);
@@ -19,7 +17,6 @@ contract DoctorStorage {
             "Sender not authorized.");
      require(!DoctorNameTaken(DoctorName),
             "Doctor name has been taken.");
-      p.createDoctor(DoctorName, ipfsHash);
       addresses.push(msg.sender);
       doctorUnames.push(DoctorName);
       ipfsHashes.push(ipfsHash);
@@ -39,7 +36,7 @@ contract DoctorStorage {
    function updateDoctor(bytes memory ipfsHash) public returns(bool){
       require(!hasDoctor(msg.sender),
             "Sender not authorized.");
-      p.updateDoctor(ipfsHash);
+      ipfsHashes[addressToIndex[msg.sender]] = ipfsHash;
       return true;
    }
 

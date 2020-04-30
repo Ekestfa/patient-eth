@@ -108,4 +108,3 @@ function testCreate(patientName, patientAddress, testID, testIPFS){
     });
  })
 }
-

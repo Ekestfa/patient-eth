@@ -29,7 +29,6 @@ contract PatientStorage {
     return patientContractAddress;
   }
 
-  //PATIENT
    function registerPatient(bytes32 patientName, bytes memory ipfsHash) public returns(bool) {
      require(!hasPatient(msg.sender),
             "Sender not authorized.");
@@ -42,6 +41,13 @@ contract PatientStorage {
       patientnameToIndex[patientName] = addresses.length - 1;
       return true;
     }
+
+   function updatePatient(bytes memory ipfsHash) public returns(bool){
+      require(!hasPatient(msg.sender),
+            "Sender not authorized.");
+      ipfsHashes[addressToIndex[msg.sender]] = ipfsHash;
+      return true;
+   }
 
    function hasPatient(address _patientAdresses) public view returns(bool) {
       return (addressToIndex[_patientAdresses] > 0 || _patientAdresses == addresses[0]);
@@ -126,67 +132,4 @@ contract PatientStorage {
             "Can't find the patient!");
       return ipfsHashes[patientnameToIndex[patientname]];
     }
-  // // CONSULTATIONS
-  //  function consultationCreate(bytes32 _pname, bytes32 _consulDateID, bytes memory consulipfs)public returns(bool){
-  //     return p.consultationCreate(_pname, _consulDateID, consulipfs);
-  //   }
-
-  //  function getConsultationByConsultationIndex(bytes32 patientName, uint _index) public view returns(bytes32 consulID){
-  //     return p.getConsultationByConsultationIndex(_index);
-  //   }
-  //  function getConsultationIndexByConsultationID(bytes32 patientName, bytes32 _consulDateID) public view returns(uint){
-  //     return p.getConsultationIndexByConsultationID(_consulDateID);
-  //   }
-
-  //  function getConsultationsByPatientName(bytes32 _pname) public view returns(bytes32[] memory){
-  //     require(hasPatient(getAddressByIndex(patientnameToIndex[_pname])),"Patient hasn't been found.");
-  //     return p.getConsultationsByPatientName(_pname);
-  //   }
-
-  //  function getConsultationsByPatientAddress(address patientAddress) public view returns(bytes32[] memory){
-  //     return patientAddressToPatient[patientAddress].getConsultationsByPatientAddress(patientAddress);
-  //   }
-
-  //  function getConsultationIpfsByConsultationID(bytes32 _consulDateID) public view returns (bytes memory) {
-  //     return p.getConsultationIpfsByConsultationID(_consulDateID);
-  //  }
-  // // TESTS
-  //  function testCreate(bytes32 _pname, bytes32 _testDateID, bytes memory newPatientIpfs)public returns(bool){
-  //     return p.testCreate(_pname,_testDateID,newPatientIpfs);
-  //   }
-
-  //  function getTestByTestIndex(bytes32 patientName, uint _index) public view returns(bytes32 testID){
-  //     return patientnameToPatient[patientName].getTestByTestIndex(_index);
-  //   }
-
-  //  function getTestIndexByTestID(bytes32 patientName, bytes32 _testDateID) public view returns(uint){
-  //     return patientnameToPatient[patientName].getTestIndexByTestID(_testDateID);
-  //   }
-
-  //  function getTestsByPatientName(bytes32 _pname) public view returns(bytes32[] memory) {
-  //     return patientnameToPatient[_pname].getTestsByPatientName(_pname);
-  //   }
-
-  //  function getTestsByPatientAddress(address patientAddress) public view returns(bytes32[] memory){
-  //     return p.getTestsByPatientAddress(patientAddress);
-  //   }
-  //  function getTestsCount(bytes32 patientName) public view returns (uint){
-  //     return patientnameToPatient[patientName].getTestsCount();
-  //   }
-  // // MEDICINES
-  //  function saveMedicineForPatientUse(bytes32 patientName, bytes32 consulDateID,bytes32 mname) public returns(bool){
-  //     return patientnameToPatient[patientName].saveMedicineForPatientUse(consulDateID,mname);
-  //   }
-  //  function getMedicinesFromConsultation(bytes32 patientName, bytes32 consulDateID) public view returns(bytes32[] memory){
-  //     return patientnameToPatient[patientName].getMedicinesFromConsultation(consulDateID);
-  //    }
-  //  function getMedicineByIndex(bytes32 patientName, bytes32 _consulDateID,uint index) public view returns(bytes32){
-  //       return patientnameToPatient[patientName].getMedicineByIndex(_consulDateID,index);
-  //    }
-  //  function getMedicineByMedicineName(bytes32 patientName, bytes32 _consulDateID, bytes32 medname)public view returns(bytes32){
-  //       return patientnameToPatient[patientName].getMedicineByMedicineName(_consulDateID, medname);
-  //    }
-  //  function getMedicinesCountFromConsultation(bytes32 patientName, bytes32 _consulDateID) public view returns(uint){
-  //     return patientnameToPatient[patientName].getMedicinesCountFromConsultation(_consulDateID);
-  // }
 }

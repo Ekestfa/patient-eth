@@ -1,11 +1,9 @@
 pragma solidity >=0.5.16;
-import "./Medicine.sol";
 
 contract MedicineStorage{
     bytes32[] private medicineNames;
     bytes[] private medIpfsHash;
     mapping(bytes32 => uint) private medicinenameToIndex;
-    Medicine m = new Medicine();
     // mapping(bytes32 => Medicine) private mednameToMedicine;
 
     constructor() public {
@@ -20,14 +18,13 @@ contract MedicineStorage{
         require(!hasMedicine(mname),
             "Medicine already exists!");
         //mednameToMedicine[mname] =
-        m.createMedicine(mname,ipfsHash);
         medicineNames.push(mname);
         medIpfsHash.push(ipfsHash);
         medicinenameToIndex[mname] = medicineNames.length - 1;
         return true;
      }
-    function updateMedicine(bytes memory ipfsHash) public returns(bool){
-      m.updateMedicine(ipfsHash);
+    function updateMedicine(bytes32 medname, bytes memory ipfsHash) public returns(bool){
+      medIpfsHash[medicinenameToIndex[medname]] = ipfsHash;
       return true;
      }
 

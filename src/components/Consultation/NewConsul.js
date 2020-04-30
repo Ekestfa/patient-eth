@@ -7,6 +7,7 @@ import {ethers} from 'ethers';
 import PatientStorage from "../../abi/PatientStorage.json"
 import ipfs from '../../ipfs';
 import {consultationCreate} from '../../helpers/contract'
+import auth from '../../helpers/auth';
 
 const web3 = new Web3(Web3.givenProvider || "http://localhost:7545" );
 const ethereum = window.ethereum;
@@ -33,7 +34,10 @@ const consultationInfo = {
 const {handleSubmit, handleChange, values} = useForm(submit,consultationInfo);
 
 async function submit() {
-    var patientname = localStorage.getItem('p');
+    var patientname;
+    if(!auth.isAuthenticated){
+        patientname = props.name
+    }else patientname = localStorage.getItem('p');
     console.log(values)
     var usnameByte32 = ethers.utils.formatBytes32String(patientname);
     var consuldateid = ethers.utils.formatBytes32String(values.doctorName)//values.date+values.time)

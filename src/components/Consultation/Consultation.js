@@ -13,10 +13,12 @@ const [comp, changeComp] = useState('Blank');
         <Row>
         <Nav  bg="dark" variant="dark" >
             <Nav.Item>
-                <Nav.Link onClick={()=> changeComp('CreateNewConsulComponent')} href="#consultations#new">新建</Nav.Link>
+                <Nav.Link onClick={()=> changeComp('CreateNewConsulComponent')} href="#consultations#new"
+                    name={props.name}>新建</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-                <Nav.Link onClick={()=> changeComp('ConsulList')} href="#consultations#list">列出历史</Nav.Link>
+                <Nav.Link onClick={()=> changeComp('ConsulList')} href="#consultations#list"
+                    name={props.name}>列出历史</Nav.Link>
             </Nav.Item>
             </Nav>
             
