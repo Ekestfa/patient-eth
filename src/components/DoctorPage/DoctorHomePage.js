@@ -38,8 +38,6 @@ class DoctorHomePage extends React.Component {
   this.handleSubmit = this.handleSubmit.bind(this);
   this.submit = this.submit.bind(this);
   this.logout = this.logout.bind(this);
-  this.getContracts = this.getContracts.bind(this);
-  this.IPFSREADER = this.IPFSREADER.bind(this);
   this.toPageBlanker = this.toPageBlanker.bind(this);
   }
   
@@ -57,7 +55,6 @@ class DoctorHomePage extends React.Component {
               this.setState({searchedPatient : searchtext});
               this.setState({submitted : true})
               this.setState({found:true})
-              this.getContracts(usnameByte32)
               this.setState({comp:'patientpage'})
             })
           }else{
@@ -67,36 +64,6 @@ class DoctorHomePage extends React.Component {
           }
       })
     })
-}
-
-getContracts(usnameByte32){
-  patientstorage.deployed().then(contractInstance => {
-    contractInstance.getPatientContractAddressByPatientName(usnameByte32).then(result => {
-        const PatientContract = new web3.eth.Contract(Patient.abi,result)
-        PatientContract.methods.getConsultationsIpfsList().call({from: ethereum.selectedAddress}).then(result => {
-              this.setState({array:result})
-              for(var i=0; i<result.length; i++){
-                // console.log("ethersUtil:",ethers.utils.toUtf8String(result[i]))
-                this.IPFSREADER(result[i]);
-                // console.log("reading:",result[i])
-            }
-          })
-        })
-      })
-}
-
- IPFSREADER = element => {
-  const {parsed} = this.state
-  let convertedIPFSaddress = ethers.utils.toUtf8String(element)
-  ipfs.cat(convertedIPFSaddress).then(result => {
-      let cons = result.toString('utf8')
-      const consdata = JSON.parse(cons);
-      // console.log("cons:",parsed)
-      // this.setState({...[parsed],parsed:[consdata]}) // pushing object into array, and after will be recreated
-      // this.setState({parsed:consdata}) //pushing object
-      // this.setState(parsed => [...data, parsed]);
-      this.setState({parsed: [...this.state.parsed, consdata]})
-  })
 }
 
 toPageBlanker(){
@@ -127,20 +94,6 @@ handleSubmit = event => {
 
 render(){
   const {searchedPatient,searchtext, submitted,found,array,parsed} = this.state;
-  console.log("render parsed:",parsed)
-  // const rendata = 
-  // Object.keys(this.state.searchedPatient).map(function(object, i){
-  //   return <div className={"row"} key={i}> 
-  //              {[ object ,
-  //                 // remove the key
-  //                 <b className="fosfo" key={i}> {object} </b> , 
-  //                 object
-  //              ]}
-  //          </div>; 
-  // })
-    const rendata =  Object.values(array).map(function(key) {
-    return <option value={key} className = 'asd'>{key}</option>
-  });
   
 return(
 <Container>
@@ -156,8 +109,8 @@ return(
                     fixed="center" />
                 <Button onClick={this.submit} variant="outline-info">Search</Button>
             </Form>
-            <label>{localStorage.getItem("d")}</label>
-            <Button variant="outline-info" onClick={this.logout}>退出</Button>
+            <Navbar.Brand variant="outline-info" >{localStorage.getItem("d")}</Navbar.Brand>
+            <Button  variant="outline-info" onClick={this.logout}>退出</Button>
             </Nav>
         </Navbar>
     </Col>
@@ -167,15 +120,6 @@ return(
     {/* <Col sm={2}>sm=2</Col> */}
     <Col lg={12}>
       <DynamicComponent comp={this.state.comp} name={searchedPatient}/>
-      {/* {
-            found===true &&
-            // console.log(searchedPatient, submitted)
-            Object.keys(this.state.searchedPatient).map((keyName,i)=>(
-              <h1>{i}:{this.state.searchedPatient[keyName]}</h1>
-            ))
-      } */}
-         {/* {rendata} */}
-
     </Col>
   </Row>
 </Container>
