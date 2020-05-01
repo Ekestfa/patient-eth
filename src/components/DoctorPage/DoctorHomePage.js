@@ -84,16 +84,18 @@ getContracts(usnameByte32){
         })
       })
 }
-IPFSREADER = element => {
+
+ IPFSREADER = element => {
   const {parsed} = this.state
   let convertedIPFSaddress = ethers.utils.toUtf8String(element)
   ipfs.cat(convertedIPFSaddress).then(result => {
       let cons = result.toString('utf8')
       const consdata = JSON.parse(cons);
       // console.log("cons:",parsed)
-      this.setState({...[parsed],parsed:[consdata]}) // pushing object into array, and after will be recreated
+      // this.setState({...[parsed],parsed:[consdata]}) // pushing object into array, and after will be recreated
       // this.setState({parsed:consdata}) //pushing object
-      
+      // this.setState(parsed => [...data, parsed]);
+      this.setState({parsed: [...this.state.parsed, consdata]})
   })
 }
 
