@@ -10,7 +10,7 @@ const components = {
 };
 
 function DynamicComponent(props) {
-  const Component = components[props.comp];  return <Component />;
+  const Component = components[props.comp];  return <Component name={props.name} creator={props.creator}/>;
 }
 
 export default DynamicComponent;

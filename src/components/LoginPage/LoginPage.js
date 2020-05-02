@@ -36,7 +36,7 @@ const LoginForm = (props) => {
           web3.eth.getAccounts((err, accounts) => {
             if (accounts.length === 0) {
               // there is no active accounts in MetaMask
-              this.console.log('there is no active accounts in MetaMask')
+              console.log('there is no active accounts in MetaMask')
             }else {
               // It's ok
                 web3.eth.getAccounts(console.log);

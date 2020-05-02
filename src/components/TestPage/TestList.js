@@ -34,10 +34,12 @@ IPFSREADER = element => {
     })
 }
 
-componentDidMount()
- {
+componentDidMount(){
     const {addresses, count} = this.state;
     var patientname = localStorage.getItem('p');
+    if(patientname===null){
+        patientname = this.props.name
+    }
     var usnameByte32 = ethers.utils.formatBytes32String(patientname);
 
     patientstorage.deployed().then(contractInstance => {
@@ -98,7 +100,7 @@ render(){
             <p>检查类型: {key.testtype}</p>
             <p>检查结果: {key.result}</p>
             <footer className="blockquote-footer">
-                创建者 <cite title="Source Title">Source Title</cite>
+            创建者 <cite title="Source Title">{key.creator}</cite>
 
             </footer>
             </blockquote>

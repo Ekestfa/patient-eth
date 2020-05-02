@@ -1,31 +1,29 @@
 import React, {useState} from 'react';
-import {Nav,Container,Row,Col} from 'react-bootstrap';
+import {Nav,Container,Row,Col,Navbar} from 'react-bootstrap';
 import DynamicComponent from './DynamicCons'
 
 
 const Consultation = (props) => {
-
 // Change components' state
 const [comp, changeComp] = useState('Blank');
 
     return (
-    <Container>
+    <Container className>
         <Row>
-        <Nav  bg="dark" variant="dark" >
+         <Nav className="justify-content-center" fixed="top" bg="dark" variant="dark" >
             <Nav.Item>
                 <Nav.Link onClick={()=> changeComp('CreateNewConsulComponent')} href="#consultations#new"
-                    name={props.name}>新建</Nav.Link>
+                    >新建</Nav.Link>
             </Nav.Item>
             <Nav.Item>
                 <Nav.Link onClick={()=> changeComp('ConsulList')} href="#consultations#list"
-                    name={props.name}>列出历史</Nav.Link>
+                    >列出历史</Nav.Link>
             </Nav.Item>
             </Nav>
-            
         </Row>
         <Row>
             <Col sm={12}>
-                <DynamicComponent comp={comp}/>
+                <DynamicComponent comp={comp} name={props.name} creator={props.creator}/>
             </Col>
         </Row>
     </Container>

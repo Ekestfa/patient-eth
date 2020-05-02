@@ -38,6 +38,9 @@ IPFSREADER = element => {
 componentDidMount(){
     const {addresses, count} = this.state;
     var patientname = localStorage.getItem('p');
+    if(patientname===null){
+        patientname = this.props.name
+    }
     var usnameByte32 = ethers.utils.formatBytes32String(patientname);
     // console.log(usnameByte32)
 
@@ -99,8 +102,7 @@ render(){
             <p>{' '}疾病类型:{key.disease}</p>
             <p>{' '}药:{key.medicine}</p>
             <footer className="blockquote-footer">
-                创建者：<cite title="Source Title">Source Title</cite>
-                
+                创建者：<cite title="Source Title">{key.creator}</cite>  
             </footer>
             </blockquote>
         </Card.Body>

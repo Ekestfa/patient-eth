@@ -6,9 +6,6 @@ import contract from 'truffle-contract';
 import {ethers} from 'ethers';
 import PatientStorage from "../../abi/PatientStorage.json"
 import DynamicComponent from "./DynamicDoc"
-import {Card} from 'react-bootstrap'
-import ipfs from '../../ipfs';
-const Patient = require('../../abi/Patient.json');
 
 
 const web3 = new Web3(Web3.givenProvider || "http://localhost:7545" );
@@ -22,6 +19,7 @@ class DoctorHomePage extends React.Component {
     super(props);
     this.state = {
       searchedPatient:[{}],
+      creator:'',
       submitted:false,
       found:false,
       searchtext:'',
@@ -29,10 +27,6 @@ class DoctorHomePage extends React.Component {
       parsed:[{}],
       comp:'blank'
     }
-    // const [searchedPatient, setSearchedpatient] = useState([{}]);
-    // const [submitted, setSubmitted] = useState(false)
-    // 
-    // const [comp, changeComp] = useState('blank');
 
   this.handleChange = this.handleChange.bind(this);
   this.handleSubmit = this.handleSubmit.bind(this);
@@ -61,6 +55,7 @@ class DoctorHomePage extends React.Component {
             console.log('病人不存在')
             this.setState({searchedPatient : ''});
             this.setState({submitted : true})
+            this.setState({found:false})
           }
       })
     })
@@ -81,19 +76,20 @@ logout(){
 handleChange = event => {
   const {name, value} = event.target;
   this.setState({[name] : value});
-  // console.log(name+':'+value)
 }
 
 handleSubmit = event => {
   event.preventDefault();
-  // //handling errors
-  // setErrors(validate(searchvalue))
-  // setIsSubmitting(true)
     this.submit()
 };
 
+componentDidMount(){
+  const { creator } = this.state;
+  this.setState({creator:localStorage.getItem('d')})
+}
+
 render(){
-  const {searchedPatient,searchtext, submitted,found,array,parsed} = this.state;
+  const {searchedPatient, creator } = this.state;
   
 return(
 <Container>
@@ -102,7 +98,7 @@ return(
     <Navbar className="navbar navbar-default" bg="dark" variant="dark" fixed="top">
     <Navbar.Brand href="#" onClick={this.toPageBlanker} >Home</Navbar.Brand>
             <Nav className="mr-auto">
-            <Form inline fixed="right" onSubmit={this.handleSubmit} noValidate fixed="center">
+            <Form inline="trye" fixed="right" onSubmit={this.handleSubmit} noValidate fixed="center">
                 <FormControl type="text" onChange={this.handleChange} name="searchtext" value={this.state.searchtext}
                     placeholder="Search" 
                     className="mr-sm-2" 
@@ -119,7 +115,7 @@ return(
     <Row>
     {/* <Col sm={2}>sm=2</Col> */}
     <Col lg={12}>
-      <DynamicComponent comp={this.state.comp} name={searchedPatient}/>
+      <DynamicComponent comp={this.state.comp} name={searchedPatient} creator={creator}/>
     </Col>
   </Row>
 </Container>

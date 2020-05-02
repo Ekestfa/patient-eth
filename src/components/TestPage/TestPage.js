@@ -23,7 +23,7 @@ const [comp, changeComp] = useState('blanktest');
         </Row>
         <Row>
             <Col sm={12}>
-                <DynamicComponent comp={comp}/>
+                <DynamicComponent comp={comp} name={props.name} creator={props.creator}/>
             </Col>
         </Row>
     </Container>
