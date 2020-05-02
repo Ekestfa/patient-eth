@@ -1,32 +1,73 @@
-import React, {useState} from 'react';
-import {Nav,Container,Row,Col,Navbar} from 'react-bootstrap';
+import React from 'react';
+import {Nav,Container,Row,Col,Navbar, Form, FormControl, Button, InputGroup, DropdownButton, Dropdown} from 'react-bootstrap';
 import DynamicComponent from './DynamicCons'
 
 
-const Consultation = (props) => {
+class Consultation extends React.Component{
+    constructor(props){
+        super(props);
+        this.state={
+            comp:'Blank',
+            searchtype:'查找',
+            searchtext:'',
+            submitted:false,
+        }
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.chooseSearchType = this.chooseSearchType.bind(this);
+    this.submit = this.submit.bind(this);
+    }
 // Change components' state
-const [comp, changeComp] = useState('Blank');
+
+handleChange = event => {
+    const {name, value} = event.target;
+    this.setState({[name] : value});
+  }
+  
+handleSubmit = event => {
+    event.preventDefault();
+  };
+
+chooseSearchType = event => {
+    const {name} = event.target;
+    const {searchtype} = this.state;
+    this.setState({searchtype:name})
+}
+
+componentDidUpdate(){
+    const {searchtype, searchtext} = this.state;
+    console.log(searchtype, searchtext)
+}
+
+submit(){
+    const {submitted} = this.setState
+    this.setState({submitted:true});
+}
+
+render(){
+    const {comp, searchtype, searchtext, submitted} = this.state;
 
     return (
-    <Container className>
-        <Row>
-         <Nav className="justify-content-center" fixed="top" bg="dark" variant="dark" >
-            <Nav.Item>
-                <Nav.Link onClick={()=> changeComp('CreateNewConsulComponent')} href="#consultations#new"
-                    >新建</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-                <Nav.Link onClick={()=> changeComp('ConsulList')} href="#consultations#list"
-                    >列出历史</Nav.Link>
-            </Nav.Item>
-            </Nav>
-        </Row>
-        <Row>
-            <Col sm={12}>
-                <DynamicComponent comp={comp} name={props.name} creator={props.creator}/>
-            </Col>
-        </Row>
-    </Container>
-    );
+        <Container className>
+            <Row>
+            <Nav className="justify-content-center" fixed="top" bg="dark" variant="dark" >
+                <Nav.Item>
+                    <Nav.Link onClick={()=> this.setState({comp:'CreateNewConsulComponent'})} href="#consultations#new"
+                        >新建</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                    <Nav.Link onClick={()=> this.setState({comp:'ConsulList'})} href="#consultations#list"
+                        >列出历史</Nav.Link>
+                </Nav.Item>
+                </Nav>
+            </Row>
+            <Row>
+                <Col sm={12}>
+                    <DynamicComponent comp={comp} name={this.props.name} creator={this.props.creator}/>
+                </Col>
+            </Row>
+        </Container>
+        );
+    }
 }
 export default Consultation;

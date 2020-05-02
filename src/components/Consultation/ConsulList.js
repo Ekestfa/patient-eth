@@ -3,7 +3,7 @@ import {default as Web3} from 'web3';
 import contract from 'truffle-contract';
 import {ethers} from 'ethers';
 import ipfs from '../../ipfs';
-import { Card } from 'react-bootstrap';
+import { Card, Nav,Container,Row,Col,Navbar, Form, FormControl, Button, InputGroup, DropdownButton, Dropdown } from 'react-bootstrap';
 import PatientStorage from "../../abi/PatientStorage.json"
 const Patient = require('../../abi/Patient.json');
 
@@ -19,9 +19,41 @@ constructor(props){
     this.state = {
         consul:[],
         count:0,
-        addresses:[]
+        addresses:[],
+        searchtype:'全',
+        searchtext:'',
+        submitted:true,
     }
-    this.IPFSREADER = this.IPFSREADER.bind(this)
+    this.IPFSREADER = this.IPFSREADER.bind(this);
+    this.chooseSearchType = this.chooseSearchType.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.submit = this.submit.bind(this);
+    this.search = this.search.bind(this);
+}
+
+handleChange = event => {
+    const {name, value} = event.target;
+    this.setState({[name] : value});
+  }
+
+handleSubmit = event => {
+    event.preventDefault();
+};
+
+chooseSearchType = event => {
+    const {name} = event.target;
+    this.setState({searchtype:name})
+}
+search = (element) => {
+    console.log(element)
+    this.setState({searchedconsul:[...this.state.searchedconsul, element]})
+}
+
+submit = () =>{
+    const {count, consul, searchtype, searchtext, submitted, searchedconsul, update} = this.state;
+    console.log("searchtext1:",searchtext)
+    this.setState({submitted:true})
 }
 
 IPFSREADER = element => {
@@ -84,37 +116,112 @@ componentDidMount(){
 }
 
 componentDidUpdate(){
-    const {consul} = this.state
-    console.log("诊断书信息：", {consul})
+    const {consul,searchtype, searchtext, submitted,update,searchedconsul} = this.state
 }
 
-render(){
-    const {consul} = this.state
 
-    const renderConsuldata =  Object.values(consul).map(key => {
-        return (
+ConsulData = (key) =>{
+    return (
         <Card className="mt-5" bg="dark">
-        <Card.Header>{key.date} {key.time}</Card.Header>
-        <Card.Body>
-            <blockquote className="blockquote mb-0">
-            <p>{' '}医生:{key.doctorName} </p>
-            <p>{' '}看病地址:{key.addr}</p>
-            <p>{' '}疾病类型:{key.disease}</p>
-            <p>{' '}药:{key.medicine}</p>
-            <footer className="blockquote-footer">
-                创建者：<cite title="Source Title">{key.creator}</cite>  
-            </footer>
-            </blockquote>
-        </Card.Body>
+            <Card.Header>{key.date} {key.time}</Card.Header>
+            <Card.Body>
+                <blockquote className="blockquote mb-0">
+                <p>{' '}医生:{key.doctorName} </p>
+                <p>{' '}看病地址:{key.addr}</p>
+                <p>{' '}疾病类型:{key.disease}</p>
+                <p>{' '}药:{key.medicine}</p>
+                <footer className="blockquote-footer">
+                    创建者：<cite title="Source Title">{key.creator}</cite>  
+                </footer>
+                </blockquote>
+            </Card.Body>
         </Card>
-        )
+    )
+}
+render(){
+    const {consul, searchtype, searchtext, submitted} = this.state;
 
-    });
+    var renderConsuldata;
+    if(submitted){
+        let array = []
+            if( searchtype === '全'){
+                renderConsuldata= Object.values(consul).map(key => {
+                    console.log(key.disease)
+                    return(
+                        this.ConsulData(key)
+                    )
+            })
+            }
+            if( searchtype === '按创建者'){
+                consul.forEach(element => {
+                    if(element.creator == searchtext)
+                        array.push(element);
+                });
+                renderConsuldata= Object.values(array).map(key => {
+                    return(
+                        this.ConsulData(key)
+                    )}
+                )
+            }
+
+            if( searchtype === '按时间'){
+                consul.forEach(element => {
+                    if(element.date == searchtext)
+                        array.push(element);
+                });
+                renderConsuldata= Object.values(array).map(key => {
+                    return(
+                        this.ConsulData(key)
+                    )}
+                )
+            }
+            
+            if( searchtype === '按疾病'){
+                consul.forEach(element => {
+                    console.log(element.disease)
+                    if(element.disease == searchtext)
+                        array.push(element);
+                });
+                renderConsuldata= Object.values(array).map(key => {
+                    return(
+                        this.ConsulData(key)
+                    )}
+                )
+            }
+    }
 
     return (
+        <>
+        <div>
+            <Form inline="trye" fixed="right" onSubmit={this.handleSubmit} noValidate fixed="center">
+                <InputGroup className="mt-2">
+                    <DropdownButton
+                    as={InputGroup.Prepend}
+                    variant="outline-secondary"
+                    title={searchtype}
+                    id="input-group-dropdown-1"
+                    >
+                    <Dropdown.Item href="#" name='全' onClick={this.chooseSearchType}>全</Dropdown.Item>
+                    <Dropdown.Item href="#" name='按创建者' onClick={this.chooseSearchType}>创建者</Dropdown.Item>
+                    <Dropdown.Item href="#" name='按时间'  onClick={this.chooseSearchType} >时间</Dropdown.Item>
+                    <Dropdown.Item href="#" name='按疾病' onClick={this.chooseSearchType}>类型</Dropdown.Item>
+                    </DropdownButton>
+                    {   searchtype =='按时间' &&
+                        <FormControl aria-describedby="basic-addon1" type="date" name='searchtext' onChange={this.handleChange}/>
+                    }
+                    {   searchtype =='按创建者' &&
+                        <FormControl aria-describedby="basic-addon1" name='searchtext' placeholder='请输入创建者名' onChange={this.handleChange}/>
+                    }
+                    {   searchtype =='按疾病' &&
+                        <FormControl aria-describedby="basic-addon1" name='searchtext' placeholder='请输入疾病类型' onChange={this.handleChange}/>
+                    }
+                </InputGroup>
+            </Form>
+        </div>
         <div>
             {renderConsuldata}
         </div>
+        </>
         );
     }
 }
