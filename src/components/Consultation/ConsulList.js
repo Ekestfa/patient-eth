@@ -3,7 +3,7 @@ import {default as Web3} from 'web3';
 import contract from 'truffle-contract';
 import {ethers} from 'ethers';
 import ipfs from '../../ipfs';
-import { Card, Nav,Container,Row,Col,Navbar, Form, FormControl, Button, InputGroup, DropdownButton, Dropdown } from 'react-bootstrap';
+import { Card, Form, FormControl,InputGroup, DropdownButton, Dropdown } from 'react-bootstrap';
 import PatientStorage from "../../abi/PatientStorage.json"
 const Patient = require('../../abi/Patient.json');
 
@@ -28,8 +28,6 @@ constructor(props){
     this.chooseSearchType = this.chooseSearchType.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.submit = this.submit.bind(this);
-    this.search = this.search.bind(this);
 }
 
 handleChange = event => {
@@ -44,16 +42,6 @@ handleSubmit = event => {
 chooseSearchType = event => {
     const {name} = event.target;
     this.setState({searchtype:name})
-}
-search = (element) => {
-    console.log(element)
-    this.setState({searchedconsul:[...this.state.searchedconsul, element]})
-}
-
-submit = () =>{
-    const {count, consul, searchtype, searchtext, submitted, searchedconsul, update} = this.state;
-    console.log("searchtext1:",searchtext)
-    this.setState({submitted:true})
 }
 
 IPFSREADER = element => {
@@ -115,12 +103,7 @@ componentDidMount(){
     })
 }
 
-componentDidUpdate(){
-    const {consul,searchtype, searchtext, submitted,update,searchedconsul} = this.state
-}
-
-
-ConsulData = (key) =>{
+consulCard = key => {
     return (
         <Card className="mt-5" bg="dark">
             <Card.Header>{key.date} {key.time}</Card.Header>
@@ -140,15 +123,13 @@ ConsulData = (key) =>{
 }
 render(){
     const {consul, searchtype, searchtext, submitted} = this.state;
-
     var renderConsuldata;
     if(submitted){
         let array = []
             if( searchtype === '全'){
                 renderConsuldata= Object.values(consul).map(key => {
-                    console.log(key.disease)
                     return(
-                        this.ConsulData(key)
+                        this.consulCard(key)
                     )
             })
             }
@@ -159,7 +140,7 @@ render(){
                 });
                 renderConsuldata= Object.values(array).map(key => {
                     return(
-                        this.ConsulData(key)
+                        this.consulCard(key)
                     )}
                 )
             }
@@ -171,20 +152,19 @@ render(){
                 });
                 renderConsuldata= Object.values(array).map(key => {
                     return(
-                        this.ConsulData(key)
+                        this.consulCard(key)
                     )}
                 )
             }
             
             if( searchtype === '按疾病'){
                 consul.forEach(element => {
-                    console.log(element.disease)
                     if(element.disease == searchtext)
                         array.push(element);
                 });
                 renderConsuldata= Object.values(array).map(key => {
                     return(
-                        this.ConsulData(key)
+                        this.consulCard(key)
                     )}
                 )
             }
@@ -201,10 +181,10 @@ render(){
                     title={searchtype}
                     id="input-group-dropdown-1"
                     >
-                    <Dropdown.Item href="#" name='全' onClick={this.chooseSearchType}>全</Dropdown.Item>
-                    <Dropdown.Item href="#" name='按创建者' onClick={this.chooseSearchType}>创建者</Dropdown.Item>
-                    <Dropdown.Item href="#" name='按时间'  onClick={this.chooseSearchType} >时间</Dropdown.Item>
-                    <Dropdown.Item href="#" name='按疾病' onClick={this.chooseSearchType}>类型</Dropdown.Item>
+                    <Dropdown.Item href="#consultations#list#all" name='全' onClick={this.chooseSearchType}>全</Dropdown.Item>
+                    <Dropdown.Item href="#consultations#list#bycreator" name='按创建者' onClick={this.chooseSearchType}>创建者</Dropdown.Item>
+                    <Dropdown.Item href="#consultations#list#bytime" name='按时间'  onClick={this.chooseSearchType} >时间</Dropdown.Item>
+                    <Dropdown.Item href="#consultations#list#bydisease" name='按疾病' onClick={this.chooseSearchType}>类型</Dropdown.Item>
                     </DropdownButton>
                     {   searchtype =='按时间' &&
                         <FormControl aria-describedby="basic-addon1" type="date" name='searchtext' onChange={this.handleChange}/>

@@ -36,10 +36,6 @@ return(
                 <Nav.Link href="#tests" onClick={()=> this.setState({comp:'testpage'})}
                   name={this.props.name}>检查</Nav.Link>
             </Nav>
-            <Form inline className="mr-10">
-                <FormControl type="text" placeholder="Search" className="mr-sm-50" fixed="center" />
-                <Button variant="outline-info">Search</Button>
-            </Form>
             <Navbar.Brand className="mr-10">{localStorage.getItem("p")}</Navbar.Brand>
             <Button variant="outline-info" onClick={this.logout}>退出</Button>
         </Navbar>

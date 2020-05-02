@@ -1,5 +1,5 @@
 import React from 'react';
-import {Nav,Container,Row,Col,Navbar, Form, FormControl, Button, InputGroup, DropdownButton, Dropdown} from 'react-bootstrap';
+import {Nav,Container,Row,Col} from 'react-bootstrap';
 import DynamicComponent from './DynamicCons'
 
 
@@ -7,45 +7,18 @@ class Consultation extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            comp:'Blank',
-            searchtype:'查找',
-            searchtext:'',
-            submitted:false,
+            comp:'Blank'
         }
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.chooseSearchType = this.chooseSearchType.bind(this);
-    this.submit = this.submit.bind(this);
     }
 // Change components' state
-
-handleChange = event => {
-    const {name, value} = event.target;
-    this.setState({[name] : value});
-  }
-  
-handleSubmit = event => {
-    event.preventDefault();
-  };
-
-chooseSearchType = event => {
-    const {name} = event.target;
-    const {searchtype} = this.state;
-    this.setState({searchtype:name})
-}
 
 componentDidUpdate(){
     const {searchtype, searchtext} = this.state;
     console.log(searchtype, searchtext)
 }
 
-submit(){
-    const {submitted} = this.setState
-    this.setState({submitted:true});
-}
-
 render(){
-    const {comp, searchtype, searchtext, submitted} = this.state;
+    const {comp} = this.state;
 
     return (
         <Container className>

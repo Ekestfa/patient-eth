@@ -24,6 +24,7 @@ class NewConsul extends React.Component {
                 doctorName:'',
                 addr:'',
                 disease:'',
+                description:'',
                 medicine:'',
                 creator:''
         }
@@ -31,12 +32,6 @@ class NewConsul extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.submit = this.submit.bind(this);
-    // medicine:[{
-    //     medicineName:'',
-    //     medicineUsageTimes:'',
-    //     medicineUsageInfo:'',
-    //     medicineFinishTime:''
-    // }]
 }
 
 handleChange = (event) => {
@@ -113,7 +108,11 @@ return (
             </Form.Group>
             <Form.Group controlId="Consul.diseaseForm">
                 <Form.Label>疾病信息</Form.Label>
-                <Form.Control as="textarea" rows="4" name="disease" defaultValue={consultationInfo.disease} placeholder="疾病情况" onChange={this.handleChange}/>
+                <Form.Control as="textarea" rows="1" name="disease" defaultValue={consultationInfo.disease} placeholder="疾病情况" onChange={this.handleChange}/>
+            </Form.Group>
+            <Form.Group controlId="Consul.descriptionForm">
+                <Form.Label>疾病与病人情况描述</Form.Label>
+                <Form.Control as="textarea" rows="3" name="description" defaultValue={consultationInfo.description} placeholder="疾病情况" onChange={this.handleChange}/>
             </Form.Group>
             <Form.Group controlId="Consul.medicineForm">
                 <Form.Label>药信息</Form.Label>
