@@ -1,9 +1,9 @@
-import React,{useState, useEffect} from 'react';
+import React from 'react';
 import {default as Web3} from 'web3';
 import contract from 'truffle-contract';
 import {ethers} from 'ethers';
 import ipfs from '../../ipfs';
-import { Card, Form, FormControl,InputGroup, DropdownButton, Dropdown } from 'react-bootstrap';
+import { Card, Navbar,FormControl,InputGroup, DropdownButton, Dropdown } from 'react-bootstrap';
 import PatientStorage from "../../abi/PatientStorage.json"
 const Patient = require('../../abi/Patient.json');
 
@@ -27,7 +27,6 @@ class TestList extends React.Component{
         this.IPFSREADER = this.IPFSREADER.bind(this);
         this.chooseSearchType = this.chooseSearchType.bind(this);
         this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleChange = event => {
@@ -35,9 +34,6 @@ class TestList extends React.Component{
         this.setState({[name] : value});
       }
     
-    handleSubmit = event => {
-        event.preventDefault();
-    };
     
     chooseSearchType = event => {
         const {name} = event.target;
@@ -122,17 +118,6 @@ class TestList extends React.Component{
             )
     }
     render(){
-        /**
-         *      dateID:"",
-                date:'',
-                time:'',
-                doctorName:'',
-                testname:'',
-                testtype:'',
-                address:'',
-                result:'',
-                creator:''
-         */
         const {testDatas, submitted, searchtype, searchtext} = this.state
         var renderTestdata;
 
@@ -197,11 +182,13 @@ class TestList extends React.Component{
         return (
             <>
                 <div>
-                    <Form inline="trye" fixed="right" onSubmit={this.handleSubmit} noValidate fixed="center">
+                <Navbar className="navbar" bg="dark" variant="dark" scrolling dark expand="md" fixed="bottom">
                         <InputGroup className="mt-2">
                             <DropdownButton
                             as={InputGroup.Prepend}
                             variant="outline-secondary"
+                            variant="success"
+                            drop="up"
                             title={searchtype}
                             id="input-group-dropdown-1"
                             >
@@ -224,7 +211,7 @@ class TestList extends React.Component{
                                 <FormControl aria-describedby="basic-addon1" name='searchtext' placeholder='请输入检查类型' onChange={this.handleChange}/>
                             }
                         </InputGroup>
-                    </Form>
+                    </Navbar>
                 </div>
                 <div>
                     {renderTestdata}

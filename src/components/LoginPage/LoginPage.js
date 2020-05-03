@@ -28,7 +28,7 @@ const LoginForm = (props) => {
       }
 
     //   var [ipfsHash,setHash] = useState('');
-    const [addre,setAddre] = useState('Press Enable Ethereum!')
+    const [addre,setAddre] = useState('请启动MetaMask')
     const {handleSubmit, handleChange, values, errors} = useForm(submit, INITIAL_STATE, addre, validate);
 
     const ethereumButton = () => {
@@ -106,10 +106,10 @@ const LoginForm = (props) => {
 
     return (
         <div className="col-md-6 col-md-offset-3">
-            <h2>Login</h2>
+            <h2>登录</h2>
             <form name="form" onSubmit={handleSubmit} noValidate>
                 <div className={'form-group'}>
-                    <label htmlFor="username">Username</label>
+                    <label htmlFor="username">用户名</label>
                     <input type="text" className="form-control" name="username" value={values.username} onChange={handleChange} />
                     {/* {submitted && !username &&
                         <div className="help-block">Username is required</div>
@@ -117,7 +117,7 @@ const LoginForm = (props) => {
                 </div>
                 {errors.username && <p>{errors.username}</p>}
                 <div className={'form-group'}>
-                    <p>ETH Address:
+                    <p>以太坊地址:
                         <span class="eth-address"></span>
                         <input type="text"
                         name="ethaddress" 
@@ -129,11 +129,11 @@ const LoginForm = (props) => {
                 </div>
                 {errors.addre && <p>{errors.addre}</p>}
                 <div className="form-group">
-                    <button type={submit} className="btn btn-primary">Login</button>
+                    <button type={submit} variant="success" className="btn btn-primary">登录</button>
                 </div>
             </form>
-            <Link to="/register" className="btn btn-link">Register</Link>
-            <button onClick={ethereumButton} class="enableEthereumButton">Enable Ethereum</button>
+            <Link to="/register" className="btn btn-link">注册</Link>
+            <button onClick={ethereumButton} class="enableEthereumButton">启动MetaMask</button>
         </div>
     );
 }

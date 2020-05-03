@@ -3,7 +3,7 @@ import {default as Web3} from 'web3';
 import contract from 'truffle-contract';
 import {ethers} from 'ethers';
 import ipfs from '../../ipfs';
-import { Card, Form, FormControl,InputGroup, DropdownButton, Dropdown } from 'react-bootstrap';
+import { Card, FormControl,InputGroup, DropdownButton, Dropdown, Navbar} from 'react-bootstrap';
 import PatientStorage from "../../abi/PatientStorage.json"
 const Patient = require('../../abi/Patient.json');
 
@@ -27,17 +27,12 @@ constructor(props){
     this.IPFSREADER = this.IPFSREADER.bind(this);
     this.chooseSearchType = this.chooseSearchType.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
 }
 
 handleChange = event => {
     const {name, value} = event.target;
     this.setState({[name] : value});
   }
-
-handleSubmit = event => {
-    event.preventDefault();
-};
 
 chooseSearchType = event => {
     const {name} = event.target;
@@ -172,12 +167,12 @@ render(){
 
     return (
         <>
-        <div>
-            <Form inline="trye" fixed="right" onSubmit={this.handleSubmit} noValidate fixed="center">
+        <Navbar className="navbar" bg="dark" variant="dark" scrolling dark expand="md" fixed="bottom">
                 <InputGroup className="mt-2">
                     <DropdownButton
                     as={InputGroup.Prepend}
-                    variant="outline-secondary"
+                    variant="success"
+                    drop="up"
                     title={searchtype}
                     id="input-group-dropdown-1"
                     >
@@ -196,8 +191,7 @@ render(){
                         <FormControl aria-describedby="basic-addon1" name='searchtext' placeholder='请输入疾病类型' onChange={this.handleChange}/>
                     }
                 </InputGroup>
-            </Form>
-        </div>
+        </Navbar>
         <div>
             {renderConsuldata}
         </div>

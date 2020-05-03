@@ -73,7 +73,7 @@ submit() {
 }
 
 componentDidMount(){
-    const { consultationInfo } = this.state;
+    // const { consultationInfo } = this.state;
     var patientname = localStorage.getItem('p');
     this.setState({consultationInfo:{creator:patientname}})
     if(patientname===null){

@@ -11,8 +11,8 @@ const components = {
   medicine:Medicine
 };
 
-function DynamicComponent(props) {
-  const Component = components[props.comp];  return <Component />;
+function HomeDynamicComponent(props) {
+  const Component = components[props.comp];  return <Component/>;
 }
 
-export default DynamicComponent;
+export default HomeDynamicComponent;

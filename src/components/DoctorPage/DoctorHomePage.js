@@ -34,7 +34,6 @@ class DoctorHomePage extends React.Component {
   this.logout = this.logout.bind(this);
   this.toPageBlanker = this.toPageBlanker.bind(this);
   }
-  
 
  submit(){
    const {searchtext} = this.state;
@@ -52,7 +51,7 @@ class DoctorHomePage extends React.Component {
               this.setState({comp:'patientpage'})
             })
           }else{
-            console.log('病人不存在')
+            console.error('病人不存在')
             this.setState({searchedPatient : ''});
             this.setState({submitted : true})
             this.setState({found:false})
@@ -84,38 +83,40 @@ handleSubmit = event => {
 };
 
 componentDidMount(){
-  const { creator } = this.state;
+  // const { creator } = this.state;
   this.setState({creator:localStorage.getItem('d')})
 }
 
+componentDidUpdate(){
+  console.log(this.props.location.hash)
+}
+
 render(){
-  const {searchedPatient, creator } = this.state;
-  
+  const {searchedPatient, creator, found } = this.state;
 return(
 <Container>
   <Row>
     <Col>
-    <Navbar className="navbar navbar-default" bg="dark" variant="dark" fixed="top">
-    <Navbar.Brand href="#" onClick={this.toPageBlanker} >Home</Navbar.Brand>
+    <Navbar className="navbar navbar-default" bg="dark" variant="dark" fixed="top" >
+    <Navbar.Brand href="#" onClick={this.toPageBlanker} >主页</Navbar.Brand>
             <Nav className="mr-auto">
-            <Form inline="trye" fixed="right" onSubmit={this.handleSubmit} noValidate fixed="center">
+            <Form inline="trye" fixed="right" onSubmit={this.handleSubmit} noValidate >
                 <FormControl type="text" onChange={this.handleChange} name="searchtext" value={this.state.searchtext}
                     placeholder="Search" 
                     className="mr-sm-2" 
                     fixed="center" />
-                <Button onClick={this.submit} variant="outline-info">Search</Button>
+                <Button onClick={this.submit} variant="outline-info">查询病人</Button>
             </Form>
+            </Nav>
             <Navbar.Brand variant="outline-info" >{localStorage.getItem("d")}</Navbar.Brand>
             <Button  variant="outline-info" onClick={this.logout}>退出</Button>
-            </Nav>
         </Navbar>
     </Col>
     </Row>
-
     <Row>
     {/* <Col sm={2}>sm=2</Col> */}
     <Col lg={12}>
-      <DynamicComponent comp={this.state.comp} name={searchedPatient} creator={creator}/>
+        <DynamicComponent comp={this.state.comp} name={searchedPatient} creator={creator} fixed="bottom"/>
     </Col>
   </Row>
 </Container>
