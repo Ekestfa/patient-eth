@@ -22,7 +22,7 @@ class DoctorHomePage extends React.Component {
       creator:'',
       submitted:false,
       found:false,
-      searchtext:'',
+      searchpat:'',
       array:[],
       parsed:[{}],
       comp:'blank'
@@ -36,8 +36,8 @@ class DoctorHomePage extends React.Component {
   }
 
  submit(){
-   const {searchtext} = this.state;
-    var usnameByte32 = ethers.utils.formatBytes32String(searchtext);
+   const {searchpat} = this.state;
+    var usnameByte32 = ethers.utils.formatBytes32String(searchpat);
     
     patientstorage.deployed().then(contractInstance => {
         contractInstance.patientNameTaken(usnameByte32,{from:ethereum.selectedAddress})
@@ -45,7 +45,7 @@ class DoctorHomePage extends React.Component {
           if(result){
             contractInstance.getPatientByPatientName(usnameByte32).then(result2 => {
               // console.log(result2)
-              this.setState({searchedPatient : searchtext});
+              this.setState({searchedPatient : searchpat});
               this.setState({submitted : true})
               this.setState({found:true})
               this.setState({comp:'patientpage'})
@@ -101,7 +101,7 @@ return(
     <Navbar.Brand href="#" onClick={this.toPageBlanker} >主页</Navbar.Brand>
             <Nav className="mr-auto">
             <Form inline="trye" fixed="right" onSubmit={this.handleSubmit} noValidate >
-                <FormControl type="text" onChange={this.handleChange} name="searchtext" value={this.state.searchtext}
+                <FormControl type="text" onChange={this.handleChange} name="searchpat" value={this.state.searchpat}
                     placeholder="Search" 
                     className="mr-sm-2" 
                     fixed="center" />

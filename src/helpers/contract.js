@@ -100,7 +100,7 @@ function testCreate(patientName, patientAddress, testID, testIPFS){
       console.log(result)
         const PatientContract = new web3.eth.Contract(Patient.abi,result)
         PatientContract.methods.testCreate(testID, testIPFS).send({from: patientAddress, to:PatientContract}).then(function(result){
-            console.log("Creation of consultation:", result);
+            console.log("Creation of test:", result);
             if(result){
               return true;
             }else return false;

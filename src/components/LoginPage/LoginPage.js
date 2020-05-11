@@ -61,7 +61,6 @@ const LoginForm = (props) => {
             // var valuesBuffer = Buffer.from(JSON.stringify(values)); //values.ETHaddress + values.username + ipfsHash
             console.log()
             var usnameByte32 = ethers.utils.formatBytes32String(values.username);
-
             web3.eth.defaultAccount = accounts[0]
 
             patientstorage.deployed().then(function(contractInstance){
@@ -133,7 +132,7 @@ const LoginForm = (props) => {
                 </div>
             </form>
             <Link to="/register" className="btn btn-link">注册</Link>
-            <button onClick={ethereumButton} class="enableEthereumButton">启动MetaMask</button>
+            <button onClick={ethereumButton} class="enableEthereumButton">获取以太坊地址</button>
         </div>
     );
 }

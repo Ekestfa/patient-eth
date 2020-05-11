@@ -56,9 +56,9 @@ submit() {
 
     var usnameByte32 = ethers.utils.formatBytes32String(patientname);
     var consuldateid = ethers.utils.formatBytes32String(consultationInfo.doctorName)//values.date+values.time)
-    var valuesBuffer = Buffer.from(JSON.stringify(consultationInfo));
+    var consBuffer = Buffer.from(JSON.stringify(consultationInfo));
 
-    ipfs.add(valuesBuffer,(error,result) => {
+    ipfs.add(consBuffer,(error,result) => {
         if(error){
             console.error(error)
             return

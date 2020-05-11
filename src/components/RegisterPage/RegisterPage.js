@@ -29,7 +29,7 @@ const CreatePatientForm = (props) => {
     // IPFSaddress:""
   }
   // var [ipfsHash,setHash] = useState('');
-  const [addre,setAddre] = useState('Press Enable Ethereum!')
+  const [addre,setAddre] = useState('启动MetaMask')
   const [checkbox, setCheckbox] = useState(0)
   const {handleSubmit, handleChange, values, errors} = useForm(submit,INITIAL_STATE,addre,validate);
   const handleCheckboxChange = (val) => {setCheckbox(val)
@@ -98,7 +98,7 @@ const CreatePatientForm = (props) => {
     web3.eth.getAccounts((err, accounts) => {
       if (accounts.length === 0) {
         // there is no active accounts in MetaMask
-        this.console.log('there is no active accounts in MetaMask')
+        console.log('there is no active accounts in MetaMask')
       }else {
         // It's ok
           web3.eth.getAccounts(console.log);
@@ -122,9 +122,9 @@ return(
 <div class="card card-profile-signup p-1">
   <form onSubmit={handleSubmit} className='formbase' noValidate>
     <div class="card-body">
-      <h5 class="card-title">Create your profile</h5>
+      <h5 class="card-title">创建您的用户空间</h5>
       <div class="form-group">
-        <label for="username">Username</label>
+        <label for="username">用户名</label>
         <input name="username"
                value={values.username}
                type="text" 
@@ -143,7 +143,7 @@ return(
           <p>选择病人或医生</p>
         }
       </ToggleButtonGroup>
-      <div>ETH Address:
+      <div>以太坊地址
         <span class="eth-address"></span>
         <input type="text"
                name="ethaddress" 
@@ -154,11 +154,11 @@ return(
         />
         {errors.addre && <p>{errors.addre}</p>}
       </div>
-      <button type="submit" class="btn btn-primary" id="sign-up-button" >Sign Up</button>
+      <button type="submit" class="btn btn-primary" id="sign-up-button" >注册</button>
     </div>
    
   </form>
-  <button onClick={ethereumButton} class="enableEthereumButton">Enable Ethereum</button>
+  <button onClick={ethereumButton} class="enableEthereumButton">启动MetaMask</button>
   <Link to="/" className="btn btn-link">Login</Link>
 </div>
 </div>

@@ -39,7 +39,7 @@ render(){
                     >返回</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-                <Nav.Link onClick={()=> this.setState({comp:'CreateNewConsulComponent'})} href="/consultations#new"
+                <Nav.Link onClick={()=> this.setState({comp:'CreateNewConsulComponent'})} href="#consultations#new"
                     >新建</Nav.Link>
             </Nav.Item>
             <Nav.Item>

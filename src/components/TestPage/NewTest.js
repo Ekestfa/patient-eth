@@ -59,9 +59,9 @@ submit() {
 
     var usnameByte32 = ethers.utils.formatBytes32String(patientname);
     var testdateid = ethers.utils.formatBytes32String(testInfo.doctorName)//values.date+values.time)
-    var valuesBuffer = Buffer.from(JSON.stringify(testInfo));
+    var testBuffer = Buffer.from(JSON.stringify(testInfo));
 
-    ipfs.add(valuesBuffer,(error,result) => {
+    ipfs.add(testBuffer,(error,result) => {
         if(error){
             console.error(error)
             return
@@ -72,6 +72,8 @@ submit() {
         console.log('检查IPFS哈希地址',result[0].hash)
         console.log('创建者:', testInfo.creator)
         testCreate(usnameByte32, ethereum.selectedAddress, testdateid, Buffer.from(result[0].hash))
+
+        //add test result for show
     })
 }
 

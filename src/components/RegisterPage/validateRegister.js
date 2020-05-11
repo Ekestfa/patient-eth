@@ -14,7 +14,7 @@ if(!values.username){
 // password
     // the string to be more than 0 chars
     if(!values.ETHaddress){
-        if(addre==='Press Enable Ethereum!'){
+        if(addre==='启动MetaMask'){
             errors.addre = "Ethereum address is required."
         } 
     }
