@@ -102,18 +102,19 @@ const LoginForm = (props) => {
 
 
     return (
-        <div className="col-md-6 col-md-offset-3">
-            <h2>登录</h2>
-            <form name="form" onSubmit={handleSubmit} noValidate>
+      <div class="col-lg-3 mt-1 mb-3">
+      <div class="card card-profile-signup p-1">
+            <h5>登录</h5>
+            <form name="form" class="formbase" onSubmit={handleSubmit} noValidate>
                 <div className={'form-group'}>
                     <label htmlFor="username">用户名</label>
                     <input type="text" className="form-control" name="username" value={values.username} onChange={handleChange} />
                     {/* {submitted && !username &&
                         <div className="help-block">Username is required</div>
                     } */}
-                </div>
-                {errors.username && <p>{errors.username}</p>}
-                <div className={'form-group'}>
+                
+                  {errors.username && <p>{errors.username}</p>}
+
                     <p>以太坊地址:
                         <span class="eth-address"></span>
                         <input type="text"
@@ -123,14 +124,15 @@ const LoginForm = (props) => {
                         disabled
                         onChange={handleChange}/>
                     </p>
-                </div>
-                {errors.addre && <p>{errors.addre}</p>}
-                <div className="form-group">
-                    <button type={submit} variant="success" className="btn btn-primary">登录</button>
-                </div>
+
+                  {errors.addre && <p>{errors.addre}</p>}
+
+                  <button type={submit} variant="success" className="btn btn-primary">登录</button>
+              </div>
             </form>
-            <Link to="/register" className="btn btn-link">注册</Link>
             <button onClick={ethereumButton} class="enableEthereumButton">启动MetaMask</button>
+            <Link to="/register" className="btn btn-link">注册</Link>
+        </div>
         </div>
     );
 }

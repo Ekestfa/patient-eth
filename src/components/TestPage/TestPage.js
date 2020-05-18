@@ -29,7 +29,7 @@ render(){
         <Container>
             { isClose &&
             <Row>
-            <Navbar className="navbar" bg="dark" variant="dark" fixed="top">
+            <Navbar className="navbar" bg="dark" variant="dark" fixed="top" style={{   height: '50px' }}>
                 <Nav  className="justify-content-center mr-auto" fixed="top" bg="dark" variant="dark" >
                     <Nav.Item>
                         <Nav.Link onClick={()=> this.setState({isClose:false})}  href="#"

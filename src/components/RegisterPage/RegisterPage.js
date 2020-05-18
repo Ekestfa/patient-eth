@@ -31,7 +31,7 @@ const CreatePatientForm = (props) => {
   }
 
   const [submitted, setSubmitButton] = useState(false);
-  const [addre,setAddre] = useState('Press Enable Ethereum!')
+  const [addre,setAddre] = useState('启动MetaMask！')
   const [checkbox, setCheckbox] = useState(0)
   const {handleSubmit, handleChange, values, errors} = useForm(submit,USER_INFO,addre,validate);
   const handleCheckboxChange = (val) => {setCheckbox(val)
@@ -137,11 +137,11 @@ const CreatePatientForm = (props) => {
   }
 
  const ethereumButton = () => {
-  ethereum.enable();
   if(ethereum){
     web3.eth.getAccounts((err, accounts) => {
       if (accounts.length === 0) {
         // there is no active accounts in MetaMask
+        ethereum.enable();
         this.console.log('there is no active accounts in MetaMask')
       }else {
         // It's ok
@@ -164,50 +164,50 @@ const CreatePatientForm = (props) => {
 return(
       // <ToastComponent holdername="demo" time={Date()} info="demo"/>
 <div class="col-lg-3 mt-1 mb-3">
-<div class="card card-profile-signup p-1">
-  <form onSubmit={handleSubmit} className='formbase' noValidate>
-    <div class="card-body">
-      <h5 class="card-title">Create your profile</h5>
-      <div class="form-group">
-        <label for="username">Username</label>
-        <input name="username"
-               value={values.username}
-               type="text" 
-               class="form-control" 
-               id="sign-up-username" 
-               required="required"
-               onChange={handleChange}
-        />
-        {errors.username && <p>{errors.username}</p>}
-      </div>
-      <ToggleButtonGroup type="radio" name="options" value={checkbox} onChange={handleCheckboxChange}>
-        <ToggleButton value={1}>病人</ToggleButton>
-        <ToggleButton value={2}>医生</ToggleButton>
-        {checkbox < 0 && 
-          <p>选择病人或医生</p>
+  <div class="card card-profile-signup p-1">
+  <h5 class="card-title">注册</h5>
+    <form onSubmit={handleSubmit} className='formbase' noValidate>
+      <div class="card-body">
+        <div class="form-group">
+          <label for="username">用户名：</label>
+          <input name="username"
+                value={values.username}
+                type="text" 
+                class="form-control" 
+                id="sign-up-username" 
+                required="required"
+                onChange={handleChange}
+          />
+          {errors.username && <p>{errors.username}</p>}
+          <ToggleButtonGroup type="radio" name="options" value={checkbox} onChange={handleCheckboxChange}>
+          <ToggleButton value={1}>病人</ToggleButton>
+          <ToggleButton value={2}>医生</ToggleButton>
+          {checkbox < 0 && 
+            <p>选择病人或医生</p>
+          }
+        </ToggleButtonGroup>
+        <div>以太坊地址：
+          <span class="eth-address"></span>
+          <input type="text"
+                name="ethaddress" 
+                class="form-control" id="sign-up-eth-address" 
+                value={addre}
+                disabled
+                onChange={handleChange}
+          />
+          {errors.addre && <p>{errors.addre}</p>}
+        </div>
+        {
+          submitted
+          ? <button type="submit" class="btn btn-primary" id="sign-up-button" disabled>注册</button>
+          : <button type="submit" class="btn btn-primary" id="sign-up-button" >注册</button>
         }
-      </ToggleButtonGroup>
-      <div>ETH Address:
-        <span class="eth-address"></span>
-        <input type="text"
-               name="ethaddress" 
-               class="form-control" id="sign-up-eth-address" 
-               value={addre}
-               disabled
-               onChange={handleChange}
-        />
-        {errors.addre && <p>{errors.addre}</p>}
       </div>
-      {
-        submitted
-        ? <button type="submit" class="btn btn-primary" id="sign-up-button" disabled>注册</button>
-        : <button type="submit" class="btn btn-primary" id="sign-up-button" >注册</button>
-      }
     </div>
-  </form>
-  <button onClick={ethereumButton} class="enableEthereumButton">Enable Ethereum</button>
-  <Link to="/" className="btn btn-link">Login</Link>
-</div>
+    </form>
+    <button onClick={ethereumButton} class="enableEthereumButton">请启动MetaMask</button>
+    <Link to="/" className="btn btn-link">登录</Link>
+  </div>
 </div>
  );
 }

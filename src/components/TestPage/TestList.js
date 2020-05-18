@@ -99,7 +99,7 @@ class TestList extends React.Component{
 
     testCard = key => {
         return (
-        <Card className="mt-5" bg="dark">
+        <Card className="mt-5" bg="light">
             <Card.Header>{key.date} {key.time}</Card.Header>
             <Card.Body>
                 <blockquote className="blockquote mb-0">
@@ -182,7 +182,7 @@ class TestList extends React.Component{
         return (
             <>
                 <div>
-                <Navbar className="navbar" bg="dark" variant="dark" scrolling dark expand="md" fixed="bottom">
+                <Navbar className="navbar" bg="dark" variant="dark" scrolling dark expand="md" fixed="bottom" style={{ height: '50px'}}>
                         <InputGroup className="mt-2">
                             <DropdownButton
                             as={InputGroup.Prepend}

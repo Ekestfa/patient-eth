@@ -13,7 +13,7 @@ export default class ToastComponent extends React.Component {
     const {holdername, time, info} = this.props;
     const {show} = this.state;
     return (
-          <Toast variant="dark" bg="dark" onClose={() => this.setState({show:false})} show={show} delay={4500} autohide
+          <Toast onClose={() => this.setState({show:false})} show={show} delay={4500} autohide
           style={{
             position: 'absolute',
             top: 0,

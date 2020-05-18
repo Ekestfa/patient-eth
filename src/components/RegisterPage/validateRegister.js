@@ -17,8 +17,8 @@ if(values.username.length > 20) {
 // password
     // the string to be more than 0 chars
     if(!values.ETHaddress){
-        if(addre==='Press Enable Ethereum!'){
-            errors.addre = "请启动以太坊！"
+        if(addre==='请启动MetaMask！'){
+            errors.addre = "请启动MetaMask！"
         } 
     }
 // else if(values.password < 10){

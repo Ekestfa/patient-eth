@@ -70,32 +70,23 @@ function getPatientByPatientName(usnameByte32){
   }
 
 
-function consultationCreate(patientName, patientAddress, consID, consIPFS){
+function consultationCreate(patientName, patientAddress, consID, consIPFS, callback){
   patientstorage.deployed().then(function(contractInstance){
     contractInstance.getPatientContractAddressByPatientName(patientName).then(function(result){
       console.log(result)
         const PatientContract = new web3.eth.Contract(Patient.abi,result)
         PatientContract.methods.consultationCreate(consID,consIPFS).send({from: patientAddress, to:PatientContract}).then(function(result){
-            console.log("Creation of consultation:", result);
-            if(result){
-              return true;
-            }else return false;
-        })
-    });
+            console.log("新建诊断书:", result);
+            callback();
+        }).catch(function(e) {
+          console.error("新建诊断书错误：",e)
+          callback();})
+    }).catch(function(e) {
+      console.error("找病人智能合约出问题：",e)
+      callback();})
  })
 }
 
-async function getConsultationsIpfsList(patientName, patientAddress){
-  await patientstorage.deployed().then(function(contractInstance){
-    contractInstance.getPatientContractAddressByPatientName(patientName).then(function(result){
-        const PatientContract = new web3.eth.Contract(Patient.abi,result)
-        PatientContract.methods.getConsultationsIpfsList().call({from: patientAddress}).then(function(result){
-            console.log("Consul IPFSes:", result);
-            return result;
-        })
-    });
- })
-}
 
 function testCreate(patientName, patientAddress, testID, testIPFS){
   patientstorage.deployed().then(function(contractInstance){

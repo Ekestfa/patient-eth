@@ -39,7 +39,9 @@ return(
 <Container>
   <Row>
     <Col>
-    <Navbar className="navbar navbar-default mb-10" bg="dark" variant="dark" fixed="top" >
+    <Navbar className="navbar navbar-default mb-10" bg="dark" variant="dark" fixed="top" style={{
+  height: '50px'
+}}>
     <Navbar.Brand href={'home#'} onClick={()=> this.setState({comp:'blank'})}>主页</Navbar.Brand>
             <Nav className="mr-auto" >
                 <Nav.Link href="#consultations" onClick={()=> this.clicked('consultation')}

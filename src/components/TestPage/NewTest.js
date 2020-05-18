@@ -92,7 +92,7 @@ componentDidMount(){
 render(){
     const { testInfo } = this.state;
     return (
-        <Card bg='dark'>
+        <Card bg='light' variant='light' className="mt-lg-5 .d-xl-0"  style={{ margin: '50px 0 50px 0'}}>
             <Card.Body>
             <p>检查</p>
             <Form onSubmit={this.handleSubmit} noValidate >

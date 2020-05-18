@@ -27,12 +27,12 @@ render(){
     const {creator} = this.props;
 
     return (
-        <Container className fixed="top">
+        <Container fixed="top">
         { close && 
         <Row>
         <Col>
-        <Navbar className="navbar" bg="dark" variant="dark" fixed="top">
-        <Nav className="justify-content-center mr-auto" fixed="top" bg="dark" variant="dark" >
+        <Navbar className="navbar" bg="dark" variant="dark" fixed="top" style={{   height: '50px' }}>
+        <Nav className="justify-content-center mr-auto" fixed="top" bg="light" variant="light" >
             <Nav.Item>
                 <Nav.Link onClick={()=> this.setState({close:false})}  href="#"
                     >返回</Nav.Link>
