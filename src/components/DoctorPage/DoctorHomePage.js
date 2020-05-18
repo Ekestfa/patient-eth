@@ -97,7 +97,7 @@ return(
 <Container>
   <Row>
     <Col>
-    <Navbar className="navbar navbar-default" bg="dark" variant="dark" fixed="top" >
+    <Navbar className="navbar navbar-default" bg="dark" variant="dark" fixed="top" style={{height: '50px'}} >
     <Navbar.Brand href="#" onClick={this.toPageBlanker} >主页</Navbar.Brand>
             <Nav className="mr-auto">
             <Form inline="trye" fixed="right" onSubmit={this.handleSubmit} noValidate >

@@ -33,8 +33,8 @@ logout(){
 }
 
 render(){
-  console.log(this.state.renderChild)
-  console.log(this.state.comp)
+  // console.log(this.state.renderChild)
+  // console.log(this.state.comp)
 return(
 <Container>
   <Row>

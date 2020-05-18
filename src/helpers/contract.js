@@ -21,7 +21,7 @@ export{
     testCreate
 }
 
-async function patientContractCreation(patientAddress, patientuname){
+async function patientContractCreation(patientAddress, patientuname, callback){
   const gas = await PatientContract.deploy({
     data: Patient.bytecode,
     arguments: [patientAddress,patientuname]
@@ -36,6 +36,7 @@ async function patientContractCreation(patientAddress, patientuname){
   })
   .on('error', (error) => {
     console.log(error)
+    callback();
   })
   .on('transactionHash', (transactionHash) => {
     console.log(transactionHash)
@@ -54,7 +55,10 @@ async function patientContractCreation(patientAddress, patientuname){
     patientstorage.deployed().then(function(contractInstance){
       contractInstance.savePatientContractAddress(newContractInstance.options.address,{from:patientAddress}).then(function(result){
         console.log("Patient Storage added Patient contract:",result)
-      }) 
+        callback();
+      }).catch(function(e) {
+        console.error("保存病人智能合约失败",e)
+        callback();})
     })
   })
 }
@@ -83,22 +87,26 @@ function consultationCreate(patientName, patientAddress, consID, consIPFS, callb
           callback();})
     }).catch(function(e) {
       console.error("找病人智能合约出问题：",e)
+      patientContractCreation(patientAddress, patientName)
       callback();})
  })
 }
 
 
-function testCreate(patientName, patientAddress, testID, testIPFS){
+function testCreate(patientName, patientAddress, testID, testIPFS, callback){
   patientstorage.deployed().then(function(contractInstance){
     contractInstance.getPatientContractAddressByPatientName(patientName).then(function(result){
       console.log(result)
         const PatientContract = new web3.eth.Contract(Patient.abi,result)
         PatientContract.methods.testCreate(testID, testIPFS).send({from: patientAddress, to:PatientContract}).then(function(result){
-            console.log("Creation of consultation:", result);
-            if(result){
-              return true;
-            }else return false;
-        })
-    });
+            console.log("新建检查：", result);
+            callback();
+        }).catch(function(e) {
+          console.error("新建检查错误：",e)
+          callback();})
+    }).catch(function(e) {
+      console.error("找病人智能合约出问题：",e)
+      patientContractCreation(patientAddress, patientName)
+      callback();})
  })
 }

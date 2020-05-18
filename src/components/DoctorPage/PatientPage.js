@@ -38,7 +38,7 @@ class PatientPage extends React.Component{
             {this.props.name && isClose &&
             <Row>
             <Col>
-                <Navbar className="navbar navbar-default" bg="dark" variant="dark" fixed="top">
+                <Navbar className="navbar navbar-default" bg="dark" variant="dark" fixed="top" style={{height: '50px'}}>
                     <Nav className="mr-auto">
                         <Nav.Item>
                             <Nav.Link variant='info' onClick={()=> this.setState({isClose:false})}  href="#"

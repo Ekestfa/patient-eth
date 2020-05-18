@@ -8,6 +8,7 @@ import ipfs from '../../ipfs';
 import {consultationCreate} from '../../helpers/contract'
 import validateConsul from './validateConsul'
 
+
 const web3 = new Web3(Web3.givenProvider || "http://localhost:7545" );
 const ethereum = window.ethereum;
 
@@ -46,14 +47,12 @@ handleChange = (event) => {
     const {name, value} = event.target;
     this.setState({consultationInfo:{...consultationInfo,[name] : value}});
     this.handleValidate()
-    // console.log(name+':'+value)
   }
   
   
 handleSubmit = event => {
     const { consultationInfo, canSubmit, errors } = this.state;
     event.preventDefault();
-    console.log(Object.keys(errors).length)
     this.handleValidate()
     if(Object.keys(errors).length === 0 && canSubmit){
         this.submit()
@@ -131,7 +130,6 @@ componentDidMount(){
 
 render(){
     const { consultationInfo, submitted, errors } = this.state;
-    console.log(consultationInfo)
 return (
     <div   aria-live="polite"
     aria-atomic="true"
@@ -153,7 +151,7 @@ return (
                     style={{
                         borderBottomColor: errors.date ? 'red' : 'green',   borderBottomWidth: 1
                     }}/>
-                    <FormControl name="time" type="time" value={consultationInfo.time} autocomplete="on" placeholder="时间" onChange={this.handleChange}
+                    <FormControl name="time" type="time" value={consultationInfo.time} autoComplete="on" placeholder="时间" onChange={this.handleChange}
                       style={{
                         borderBottomColor: errors.time ? 'red' : 'green',   borderBottomWidth: 1
                     }} />
@@ -205,6 +203,11 @@ return (
                 : <Button className="mr-3" variant="primary" type="submit" >确认</Button> //style={{marginRight:'5px'}}
             }
             <Button variant="danger" type="submit" onClick={this.clear} >清除</Button>
+            {
+            submitted
+            ? <h3>正在上传，请稍候！</h3>
+            : <></>
+            }
             </Form>
         </Card.Body>
     </Card>

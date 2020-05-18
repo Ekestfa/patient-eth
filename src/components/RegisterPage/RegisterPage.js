@@ -42,6 +42,9 @@ const CreatePatientForm = (props) => {
     values.username = "";
     setCheckbox(0);
   }
+  function handleSubmitButton(){
+    setSubmitButton(false);
+  }
 
   async function submit() {
     var valuesBuffer = Buffer.from(JSON.stringify(values)); //values.ETHaddress + values.username
@@ -73,8 +76,8 @@ const CreatePatientForm = (props) => {
                   if(success){
                     console.log("病人到以太坊注册成功！");
                     console.log("正在新建个人空间智能合约。。。");
-                    patientContractCreation(addre,usnameByte32);
-                    setSubmitButton(false);
+                    patientContractCreation(addre,usnameByte32, handleSubmitButton);
+                    // setSubmitButton(false);
                     clearData();
                   }else{
                     console.log("注册病人遇到问题！");
@@ -116,6 +119,7 @@ const CreatePatientForm = (props) => {
                   if(success){
                   console.log("created doctor on ethereum!");
                   setSubmitButton(false);
+                  clearData()
                   }else{
                     console.log("error creating doctor on ethereum!");
                     setSubmitButton(false);
@@ -201,6 +205,11 @@ return(
           submitted
           ? <button type="submit" class="btn btn-primary" id="sign-up-button" disabled>注册</button>
           : <button type="submit" class="btn btn-primary" id="sign-up-button" >注册</button>
+        }
+        {
+          submitted
+          ? <h3>正在注册，请稍候</h3>
+          : <></>
         }
       </div>
     </div>
