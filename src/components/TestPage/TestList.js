@@ -118,10 +118,11 @@ class TestList extends React.Component{
             )
     }
     render(){
-        const {testDatas, submitted, searchtype, searchtext} = this.state
+        const {testDatas, submitted, searchtype, searchtext, count} = this.state
         var renderTestdata;
 
         if(submitted){
+            if(count != 0){
             let array = []
                 if( searchtype === '全'){
                     renderTestdata= Object.values(testDatas).map(key => {
@@ -177,6 +178,10 @@ class TestList extends React.Component{
                         )}
                     )
                 }
+            }// if count
+            else{
+                return renderTestdata = <h2>未找到用户检查信息</h2>
+            }
         }
 
         return (

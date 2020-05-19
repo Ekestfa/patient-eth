@@ -39,6 +39,7 @@ class NewTest extends React.Component {
     this.submitControl = this.submitControl.bind(this);
     this.clear = this.clear.bind(this);
     this.handleValidate = this.handleValidate.bind(this);
+    this.checkCreator = this.checkCreator.bind(this);
 }
 
 handleChange = (event) => {
@@ -72,14 +73,7 @@ handleValidate = () => {
 
 submit() {
     const { testInfo} = this.state;
-    var patientname = localStorage.getItem('p');
-    console.log('patientnamebylogin:',patientname)
-    this.setState({testInfo:{creator:patientname}})
-    console.log('patientnamebysearch:',patientname)
-    if(patientname===null){
-        patientname = this.props.name
-        console.log('patientnamebydoctor:',patientname)
-    }
+    var patientname = this.checkCreator();
     this.setState({submitted: true})
 
     var usnameByte32 = ethers.utils.formatBytes32String(patientname);
@@ -100,12 +94,12 @@ submit() {
     })
 }
 
-submitControl(){
+submitControl = () => {
     this.setState({submitted: false})
     this.clear()
 }
 
-clear(){
+clear = () => {
     const { testInfo } = this.state 
     this.setState({ testInfo:{...testInfo,
         dateID:"",
@@ -120,24 +114,25 @@ clear(){
     this.handleValidate()
 }
 
-componentDidMount(){
+checkCreator = () => {
     const { testInfo } = this.state;
-    const { creator } = this.props;
-    var patientname = localStorage.getItem('p');
-    this.setState({testInfo:{...testInfo,creator:patientname}})
-    console.log(patientname)
-    if(patientname===null){
-        patientname = this.props.name
+    var creatorname = localStorage.getItem('p');
+    this.setState({testInfo:{...testInfo,creator:creatorname}})
+    if(creatorname===null){
+        creatorname = this.props.name
         this.setState({testInfo:{...testInfo,creator:this.props.creator}})
     }
-    console.log('查找的医生：',this.props.creator)
-    console.log('创建者：', testInfo.creator)
+    return creatorname;
+}
+
+componentDidMount(){
+    this.checkCreator()
     this.handleValidate()
 }
 
 render(){
     const { testInfo, errors, submitted } = this.state;
-    console.log(errors)
+    console.log(testInfo)
     return (
         <Card bg='light' variant='light' className="mt-lg-5 .d-xl-0"  style={{ margin: '50px 0 50px 0'}}>
             <Card.Body>
@@ -160,10 +155,18 @@ render(){
             </Form.Group>
             <Form.Group controlId="Test.doctorname">
                 <Form.Label>医生</Form.Label>
-                <Form.Control name="doctorName" type="text"  placeholder="医生名字" value={testInfo.doctorName} onChange={this.handleChange}
-                style={{
-                    borderBottomColor: errors.doctorName ? 'red' : 'green',   borderBottomWidth: 1
-                }}/>
+                {
+                    this.props.creator
+                    ? <Form.Control name="doctorName" type="text"  placeholder="医生名字" value={testInfo.doctorName = this.props.creator} disabled onChange={this.handleChange}
+                    style={{
+                        borderBottomColor: errors.doctorName ? 'red' : 'green',   borderBottomWidth: 1
+                    }}/>
+                    : <Form.Control name="doctorName" type="text"  placeholder="医生名字" value={testInfo.doctorName} onChange={this.handleChange}
+                    style={{
+                        borderBottomColor: errors.doctorName ? 'red' : 'green',   borderBottomWidth: 1
+                    }}/>
+                }
+                
             </Form.Group>
             <Form.Group controlId="Test.Name">
                 <Form.Label>检查名</Form.Label>

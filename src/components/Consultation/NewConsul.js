@@ -40,6 +40,7 @@ class NewConsul extends React.Component {
     this.submitControl = this.submitControl.bind(this);
     this.clear = this.clear.bind(this);
     this.handleValidate = this.handleValidate.bind(this);
+    this.checkCreator = this.checkCreator.bind(this);
 }
 
 handleChange = (event) => {
@@ -70,13 +71,21 @@ handleValidate = () => {
     }
 }
 
-submit() {
-    const { consultationInfo, submitted, canSubmit } = this.state;
+checkCreator = () => {
+    const { consultationInfo } = this.state;
     var patientname = localStorage.getItem('p');
     this.setState({consultationInfo:{...consultationInfo,creator:patientname}})
     if(patientname===null){
         patientname = this.props.name
+        this.setState({consultationInfo:{...consultationInfo,creator:this.props.creator}})
     }
+    return patientname
+}
+
+
+submit() {
+    const { consultationInfo, submitted, canSubmit } = this.state;
+    var patientname = this.checkCreator()
     this.setState({submitted: true})
 
     var usnameByte32 = ethers.utils.formatBytes32String(patientname);
@@ -118,13 +127,7 @@ clear(){
 }
 
 componentDidMount(){
-    const { consultationInfo } = this.state;
-    var patientname = localStorage.getItem('p');
-    this.setState({consultationInfo:{...consultationInfo,creator:patientname}})
-    if(patientname===null){
-        patientname = this.props.name
-        this.setState({consultationInfo:{...consultationInfo,creator:this.props.creator}})
-    }
+    this.checkCreator()
     this.handleValidate()
 }
 
@@ -160,10 +163,11 @@ return (
             {/* {errors.doctorName && <p>{errors.doctorName}</p>} */}
             <Form.Group controlId="Consul.doctorForm">
                 <Form.Label>医生</Form.Label>
-                <Form.Control name="doctorName" type="text"  placeholder="医生名字" value={consultationInfo.doctorName} onChange={this.handleChange} 
-                style={{
-                        borderBottomColor: errors.doctorName ? 'red' : 'green',   borderBottomWidth: 1
-                    }}/>
+                {
+                    this.props.creator 
+                    ? <Form.Control name="doctorName" type="text"  placeholder="医生名字" value={consultationInfo.doctorName = this.props.creator} disabled onChange={this.handleChange} style={{borderBottomColor: errors.doctorName ? 'red' : 'green',   borderBottomWidth: 1}}/>
+                    : <Form.Control name="doctorName" type="text"  placeholder="医生名字" value={consultationInfo.doctorName} onChange={this.handleChange} style={{borderBottomColor: errors.doctorName ? 'red' : 'green',   borderBottomWidth: 1}}/>
+                }
             </Form.Group>
             {/* {errors.addr && <p>{errors.addr}</p>} */}
             <Form.Group controlId="Consul.addressForm">

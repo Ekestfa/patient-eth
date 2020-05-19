@@ -103,10 +103,11 @@ consulCard = key => {
             <Card.Header>{key.date} {key.time}</Card.Header>
             <Card.Body>
                 <blockquote className="blockquote mb-0">
-                <p>{' '}医生:{key.doctorName} </p>
-                <p>{' '}看病地址:{key.addr}</p>
-                <p>{' '}疾病类型:{key.disease}</p>
-                <p>{' '}药:{key.medicine}</p>
+                <p>医生:{key.doctorName} </p>
+                <p>看病地址:{key.addr}</p>
+                <p>疾病类型:{key.disease}</p>
+                <p>疾病描述:{key.description}</p>
+                <p>药:{key.medicine}</p>
                 <footer className="blockquote-footer">
                     创建者：<cite title="Source Title">{key.creator}</cite>  
                 </footer>
@@ -116,9 +117,10 @@ consulCard = key => {
     )
 }
 render(){
-    const {consul, searchtype, searchtext, submitted} = this.state;
+    const {consul, searchtype, searchtext, submitted, count} = this.state;
     var renderConsuldata;
     if(submitted){
+        if(count != 0){
         let array = []
             if( searchtype === '全'){
                 renderConsuldata= Object.values(consul).map(key => {
@@ -162,6 +164,10 @@ render(){
                     )}
                 )
             }
+        } else {
+                return renderConsuldata = <h2>未找到用户诊断书信息</h2>
+            }
+        
     }
 
     return (
