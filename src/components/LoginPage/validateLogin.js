@@ -11,7 +11,7 @@ function validateLogin(values,addre){
     if(format.test(values.username)){
         errors.username = "用户名有禁止使用字！"
     }
-    if(values.username.length > 20) {
+    if(values.username.length > 30) {
         errors.username = "用户名太长了！"
     }
     // else if(!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.username)){
@@ -22,8 +22,8 @@ function validateLogin(values,addre){
     // password
         // the string to be more than 0 chars
     if(!values.ETHaddress){
-        if(addre==='Press Enable Ethereum!'){
-            errors.addre = "请启动以太坊！"
+        if(addre==='请启动MetaMask'){
+            errors.addre = "请启动MetaMask！"
         } 
     }
     // else if(values.password < 10){

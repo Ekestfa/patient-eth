@@ -17,7 +17,7 @@ if(values.username.length > 20) {
 // password
     // the string to be more than 0 chars
     if(!values.ETHaddress){
-        if(addre==='请启动MetaMask！'){
+        if(addre==='启动MetaMask！'){
             errors.addre = "请启动MetaMask！"
         } 
     }

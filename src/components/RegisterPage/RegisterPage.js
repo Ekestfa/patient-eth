@@ -54,6 +54,7 @@ const CreatePatientForm = (props) => {
     if(checkbox === 0){
       console.error('选择病人或医生其中一位角色')
       setSubmitButton(false);
+      return
     }
     if(checkbox === 1){
       // 选了病人角色
@@ -174,21 +175,21 @@ return(
       <div class="card-body">
         <div class="form-group">
           <label for="username">用户名：</label>
-          <input name="username"
+          <input name="username" 
                 value={values.username}
                 type="text" 
                 class="form-control" 
                 id="sign-up-username" 
                 required="required"
                 onChange={handleChange}
-          />
-          {errors.username && <p>{errors.username}</p>}
+          />{errors.username && <p>{errors.username}</p>}
+          
+          {checkbox == 0 && 
+            <h4 style={{marginTop:'10px'}}>选择病人或医生</h4>
+          }
           <ToggleButtonGroup type="radio" name="options" value={checkbox} onChange={handleCheckboxChange}>
           <ToggleButton value={1}>病人</ToggleButton>
           <ToggleButton value={2}>医生</ToggleButton>
-          {checkbox < 0 && 
-            <p>选择病人或医生</p>
-          }
         </ToggleButtonGroup>
         <div>以太坊地址：
           <span class="eth-address"></span>
@@ -214,7 +215,7 @@ return(
       </div>
     </div>
     </form>
-    <button onClick={ethereumButton} class="enableEthereumButton">请启动MetaMask</button>
+    <button onClick={ethereumButton} class="enableEthereumButton">启动MetaMask</button>
     <Link to="/" className="btn btn-link">登录</Link>
   </div>
 </div>
